@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <h1 class="col-12 text-center mb-5 mt-5">PRODUCTO</h1>
+        <form class="mb-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="nombreForm">
+                </div>
+                <div class="col">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" [(ngModel)]="descripcionForm">
+                </div>
+                <div class="col">
+                    <label for="imagen">Imagen:</label>
+                    <input type="text" name="imagen" id="imagen" class="form-control" [(ngModel)]="imagenForm">
+                </div>
+            </div>
+            <button class="btn btn-outline-dark mt-3" type="submit" (click)="editar()">Acción</button><br>
+        </form>
+    </div>
+</div>

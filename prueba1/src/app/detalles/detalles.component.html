@@ -1,0 +1,10 @@
+
+<div *ngIf="heroe">
+    <h3>Detalles de {{heroe.nombre}}</h3>
+    <p>Número {{heroe.id}}</p>
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" [(ngModel)]="heroe.nombre" placeholder="Nombre"><br><br>
+    <button type="button" (click)="atras()">Atrás</button>
+</div>
+
+
