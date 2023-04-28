@@ -16,13 +16,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
-                    <td scope="row">1</td>
-                    <td>Shampoo Old Spice</td>
-                    <td>Huele como un tío, tío</td>
-                    <td>7,99€</td>
-                    <td>[ruta Imagen]</td>
-                    <td><a routerLink="/actualizar-productos/1" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;<button type="submit" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<a class="btn btn-outline-danger btn-sm">Borrar</a></td>
+                <tr *ngFor="let producto of productos | async">
+                    <td scope="row">{{producto.idProducto}}</td>
+                    <td>{{producto.nombreProducto}}</td>
+                    <td>{{producto.descripcionProducto}}</td>
+                    <td>{{producto.precioProducto}} €</td>
+                    <td>{{producto.rutaImagenProducto}}</td>
+                    <td><a [routerLink]="'/actualizar-productos/' + producto.idProducto" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;<button type="submit" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<a class="btn btn-outline-danger btn-sm" (click)="eliminarProducto(producto)">Borrar</a></td>
                 </tr>
             </tbody>
         </table>

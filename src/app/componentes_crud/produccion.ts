@@ -1,6 +1,13 @@
 export class Produccion{
-    nombre!:string;
-    precio!:number;
-    descripcion!:string;
-    imagen:string;
+    constructor(
+        public idProducto:number,
+        public nombreProducto:string,
+        public descripcionProducto:string,
+        public precioProducto:number,
+        public rutaImagenProducto:string,
+        public idTipoProducto:number
+        ){
+
+    }
+
 }

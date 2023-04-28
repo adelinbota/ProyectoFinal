@@ -15,7 +15,6 @@ export class ProductosComponent implements OnInit{
 
   ngOnInit(): void {
     this.servicioProducto.obtenerProductos().subscribe(misProductos=>{
-      console.log(misProductos)
 
       this.productos=Object.values(misProductos)
     

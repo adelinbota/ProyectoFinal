@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { Produccion } from '../produccion';
+import { ProduccionService } from '../produccion.service';
 
 @Component({
   selector: 'app-anadir-producto',
@@ -9,19 +10,28 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AnadirProductoComponent {
 
-  formulario:FormGroup;
+  constructor(private router: Router, private produccionService: ProduccionService){
+    
+  };
+  nombreProducto:string;
+  descripcionProducto:string;
+  precioProducto:number;
+  rutaImagenProducto:string;
+  idTipoProducto:number;
+  
 
-  constructor(private formBuilder: FormBuilder, private router:Router){
-    this.formulario=this.formBuilder.group({
-      nombre: [''],
-      descripcion: [''],
-      precio: [''],
-      imagen: ['']
-    }
-  )};
+  productoModelo = new Produccion(1, "","",2,"",0);
 
   addDatos(){
-    console.log(this.formulario.value);
-    this.router.navigate(['/lista-productos']);
+    this.productoModelo.nombreProducto = this.nombreProducto;
+    this.productoModelo.descripcionProducto = this.descripcionProducto;
+    this.productoModelo.precioProducto = this.precioProducto;
+    this.productoModelo.rutaImagenProducto = this.rutaImagenProducto;
+    this.productoModelo.idTipoProducto = this.idTipoProducto;
+    console.log(this.productoModelo);
+    this.produccionService.anadirProducto(this.productoModelo).subscribe(
+    );
+    this.router.navigate(["/lista-productos"]);
   }
+
 }
