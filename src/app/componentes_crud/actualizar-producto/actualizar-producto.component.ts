@@ -16,7 +16,7 @@ export class ActualizarProductoComponent implements OnInit{
   producto = new Produccion(1,"","",0,"",1);
 
   ngOnInit() {
-    let idProducto = this.route.snapshot.paramMap.get('idProducto');
+    let idProducto = this.route.snapshot.paramMap.get('id');
     this.productoService.getProducto(idProducto).subscribe(
       (producto: Produccion) => this.producto = producto
     )

@@ -31,7 +31,7 @@ export class AnadirProductoComponent {
     console.log(this.productoModelo);
     this.produccionService.anadirProducto(this.productoModelo).subscribe(
     );
-    this.router.navigate(["/lista-productos"]);
+    this.router.navigate(["/productos"]);
   }
 
 }

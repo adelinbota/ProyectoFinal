@@ -17,9 +17,9 @@ const rutas: Routes = [
   {path: 'citas', component: CitasComponent},
   {path: 'servicios', component: ServiciosComponent},
   {path: 'clientes', component: UsuariosComponent},
-  {path: 'lista-productos', component: VerProductosComponent},
+  {path: 'productos', component: VerProductosComponent},
   {path: 'add-productos', component: AnadirProductoComponent},
-  {path: 'actualizar-productos/:idProducto', component: ActualizarProductoComponent},
+  {path: 'actualizar-productos/:id', component: ActualizarProductoComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: ErrorPaginaComponent}
 ];

@@ -15,6 +15,7 @@ export class ProduccionService {
     return this.http.put(`${this.baseUrl}/editar.php`, producto);
   }
   getProducto(id:string | null) {
+    console.log(id);
     return this.http.get<Produccion>(`${this.baseUrl}/obtenerUno.php?idProducto=${id}`);
   }
   getProductos() {
