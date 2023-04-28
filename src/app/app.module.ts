@@ -18,6 +18,7 @@ import { AnadirProductoComponent } from './componentes_crud/anadir-producto/anad
 import { ActualizarProductoComponent } from './componentes_crud/actualizar-producto/actualizar-producto.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { CitasComponent } from './citas/citas.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CitasComponent } from './citas/citas.component';
     ActualizarProductoComponent,
     ServiciosComponent,
     CitasComponent,
+    UsuariosComponent,
     
   ],
   imports: [

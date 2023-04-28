@@ -9,12 +9,14 @@ import { AnadirProductoComponent } from './componentes_crud/anadir-producto/anad
 import { ActualizarProductoComponent } from './componentes_crud/actualizar-producto/actualizar-producto.component';
 import { CitasComponent } from './citas/citas.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const rutas: Routes = [
   {path: '', component: InicioComponent},
   {path: 'contacto', component: ContactoComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'servicios', component: ServiciosComponent},
+  {path: 'clientes', component: UsuariosComponent},
   {path: 'lista-productos', component: VerProductosComponent},
   {path: 'add-productos', component: AnadirProductoComponent},
   {path: 'actualizar-productos/:idProducto', component: ActualizarProductoComponent},
