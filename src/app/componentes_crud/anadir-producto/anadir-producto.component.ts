@@ -33,5 +33,4 @@ export class AnadirProductoComponent {
     );
     this.router.navigate(["/productos"]);
   }
-
 }

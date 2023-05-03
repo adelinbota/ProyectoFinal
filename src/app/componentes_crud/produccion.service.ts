@@ -8,24 +8,22 @@ import { environment } from '../environment/environment';
   providedIn: 'root'
 })
 export class ProduccionService {
+  baseUrl = environment.baseUrl
+  
   borrarProducto(producto: Produccion) {
-    return this.http.delete(`${this.baseUrl}/eliminar.php?idProducto=${producto.idProducto}`)
+    return this.http.delete(`${this.baseUrl}/index.php?recurso=productos/borrar-productos/${producto.idProducto}`)
   }
   actualizarProducto(producto: Produccion) {
-    return this.http.put(`${this.baseUrl}/editar.php`, producto);
+    return this.http.put(`${this.baseUrl}/index.php?recurso=productos/actualizar-productos/${producto.idProducto}`, producto);
   }
   getProducto(id:string | null) {
-    console.log(id);
-    return this.http.get<Produccion>(`${this.baseUrl}/obtenerUno.php?idProducto=${id}`);
+    return this.http.get<Produccion>(`${this.baseUrl}/index.php?recurso=productos/${id}`);
   }
   getProductos() {
-    return this.http.get<Produccion[]>(`${this.baseUrl}/obtener.php`);
+    return this.http.get<Produccion[]>(`${this.baseUrl}/index.php?recurso=productos`);
   }
-
-  baseUrl = environment.baseUrl
-
-  anadirProducto(producto: Produccion):Observable<any>{
-    return this.http.post(`${this.baseUrl}/agregar.php`, producto);
+  anadirProducto(producto: Produccion){
+    return this.http.post(`${this.baseUrl}/index.php?recurso=productos/add-productos`, producto);
   }
 
   constructor(private http:HttpClient) { }

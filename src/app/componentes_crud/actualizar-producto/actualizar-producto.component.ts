@@ -16,7 +16,7 @@ export class ActualizarProductoComponent implements OnInit{
   producto = new Produccion(1,"","",0,"",1);
 
   ngOnInit() {
-    let idProducto = this.route.snapshot.paramMap.get('id');
+    let idProducto = this.route.snapshot.paramMap.get('idProducto');
     this.productoService.getProducto(idProducto).subscribe(
       (producto: Produccion) => this.producto = producto
     )
@@ -25,6 +25,6 @@ export class ActualizarProductoComponent implements OnInit{
 
   actualizarDatos(){
     this.productoService.actualizarProducto(this.producto).subscribe();
-    this.router.navigate(['lista-productos']);
+    this.router.navigate(['productos']);
   }
 }

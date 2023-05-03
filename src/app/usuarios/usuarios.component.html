@@ -1,1 +1,28 @@
-<p>usuarios works!</p>
+<div class="container mb-5">
+    <h1 class="col-12 text-center mt-5">usuarios</h1>
+    <div class="col-4">
+        <a routerLink="/usuarios/add-usuarios" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo usuario</a>
+    </div>
+    <div class="table-responsive mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios | async">
+                    <td scope="row">{{usuario.idUsuario}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellidos}}</td>
+                    <td class="text-end">{{usuario.email}} €</td>
+                    <td><a routerLink="/usuarios" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;<button type="submit" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<a class="btn btn-outline-danger btn-sm" (click)="eliminarUsuario(usuario)">Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

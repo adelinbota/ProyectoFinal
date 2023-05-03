@@ -18,8 +18,8 @@ const rutas: Routes = [
   {path: 'servicios', component: ServiciosComponent},
   {path: 'clientes', component: UsuariosComponent},
   {path: 'productos', component: VerProductosComponent},
-  {path: 'add-productos', component: AnadirProductoComponent},
-  {path: 'actualizar-productos/:id', component: ActualizarProductoComponent},
+  {path: 'productos/add-productos', component: AnadirProductoComponent},
+  {path: 'productos/actualizar-productos/:idProducto', component: ActualizarProductoComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: ErrorPaginaComponent}
 ];
