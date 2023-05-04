@@ -1,40 +1,40 @@
 <div class="container">
     <div class="card mt-5 col-6">
         <div class="card-header">
-            Añade un producto
+            Actualiza tu producto
         </div>
         <div class="card-body">
             <div class="mb-3">
-                <form (ngSubmit)="addDatos()">
+                <form (ngSubmit)="actualizarDatos()">
                     <div class="col-12">
                         <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" name="nombre" id="" class="form-control col-6" (ngModel)="nombreProducto" aria-describedby="helpId" >
+                        <input type="text" name="nombre" id="" class="form-control col-6" [(ngModel)]="producto.nombreProducto" aria-describedby="helpId" >
                     </div>
 
                     <div class="col-12 mt-3">
                         <label for="descripcion" class="form-label">Descripción:</label>
-                        <input type="text" name="descripcion" id="" class="form-control col-3" (ngModel)="descripcionProducto" aria-describedby="helpId">
+                        <input type="text" name="descripcion" id="" class="form-control col-3" [(ngModel)]="producto.descripcionProducto" aria-describedby="helpId">
                     </div>
 
                     <div class="col-12">
                         <div class="row">
                             <div class="col-3 mt-3">
                                 <label for="precio" class="form-label">Precio:</label>
-                                <input type="text" name="precio" id="" class="form-control" (ngModel)="precioProducto" aria-describedby="helpId">
+                                <input type="text" name="precio" id="" class="form-control" [(ngModel)]="producto.precioProducto" aria-describedby="helpId">
                             </div>
                             
                             <div class="col mt-3">
                                 <label for="imagen" class="form-label">Imagen:</label>
-                                <input type="text" name="imagen" id="" class="form-control" (ngModel)="rutaImagenProducto" aria-describedby="helpId">
+                                <input type="text" name="imagen" id="" class="form-control" [(ngModel)]="producto.rutaImagenProducto" aria-describedby="helpId">
                             </div>
                         </div>
                     </div>
                     <div class="col-4 mt-3">
                         <label for="idTipoProducto" class="form-label">Tipo producto:</label>
-                        <input type="number" name="idTipoProducto" id="" class="form-control col-3" (ngModel)="idTipoProducto" aria-describedby="helpId">
+                        <input type="number" name="idTipoProducto" id="" class="form-control col-3" [(ngModel)]="producto.idTipoProducto" aria-describedby="helpId">
                     </div>
 
-                    <button type="submit" class="btn btn-outline-success mt-3">Agregar</button>&nbsp;
+                    <button type="submit" class="btn btn-outline-success mt-3">Editar</button>&nbsp;
                     <button type="button" routerLink="/productos" class="btn btn-outline-primary mt-3">Atrás</button>
                 </form>
             </div>

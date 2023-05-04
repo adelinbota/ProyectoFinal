@@ -9,7 +9,7 @@ import { Usuario } from '../usuario';
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
-export class VerProductosComponent{
+export class UsuariosComponent{
 
   public usuarios: Observable<Usuario[]> = this.obtenerUsuarios();
 
@@ -18,7 +18,7 @@ export class VerProductosComponent{
   }
 
   eliminarUsuario(usuario: Usuario){
-    this.usuarioServicio.borrarProducto(usuario).subscribe(
+    this.usuarioServicio.borrarUsuario(usuario).subscribe(
       () => {
         location.reload();
       }

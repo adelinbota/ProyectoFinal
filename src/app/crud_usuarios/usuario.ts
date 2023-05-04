@@ -5,11 +5,11 @@ export class Usuario{
         public password:string,
         public nombre:string,
         public apellidos:string,
-        public telefono:number,
+        public telefono:string,
         public email:string,
         public cp:string,
         public fechaNac:string,
-        public idTipo:number
+        public idTipoUsuario:number
         ){
 
     }

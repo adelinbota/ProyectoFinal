@@ -13,12 +13,14 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ErrorPaginaComponent } from './error-pagina/error-pagina.component';
 import { LoginComponent } from './login/login.component';
-import { VerProductosComponent } from './componentes_crud/ver-productos/ver-productos.component';
-import { AnadirProductoComponent } from './componentes_crud/anadir-producto/anadir-producto.component';
-import { ActualizarProductoComponent } from './componentes_crud/actualizar-producto/actualizar-producto.component';
+import { VerProductosComponent } from './crud_productos/ver-productos/ver-productos.component';
+import { AnadirProductoComponent } from './crud_productos/anadir-producto/anadir-producto.component';
+import { ActualizarProductoComponent } from './crud_productos/actualizar-producto/actualizar-producto.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { CitasComponent } from './citas/citas.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuariosComponent } from './crud_usuarios/usuarios/usuarios.component';
+import { AddUsuariosComponent } from './crud_usuarios/add-usuarios/add-usuarios.component';
+import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios/actualizar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     ServiciosComponent,
     CitasComponent,
     UsuariosComponent,
+    AddUsuariosComponent,
+    ActualizarUsuariosComponent,
     
   ],
   imports: [
