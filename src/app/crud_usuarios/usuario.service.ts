@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UsuarioService {
+  registrarUsuario(usuario: Usuario) {
+    return this.http.post<Usuario[]>(`${this.baseUrl}/index.php?recurso=usuarios/registrar-usuario`, usuario)
+  }
 
   baseUrl = environment.baseUrl;
 

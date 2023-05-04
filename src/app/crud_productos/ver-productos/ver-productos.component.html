@@ -1,7 +1,22 @@
 <div class="container mb-5">
     <h1 class="col-12 text-center mt-5">Productos</h1>
-    <div class="col-4">
-        <a routerLink="/productos/add-productos" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo producto</a>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6">
+                <a routerLink="/productos/add-productos" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo producto</a>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3 mt-5 mb-3">
+                <div class="input-group">
+                    <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" placeholder="Buscar"/>
+                    </div>
+                    <button type="button" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="table-responsive mt-3">
         <table class="table">
@@ -22,7 +37,7 @@
                     <td>{{producto.descripcionProducto}}</td>
                     <td class="text-end">{{producto.precioProducto}} €</td>
                     <td><a href="{{producto.rutaImagenProducto}}" target="_blank"><img src="{{producto.rutaImagenProducto}}" alt="" style="width: 50px; max-height: 100px;" ></a></td>
-                    <td><a routerLink="/productos/actualizar-productos/{{producto.idProducto}}" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;<button type="submit" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<a class="btn btn-outline-danger btn-sm" (click)="eliminarProducto(producto)">Borrar</a></td>
+                    <td><a routerLink="/productos/actualizar-productos/{{producto.idProducto}}" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;<!-- <button type="submit" class="btn btn-outline-warning btn-sm">Poner a la venta</button>-->&nbsp;<a class="btn btn-outline-danger btn-sm" (click)="eliminarProducto(producto)">Borrar</a></td> 
                 </tr>
             </tbody>
         </table>

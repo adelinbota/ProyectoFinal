@@ -21,6 +21,7 @@ import { CitasComponent } from './citas/citas.component';
 import { UsuariosComponent } from './crud_usuarios/usuarios/usuarios.component';
 import { AddUsuariosComponent } from './crud_usuarios/add-usuarios/add-usuarios.component';
 import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios/actualizar-usuarios.component';
+import { RegistroComponent } from './crud_usuarios/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios
     UsuariosComponent,
     AddUsuariosComponent,
     ActualizarUsuariosComponent,
+    RegistroComponent,
     
   ],
   imports: [

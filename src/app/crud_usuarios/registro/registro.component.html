@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="card mt-5 col-6">
+        <div class="card-header">
+            Completa tus datos
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <form (ngSubmit)="addDatos()">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <label for="usuario" class="form-label">Usuario:</label>
+                                <input type="text" name="usuario" id="" class="form-control" [(ngModel)]="username" aria-describedby="helpId">
+                            </div>
+                            
+                            <div class="col mt-3">
+                                <label for="password" class="form-label">Contraseña:</label>
+                                <input type="password" name="password" id="" class="form-control" [(ngModel)]="password" aria-describedby="helpId">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" name="nombre" id="" class="form-control col-6" [(ngModel)]="nombre" aria-describedby="helpId" >
+                            </div>
+                            
+                            <div class="col mt-3">
+                                <label for="apellidos" class="form-label">Apellidos:</label>
+                                <input type="text" name="apellidos" id="" class="form-control col-3" [(ngModel)]="apellidos" aria-describedby="helpId">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <label for="telefono" class="form-label">Teléfono:</label>
+                                <input type="text" name="telefono" id="" class="form-control" [(ngModel)]="telefono" aria-describedby="helpId">
+                            </div>
+                            
+                            <div class="col mt-3">
+                                <label for="email" class="form-label">Correo:</label>
+                                <input type="email" name="email" id="" class="form-control" [(ngModel)]="email" aria-describedby="helpId">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <label for="cp" class="form-label">Código postal:</label>
+                                <input type="text" name="cp" id="" class="form-control col-3" [(ngModel)]="cp" aria-describedby="helpId">
+                            </div>
+                            <div class="col-4 mt-3">
+                                <label for="fechaNac" class="form-label">Fecha nacimiento:</label>
+                                <input type="date" name="fechaNac" id="" class="form-control col-3" [(ngModel)]="fechaNac" aria-describedby="helpId">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-success mt-3">Registrarme</button>&nbsp;
+                    <button type="button" routerLink="/login" class="btn btn-outline-primary mt-3">Atrás</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

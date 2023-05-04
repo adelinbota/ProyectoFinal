@@ -12,6 +12,7 @@ import { ServiciosComponent } from './servicios/servicios.component';
 import { UsuariosComponent } from './crud_usuarios/usuarios/usuarios.component';
 import { AddUsuariosComponent } from './crud_usuarios/add-usuarios/add-usuarios.component';
 import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios/actualizar-usuarios.component';
+import { RegistroComponent } from './crud_usuarios/registro/registro.component';
 
 const rutas: Routes = [
   {path: '', component: InicioComponent},
@@ -25,6 +26,7 @@ const rutas: Routes = [
   {path: 'usuarios/add-usuario', component: AddUsuariosComponent},
   {path: 'usuarios/actualizar-usuario/:idUsuario', component: ActualizarUsuariosComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: '**', component: ErrorPaginaComponent}
 ];
 
