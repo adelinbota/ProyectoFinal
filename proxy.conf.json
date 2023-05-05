@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://adelin-rest.local/api",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

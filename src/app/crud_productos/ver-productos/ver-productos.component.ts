@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Produccion } from '../produccion';
-import { ProduccionService } from '../produccion.service';
-import { Observable } from 'rxjs';
+import { Producto } from '../producto';
+import { ProductoService } from '../producto.service';
+import { Observable, map } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,19 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class VerProductosComponent{
 
-  public productos: Observable<Produccion[]> = this.obtenerProductos();
+  public productos: Observable<Producto[]> = this.obtenerProductos();
 
-  obtenerProductos(): Observable<Produccion[]> {
+  obtenerProductos(): Observable<Producto[]> {
     return this.productoServicio.getProductos();
   }
 
-  constructor(private productoServicio:ProduccionService) { }
+  constructor(private productoServicio:ProductoService, private router:Router) { }
 
-  eliminarProducto(producto: Produccion){
-    this.productoServicio.borrarProducto(producto).subscribe(
-      () => {
-        location.reload();
-      }
+  eliminarProducto(producto: Producto): void{
+    this.productoServicio.borrarProducto(producto).subscribe();
+    this.productos = this.productos.pipe(
+      map((productos: any[]) => productos.filter((p: Producto) => p !== producto))
     );
     
   }

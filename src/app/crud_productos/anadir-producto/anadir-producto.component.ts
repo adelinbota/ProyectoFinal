@@ -1,16 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Produccion } from '../produccion';
-import { ProduccionService } from '../produccion.service';
+import { Producto } from '../producto';
+import { ProductoService } from '../producto.service';
+import { FuncionesService } from 'src/app/funciones.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/app/environment/environment';
 
 @Component({
   selector: 'app-anadir-producto',
   templateUrl: './anadir-producto.component.html',
   styleUrls: ['./anadir-producto.component.css']
 })
-export class AnadirProductoComponent {
+export class AnadirProductoComponent implements OnInit {
 
-  constructor(private router: Router, private produccionService: ProduccionService){
+  baseUrl = environment.baseUrl
+  tipoProducto: any[];
+  tiposProductoConMayuscula: any[];
+
+  ngOnInit(): void {
+    this.obtenerTiposProducto().subscribe(
+      tipos => {
+        console.log(tipos);
+        this.tipoProducto = tipos;
+        this.tiposProductoConMayuscula = tipos.map(tipo => {
+          return {
+            idTipoProducto: tipo.idTipoProducto,
+            nombre: this.capitalize(tipo.nombre)
+          };
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+  
+  capitalize(str: string): string {
+    return str.replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  constructor(private router: Router, private productoService: ProductoService, private http:HttpClient){
     
   };
   nombreProducto:string;
@@ -20,7 +50,7 @@ export class AnadirProductoComponent {
   idTipoProducto:number;
   
 
-  productoModelo = new Produccion(1, "","",2,"",0);
+  productoModelo = new Producto(1, "","",2,"",0);
 
   addDatos(){
     this.productoModelo.nombreProducto = this.nombreProducto;
@@ -29,8 +59,16 @@ export class AnadirProductoComponent {
     this.productoModelo.rutaImagenProducto = this.rutaImagenProducto;
     this.productoModelo.idTipoProducto = this.idTipoProducto;
     console.log(this.productoModelo);
-    this.produccionService.anadirProducto(this.productoModelo).subscribe(
+    this.productoService.anadirProducto(this.productoModelo).subscribe(
     );
     this.router.navigate(["/productos"]);
   }
+  
+  obtenerTiposProducto() {
+    let hola = this.http.get<any[]>(`${this.baseUrl}/productos/obtenerTiposProducto`);
+    console.log(hola);
+    return hola;
+  }
+  
 }
+

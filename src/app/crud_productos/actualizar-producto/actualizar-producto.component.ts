@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProduccionService } from '../produccion.service';
-import { Produccion } from '../produccion';
+import { ProductoService } from '../producto.service';
+import { Producto } from '../producto';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,14 +11,14 @@ import { Observable } from 'rxjs';
 })
 export class ActualizarProductoComponent implements OnInit{
 
-  constructor(private productoService:ProduccionService, private router:Router, private route:ActivatedRoute){}
+  constructor(private productoService:ProductoService, private router:Router, private route:ActivatedRoute){}
 
-  producto = new Produccion(1,"","",0,"",1);
+  producto = new Producto(1,"","",0,"",1);
 
   ngOnInit() {
     let idProducto = this.route.snapshot.paramMap.get('idProducto');
     this.productoService.getProducto(idProducto).subscribe(
-      (producto: Produccion) => this.producto = producto
+      (producto: Producto) => this.producto = producto
     )
   }
 
