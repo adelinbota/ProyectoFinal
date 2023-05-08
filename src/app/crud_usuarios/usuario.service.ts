@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UsuarioService {
+  obtenerTiposUsuario() {
+    return this.http.get<any[]>(`${this.baseUrl}/usuarios/obtenerTiposUsuario`)
+  }
   registrarUsuario(usuario: Usuario) {
     return this.http.post<Usuario[]>(`${this.baseUrl}/index.php?recurso=usuarios/registrar-usuario`, usuario)
   }
@@ -15,19 +18,19 @@ export class UsuarioService {
   baseUrl = environment.baseUrl;
 
   borrarUsuario(usuario: Usuario) {
-    return this.http.delete(`${this.baseUrl}/index.php?recurso=usuarios/borrar-usuario/${usuario.idUsuario}`)
+    return this.http.delete(`${this.baseUrl}/usuarios/${usuario.idUsuario}`)
   }
   getUsuarios(){
-    return this.http.get<Usuario[]>(`${this.baseUrl}/index.php?recurso=usuarios`);
+    return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
   }
   getUsuario(idUsuario: string | null){
-    return this.http.get<Usuario>(`${this.baseUrl}/index.php?recurso=usuarios/${idUsuario}`)
+    return this.http.get<Usuario>(`${this.baseUrl}/usuarios/${idUsuario}`)
   }
   addUsuario(usuario: Usuario) {
-    return this.http.post<Usuario[]>(`${this.baseUrl}/index.php?recurso=usuarios/add-usuario`, usuario)
+    return this.http.post<Usuario[]>(`${this.baseUrl}/usuarios`, usuario)
   }
   actualizarUsuario(usuario: Usuario) {
-    return this.http.put(`${this.baseUrl}/index.php?recurso=usuarios/actualizar-usuario/${usuario.idUsuario}`, usuario);
+    return this.http.put(`${this.baseUrl}/usuarios/${usuario.idUsuario}`, usuario);
   }
 
   constructor(private http:HttpClient) { }

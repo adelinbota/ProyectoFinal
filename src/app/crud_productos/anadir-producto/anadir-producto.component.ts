@@ -19,7 +19,7 @@ export class AnadirProductoComponent implements OnInit {
   tiposProductoConMayuscula: any[];
 
   ngOnInit(): void {
-    this.obtenerTiposProducto().subscribe(
+    this.productoService.obtenerTiposProducto().subscribe(
       tipos => {
         console.log(tipos);
         this.tipoProducto = tipos;
@@ -50,7 +50,7 @@ export class AnadirProductoComponent implements OnInit {
   idTipoProducto:number;
   
 
-  productoModelo = new Producto(1, "","",2,"",0);
+  productoModelo = new Producto(1,"","",0,"",1);
 
   addDatos(){
     this.productoModelo.nombreProducto = this.nombreProducto;
@@ -63,12 +63,6 @@ export class AnadirProductoComponent implements OnInit {
     );
     this.router.navigate(["/productos"]);
   }
-  
-  obtenerTiposProducto() {
-    let hola = this.http.get<any[]>(`${this.baseUrl}/productos/obtenerTiposProducto`);
-    console.log(hola);
-    return hola;
-  }
-  
+
 }
 

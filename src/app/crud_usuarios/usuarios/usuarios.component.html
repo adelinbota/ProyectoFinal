@@ -42,7 +42,7 @@
                     <td>{{usuario.email}}</td>
                     <td>{{usuario.cp}}</td>
                     <td>{{usuario.fechaNac}}</td>
-                    <td><a routerLink="/usuarios/actualizar-usuario/{{usuario.idUsuario}}" class="btn btn-outline-success btn-sm">Editar</a>&nbsp;&nbsp;<a class="btn btn-outline-danger btn-sm" (click)="eliminarUsuario(usuario)">Borrar</a></td>
+                    <td><button type="button" routerLink="/usuarios/actualizar-usuario/{{usuario.idUsuario}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;&nbsp;<button type="button" class="btn btn-outline-danger btn-sm" (click)="eliminarUsuario(usuario)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>

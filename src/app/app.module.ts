@@ -17,12 +17,14 @@ import { LoginComponent } from './login/login.component';
 import { VerProductosComponent } from './crud_productos/ver-productos/ver-productos.component';
 import { AnadirProductoComponent } from './crud_productos/anadir-producto/anadir-producto.component';
 import { ActualizarProductoComponent } from './crud_productos/actualizar-producto/actualizar-producto.component';
-import { ServiciosComponent } from './servicios/servicios.component';
+import { ServiciosComponent } from './crud_servicios/servicios/servicios.component';
 import { CitasComponent } from './citas/citas.component';
 import { UsuariosComponent } from './crud_usuarios/usuarios/usuarios.component';
 import { AddUsuariosComponent } from './crud_usuarios/add-usuarios/add-usuarios.component';
 import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios/actualizar-usuarios.component';
 import { RegistroComponent } from './crud_usuarios/registro/registro.component';
+import { AddServiciosComponent } from './crud_servicios/add-servicios/add-servicios.component';
+import { ActualizarServiciosComponent } from './crud_servicios/actualizar-servicios/actualizar-servicios.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { RegistroComponent } from './crud_usuarios/registro/registro.component';
     AddUsuariosComponent,
     ActualizarUsuariosComponent,
     RegistroComponent,
+    AddServiciosComponent,
+    ActualizarServiciosComponent,
     
   ],
   imports: [

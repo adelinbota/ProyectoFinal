@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card mt-5 col-6">
+<div class="container col-6">
+    <div class="card mt-5">
         <div class="card-header">
             Añade un producto
         </div>
@@ -7,13 +7,21 @@
             <div class="mb-3">
                 <form (ngSubmit)="addDatos()">
                     <div class="col-12">
-                        <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" name="nombre" id="" class="form-control col-6" [(ngModel)]="nombreProducto" aria-describedby="helpId" >
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="nombreProducto" aria-describedby="helpId" >    
+                            </div>
+                            <div class="col-6 mt-3">
+                                <label for="imagen" class="form-label">Imagen:</label>
+                                <input type="text" name="imagen" id="" class="form-control" [(ngModel)]="rutaImagenProducto" aria-describedby="helpId">
+                            </div>
+                        </div>
                     </div>
-
+               
                     <div class="col-12 mt-3">
                         <label for="descripcion" class="form-label">Descripción:</label>
-                        <input type="text" name="descripcion" id="" class="form-control col-3" [(ngModel)]="descripcionProducto" aria-describedby="helpId">
+                        <input type="text" name="descripcion" id="" class="form-control" [(ngModel)]="descripcionProducto" aria-describedby="helpId">
                     </div>
 
                     <div class="col-12">
@@ -22,23 +30,19 @@
                                 <label for="precio" class="form-label">Precio:</label>
                                 <input type="text" name="precio" id="" class="form-control" [(ngModel)]="precioProducto" aria-describedby="helpId">
                             </div>
-                            
-                            <div class="col mt-3">
-                                <label for="imagen" class="form-label">Imagen:</label>
-                                <input type="text" name="imagen" id="" class="form-control" [(ngModel)]="rutaImagenProducto" aria-describedby="helpId">
+                            <div class="col-4 mt-3">
+                                <label for="select">Tipo producto:</label>
+                                <select class="form-select" aria-label="Default select example" name="select" [(ngModel)]="idTipoProducto">
+                                    <option *ngFor="let tiposProducto of tiposProductoConMayuscula" 
+                                        value="{{tiposProducto.idTipoProducto}}">{{tiposProducto.nombre}}</option>
+                                  </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 mt-3">
-                        <label for="select">Tipo producto:</label>
-                        <select class="form-select mt-2" aria-label="Default select example" name="select" [(ngModel)]="idTipoProducto">
-                            <option *ngFor="let tiposProducto of tiposProductoConMayuscula" 
-                                value="{{tiposProducto.idTipoProducto}}">{{tiposProducto.nombre}}</option>
-                          </select>
-                    </div>
 
-                    <button type="submit" class="btn btn-outline-success mt-3">Agregar</button>&nbsp;
-                    <button type="button" routerLink="/productos" class="btn btn-outline-primary mt-3">Atrás</button>
+
+                    <button type="submit" class="btn btn-outline-success mt-4">Agregar</button>&nbsp;
+                    <button type="button" routerLink="/productos" class="btn btn-outline-primary mt-4">Atrás</button>
                 </form>
             </div>
         </div>

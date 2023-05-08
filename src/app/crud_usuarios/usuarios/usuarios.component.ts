@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../usuario';
 
@@ -18,12 +18,9 @@ export class UsuariosComponent{
   }
 
   eliminarUsuario(usuario: Usuario){
-    this.usuarioServicio.borrarUsuario(usuario).subscribe(
-      () => {
-        location.reload();
-      }
-    );
-    
+    this.usuarioServicio.borrarUsuario(usuario).subscribe();
+    this.usuarios = this.usuarios.pipe(
+      map((usuarios: any[]) => usuarios.filter((p: Usuario) => p !== usuario)))
   }
 
   constructor(private usuarioServicio:UsuarioService) { }

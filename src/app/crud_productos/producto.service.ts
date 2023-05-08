@@ -25,6 +25,9 @@ export class ProductoService {
   anadirProducto(producto: Producto){
     return this.http.post(`${this.baseUrl}/productos`, producto);
   }
+  obtenerTiposProducto() {
+    return this.http.get<any[]>(`${this.baseUrl}/productos/obtenerTiposProducto`);
+  }
 
   constructor(private http:HttpClient) { }
 }
