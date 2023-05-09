@@ -12,7 +12,7 @@ import { TipoProducto } from '../tipoProducto';
 })
 export class ActualizarProductoComponent implements OnInit{
 
-  producto = new Producto(1,"","",1,"",1);
+  producto = new Producto(1,"","",1,"",0,1);
   tiposProducto: TipoProducto[];
 
   constructor(private productoService:ProductoService, private router:Router, private route:ActivatedRoute){}

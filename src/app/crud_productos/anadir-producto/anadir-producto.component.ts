@@ -50,7 +50,7 @@ export class AnadirProductoComponent implements OnInit {
   idTipoProducto:number;
   
 
-  productoModelo = new Producto(1,"","",0,"",1);
+  productoModelo = new Producto(1,"","",0,"",0,1);
 
   addDatos(){
     this.productoModelo.nombreProducto = this.nombreProducto;

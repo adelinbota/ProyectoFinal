@@ -6,6 +6,7 @@ export class Producto{
         public descripcionProducto:string,
         public precioProducto:number,
         public rutaImagenProducto:string,
+        public activo:number,
         public idTipoProducto:number,
         ){
 

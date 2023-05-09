@@ -12,7 +12,7 @@ export class UsuarioService {
     return this.http.get<any[]>(`${this.baseUrl}/usuarios/obtenerTiposUsuario`)
   }
   registrarUsuario(usuario: Usuario) {
-    return this.http.post<Usuario[]>(`${this.baseUrl}/index.php?recurso=usuarios/registrar-usuario`, usuario)
+    return this.http.post<Usuario[]>(`${this.baseUrl}/usuarios/`, usuario)
   }
 
   baseUrl = environment.baseUrl;

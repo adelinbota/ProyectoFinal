@@ -37,7 +37,8 @@
                     <td>{{producto.descripcionProducto}}</td>
                     <td class="text-end">{{producto.precioProducto}} €</td>
                     <td><a href="{{producto.rutaImagenProducto}}" target="_blank"><img src="{{producto.rutaImagenProducto}}" alt="" style="width: 50px; max-height: 100px;" ></a></td>
-                    <td><button type="button" routerLink="/productos/actualizar-productos/{{producto.idProducto}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<button type="button" class="btn btn-outline-danger btn-sm" (click)="eliminarProducto(producto)">Eliminar</button></td> 
+                    <td><button type="button" routerLink="/productos/actualizar-productos/{{producto.idProducto}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;<button type="button" class="btn btn-outline-info btn-sm" (click)="producto.activo ? quitarVenta(producto) : ponerVenta(producto)">{{producto.activo ? 'Quitar de venta' : 'Poner a la venta'}}</button>
+                        &nbsp;<button type="button" class="btn btn-outline-danger btn-sm" (click)="eliminarProducto(producto)">Eliminar</button></td> 
                 </tr>
             </tbody>
         </table>

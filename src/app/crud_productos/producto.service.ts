@@ -8,6 +8,7 @@ import { environment } from '../environment/environment';
   providedIn: 'root'
 })
 export class ProductoService {
+
   baseUrl = environment.baseUrl
   
   borrarProducto(producto: Producto) {
@@ -27,6 +28,12 @@ export class ProductoService {
   }
   obtenerTiposProducto() {
     return this.http.get<any[]>(`${this.baseUrl}/productos/obtenerTiposProducto`);
+  }
+  ponerVenta(producto: Producto) {
+    return this.http.put(`${this.baseUrl}/productos/ponerVenta/${producto.idProducto}`, producto);
+  }
+  quitarVenta(producto: Producto) {
+    return this.http.put(`${this.baseUrl}/productos/quitarVenta/${producto.idProducto}`, producto);
   }
 
   constructor(private http:HttpClient) { }
