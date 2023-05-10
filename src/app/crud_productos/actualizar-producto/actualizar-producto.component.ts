@@ -21,14 +21,12 @@ export class ActualizarProductoComponent implements OnInit{
     let idProducto = this.route.snapshot.paramMap.get('idProducto');
     this.productoService.getProducto(idProducto).subscribe(
       (producto: Producto) => {
-        console.log(producto);
         this.producto = producto;
       }
     );
 
     this.productoService.obtenerTiposProducto().subscribe(
       (tiposProducto: TipoProducto[]) => {
-        console.log(tiposProducto);
         this.tiposProducto = tiposProducto;
       }
     );

@@ -21,7 +21,6 @@ export class AnadirProductoComponent implements OnInit {
   ngOnInit(): void {
     this.productoService.obtenerTiposProducto().subscribe(
       tipos => {
-        console.log(tipos);
         this.tipoProducto = tipos;
         this.tiposProductoConMayuscula = tipos.map(tipo => {
           return {
@@ -58,7 +57,6 @@ export class AnadirProductoComponent implements OnInit {
     this.productoModelo.precioProducto = this.precioProducto;
     this.productoModelo.rutaImagenProducto = this.rutaImagenProducto;
     this.productoModelo.idTipoProducto = this.idTipoProducto;
-    console.log(this.productoModelo);
     this.productoService.anadirProducto(this.productoModelo).subscribe(
     );
     this.router.navigate(["/productos"]);

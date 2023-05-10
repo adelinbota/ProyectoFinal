@@ -33,7 +33,7 @@ export class RegistroComponent {
     this.usuario.email = this.email;
     this.usuario.cp = this.cp;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.idTipoUsuario = this.idTipoUsuario;
+    this.usuario.idTipoUsuario = 2;
     this.usuarioService.registrarUsuario(this.usuario).subscribe();
     this.router.navigate(['/login']);
   }

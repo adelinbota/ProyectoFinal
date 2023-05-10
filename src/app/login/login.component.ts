@@ -14,20 +14,26 @@ export class LoginComponent {
   username:string;
   password:string;
 
-  login(){
-    alert("Usuario: " + this.username + ". Contraseña: " + this.password);
-    this.funciones.comprobar(this.username, this.password).subscribe(
-      (resultado) => {
+  login() {
+    const user = { username: this.username, password: this.password };
+    this.funciones.comprobar(user).subscribe({
+      next: (resultado) => {
         if (resultado) {
+          this.funciones.setToken(resultado.token);
           this.route.navigate(['/']);
         } else {
-          alert('Usuario o contraseña incorrectos');
+          const errorBox = document.getElementById('error-box');
+          if (errorBox) { // Verificar que el elemento exista
+            errorBox.style.display = 'block';
+            errorBox.innerText = 'El usuario o la contraseña introducidos son incorrectos';
+          }
         }
       },
-      (error) => {
+      error: (error) => {
         console.error(error);
         alert('Ha ocurrido un error');
       }
-    );
+    });
   }
+  
 }

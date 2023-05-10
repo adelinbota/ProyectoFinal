@@ -37,9 +37,28 @@
                     <td>{{servicio.descripcion}}</td>
                     <td class="text-center">{{servicio.precio}} €</td>
                     <td>{{servicio.duracion}}</td>
-                    <td><button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;<button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp;<button type="button" class="btn btn-outline-danger btn-sm" (click)="eliminarServicio(servicio)">Eliminar</button></td> 
+                    <td>
+                        <button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
+                        <!-- <button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp; -->
+                        <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, servicio)">Eliminar</button>
+                    </td> 
                 </tr>
             </tbody>
+            <ng-template #contenido let-modal let-servicio="servicioSeleccionado">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar servicio</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro que deseas eliminar este servicio?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminarServicio(servicioSeleccionado); modal.close()">Eliminar</button>
+                </div>
+            </ng-template>
         </table>
     </div>
 </div>

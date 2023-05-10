@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from './environment/environment';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Observable, catchError, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,19 @@ export class FuncionesService {
 
   baseUrl = environment.baseUrl
 
-  comprobar(username: string, password: string) {
-    alert(username + password)
-    return this.http.post(`${this.baseUrl}/login.php`, {username, password})
+  comprobar(user:any): Observable<any> {
+    console.log(user);
+    return this.http.post(`${this.baseUrl}/usuarios/login`, user)
+  }
+  
+
+  setToken(token:string){
+    this.cookies.set('token', token);
   }
 
-  constructor(private http:HttpClient) { }
+  getToken(){
+    return this.cookies.get('token');
+  }
+
+  constructor(private http:HttpClient, private cookies:CookieService) { }
 }
