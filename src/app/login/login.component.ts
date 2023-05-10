@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FuncionesService } from '../funciones.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private funciones:FuncionesService, private route:Router){}
+  constructor(private funciones:FuncionesService, private route:Router, private http:HttpClient){}
 
   username:string;
   password:string;
 
   login() {
-    const user = { username: this.username, password: this.password };
+    const user = { username: this.username, password: encriptar(this.password) };
     this.funciones.comprobar(user).subscribe({
       next: (resultado) => {
         if (resultado) {
@@ -37,3 +38,7 @@ export class LoginComponent {
   }
   
 }
+function encriptar(password: string) {
+
+}
+
