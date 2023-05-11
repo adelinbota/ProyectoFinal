@@ -36,7 +36,7 @@
                     <td>{{servicio.nombre}}</td>
                     <td>{{servicio.descripcion}}</td>
                     <td class="text-center">{{servicio.precio}} €</td>
-                    <td>{{servicio.duracion}}</td>
+                    <td>{{servicio.duracion.slice(0,5)}}</td>
                     <td>
                         <button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
                         <!-- <button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp; -->
@@ -46,19 +46,31 @@
             </tbody>
             <ng-template #contenido let-modal let-servicio="servicioSeleccionado">
                 <div class="modal-header">
-                    <h4 class="modal-title">Eliminar servicio</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                  <h4 class="modal-title text-center">Eliminar servicio</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
                 <div class="modal-body">
-                    ¿Estás seguro que deseas eliminar este servicio?
+                  <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente servicio?</p>
+                  <div class="card mb-3 card-margen">
+                    <div class="row g-0">
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{servicioSeleccionado.nombre}}</h5>
+                          <p class="card-text">{{servicioSeleccionado.descripcion}}</p>
+                          <p class="card-text">{{ servicioSeleccionado.duracion.slice(0, 5) }}</p>
+                          <p class="card-text"><small class="text-muted">{{servicioSeleccionado.precio | currency}}</small></p>
+                        </div>
+                      </div>                      
+                    </div>
+                  </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-                    <button type="button" class="btn btn-danger" (click)="eliminarServicio(servicioSeleccionado); modal.close()">Eliminar</button>
+                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                  <button type="button" class="btn btn-danger" (click)="eliminarServicio(servicioSeleccionado); modal.close()">Eliminar</button>
                 </div>
-            </ng-template>
+              </ng-template>
         </table>
     </div>
 </div>

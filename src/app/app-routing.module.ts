@@ -15,11 +15,13 @@ import { ActualizarUsuariosComponent } from './crud_usuarios/actualizar-usuarios
 import { RegistroComponent } from './crud_usuarios/registro/registro.component';
 import { AddServiciosComponent } from './crud_servicios/add-servicios/add-servicios.component';
 import { ActualizarServiciosComponent } from './crud_servicios/actualizar-servicios/actualizar-servicios.component';
+import { NewCitaComponent } from './citas/new-cita/new-cita.component';
 
 const rutas: Routes = [
   {path: '', component: InicioComponent},
   {path: 'contacto', component: ContactoComponent},
   {path: 'citas', component: CitasComponent},
+  {path: 'citas/new', component: NewCitaComponent},
   {path: 'servicios', component: ServiciosComponent},
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'productos', component: VerProductosComponent},

@@ -9,14 +9,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  
   constructor(private funciones:FuncionesService, private route:Router, private http:HttpClient){}
 
   username:string;
   password:string;
 
   login() {
-    const user = { username: this.username, password: encriptar(this.password) };
+    const user = { username: this.username, password: this.password };
     this.funciones.comprobar(user).subscribe({
       next: (resultado) => {
         if (resultado) {
@@ -27,6 +27,8 @@ export class LoginComponent {
           if (errorBox) { // Verificar que el elemento exista
             errorBox.style.display = 'block';
             errorBox.innerText = 'El usuario o la contraseña introducidos son incorrectos';
+            this.password = ''
+            this.username = ''
           }
         }
       },
@@ -36,9 +38,4 @@ export class LoginComponent {
       }
     });
   }
-  
 }
-function encriptar(password: string) {
-
-}
-

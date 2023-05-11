@@ -8,6 +8,12 @@ import { Observable, catchError, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class FuncionesService {
+  getCitas() {
+    return this.http.get<any[]>(`${this.baseUrl}/citas`);
+  }
+  obtenerTiposServicio() {
+    return this.http.get<any[]>(`${this.baseUrl}/servicios/obtenerTiposServicio`);
+  }
   obtenerTiposProducto() {
     return this.http.get(`${this.baseUrl}/productos/obtenerTiposProducto`);
   }
@@ -19,7 +25,6 @@ export class FuncionesService {
     return this.http.post(`${this.baseUrl}/usuarios/login`, user)
   }
   
-
   setToken(token:string){
     this.cookies.set('token', token);
   }

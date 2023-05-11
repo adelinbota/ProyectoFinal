@@ -49,4 +49,12 @@ export class VerProductosComponent{
     );;
     });
   }
+
+  abreviarTexto(texto: string, longitudMaxima: number): string {
+    if (texto.length > longitudMaxima) {
+      return texto.substr(0, longitudMaxima) + '...';
+    } else {
+      return texto;
+    }
+  }
 }

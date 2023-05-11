@@ -16,9 +16,8 @@ export class AddUsuariosComponent implements OnInit{
   tiposUsuarioConMayuscula: any[];
 
   ngOnInit(): void {
-    this.usuarioService.obtenerTiposUsuario().subscribe( 
+    this.usuarioService.obtenerTiposUsuario().subscribe(
     tipos => {
-      console.log(tipos);
       this.tiposUsuario = tipos;
       this.tiposUsuarioConMayuscula = tipos.map(tipo => {
         return {
