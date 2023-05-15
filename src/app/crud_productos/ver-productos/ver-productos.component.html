@@ -1,4 +1,4 @@
-<div class="container mb-5">
+<div class="container mb-5" *ngIf="logueado">
     <h1 class="col-12 text-center mt-5">Productos</h1>
     <div class="col-12">
         <div class="row">
@@ -62,7 +62,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{productoSeleccionado.nombreProducto}}</h5>
                           <p class="card-text">{{productoSeleccionado.descripcionProducto}}</p>
-                          <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto | currency}}</small></p>
+                          <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto}} €</small></p>
                         </div>
                       </div>                      
                     </div>
@@ -76,3 +76,43 @@
         </table>
     </div>
 </div>
+<div class="container col-12" *ngIf="!logueado">
+  <h1 class="text-center mt-5">Productos</h1>
+  <div class="row mt-5">
+    <div class="col-md-3" *ngFor="let producto of productos | async">
+      <div class="card mb-5" (click)="abrirModal(contenido, producto)">
+        <img class="card-img-top" [src]="producto.rutaImagenProducto" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{producto.nombreProducto}}</h5>
+          <p class="card-text">{{abreviarTexto(producto.descripcionProducto,65)}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{producto.precioProducto}} €</h6>
+        </div>
+      </div>
+    </div>
+    <ng-template #contenido let-modal let-producto="productoSeleccionado">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Información producto</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-3 card-margen">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{productoSeleccionado.nombreProducto}}</h5>
+                <p class="card-text">{{productoSeleccionado.descripcionProducto}}</p>
+                <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto}} €</small></p>
+              </div>
+            </div>                      
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<app-footer></app-footer>

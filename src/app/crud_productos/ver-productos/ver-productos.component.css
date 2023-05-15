@@ -9,10 +9,19 @@
 .card {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
+  height: 280px;
 }
 
 .card-margen {
   margin: 30px;
+}
+
+.card-img-top {
+  max-height: 100px;
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
 .img-fluid {
@@ -20,4 +29,6 @@
   padding-right: 30px;
   margin-top: 20px;
   margin-bottom: 10px;
+  max-height: 230px;
 }
+

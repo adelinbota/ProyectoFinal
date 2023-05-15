@@ -12,6 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class VerProductosComponent{
 
+  logueado = false;
   contenido:any
   productoSeleccionado:Producto
   public productos: Observable<Producto[]> = this.obtenerProductos();

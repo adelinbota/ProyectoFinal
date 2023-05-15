@@ -1,3 +1,37 @@
 body{
     background: linear-gradient(#F3DAC0, #E8C39E);
 }
+
+.seccion-usuarios {
+    background-color: #F8BBD0;
+  }
+
+  .seccion-productos {
+    background-color: #BBDEFB;
+  }
+
+  .seccion-servicios {
+    background-color: #F0E68C;
+  }
+
+  .seccion-mapa {
+    background-color: #C8E6C9;
+  }
+
+  .boton-primario {
+    background-color: #E91E63;
+    border: none;
+  }
+
+  .boton-primario:hover {
+    background-color: #D81B60;
+  }
+
+  .boton-secundario {
+    background-color: #FFC107;
+    border: none;
+  }
+
+  .boton-secundario:hover {
+    background-color: #FFB300;
+  }

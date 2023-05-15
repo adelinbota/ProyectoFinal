@@ -1,4 +1,4 @@
-<div class="container mb-5">
+<div class="container mb-5" *ngIf="logueado">
     <h1 class="col-12 text-center mt-5">Servicios</h1>
     <div class="col-12">
         <div class="row">
@@ -73,4 +73,46 @@
               </ng-template>
         </table>
     </div>
+</div>
+<div class="container col-12" *ngIf="!logueado">
+  <h1 class="text-center mt-5">Servicios</h1>
+  <div class="row mt-5">
+    <div class="col-md-4" *ngFor="let servicio of servicios | async">
+      <div type="button" class="card mb-5" (click)="abrirModal(contenido, servicio)">
+        <div class="card-body">
+          <h5 class="card-title">{{servicio.nombre}}</h5>
+          <p class="card-text">{{abreviarTexto(servicio.descripcion,100)}}</p>
+          <p class="card-text mb-2">{{servicio.duracion.slice(1,5)}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{servicio.precio}} €</h6>
+        </div>
+      </div>
+    </div>
+    <ng-template #contenido let-modal let-servicio="servicioSeleccionado">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Información servicio</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-3 card-margen">
+          <div class="row g-0">
+            <div class="col-md-12">
+              <div class="card-body">
+                <h5 class="card-title">{{servicioSeleccionado.nombre}}</h5>
+                <p class="card-text">{{servicioSeleccionado.descripcion}}</p>
+                <p class="card-text">{{ servicioSeleccionado.duracion.slice(0, 5) }}</p>
+                <p class="card-text"><small class="text-muted">{{servicioSeleccionado.precio}} €</small></p>
+              </div>
+            </div>                      
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+        <button type="button" class="btn btn-info" routerLink="../citas/new" (click)="modal.close()">Pedir cita</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close()">Cerrar</button>
+      </div>
+    </ng-template>
+  </div>
 </div>

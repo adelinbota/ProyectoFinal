@@ -28,4 +28,14 @@ export class ServiciosComponent {
     this.servicioSeleccionado = servicio
     this.modal.open(contenido, { centered: true})
   }
+
+  logueado = false
+  
+  abreviarTexto(texto: string, longitudMaxima: number): string {
+    if (texto.length > longitudMaxima) {
+      return texto.substr(0, longitudMaxima) + '...';
+    } else {
+      return texto;
+    }
+  }
 }
