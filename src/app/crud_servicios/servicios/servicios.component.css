@@ -9,7 +9,11 @@
 .card {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
-  height: 160px;
+  height: auto;
+}
+
+.logueado {
+  height: auto;
 }
 
 .card-margen {
@@ -17,5 +21,6 @@
 }
 
 .card-text {
-    margin-bottom: 0rem;
+  margin-bottom: 0rem;
+  margin: auto;
 }

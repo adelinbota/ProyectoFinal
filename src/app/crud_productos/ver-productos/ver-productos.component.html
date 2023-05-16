@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-body">
                   <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente producto?</p>
-                  <div class="card mb-3 card-margen">
+                  <div class="card mb-3 card-margen logueado">
                     <div class="row g-0">
                       <div class="col-md-4">
                         <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}" class="img-fluid">
@@ -79,7 +79,7 @@
 <div class="container col-12" *ngIf="!logueado">
   <h1 class="text-center mt-5">Productos</h1>
   <div class="row mt-5">
-    <div class="col-md-3" *ngFor="let producto of productos | async">
+    <div type="button" class="col-md-3" *ngFor="let producto of productos | async">
       <div class="card mb-5" (click)="abrirModal(contenido, producto)">
         <img class="card-img-top" [src]="producto.rutaImagenProducto" alt="">
         <div class="card-body">
@@ -97,7 +97,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="card mb-3 card-margen">
+        <p class="disponible">¡Disponible sólo en la tienda física!</p>
+        <div class="card mb-3 card-margen logueado">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}" class="img-fluid">

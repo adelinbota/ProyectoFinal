@@ -29,7 +29,7 @@ export class ServiciosComponent {
     this.modal.open(contenido, { centered: true})
   }
 
-  logueado = false
+  logueado = true
   
   abreviarTexto(texto: string, longitudMaxima: number): string {
     if (texto.length > longitudMaxima) {

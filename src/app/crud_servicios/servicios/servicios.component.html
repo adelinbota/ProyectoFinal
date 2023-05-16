@@ -1,78 +1,78 @@
 <div class="container mb-5" *ngIf="logueado">
-    <h1 class="col-12 text-center mt-5">Servicios</h1>
-    <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <a routerLink="/servicios/add-servicios" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo servicio</a>
-            </div>
-            <div class="col-3"></div>
-            <div class="col-3 mt-5 mb-3">
-                <div class="input-group">
-                    <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" placeholder="Buscar"/>
-                    </div>
-                    <button type="button" class="btn btn-primary">
-                    <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="table-responsive mt-3">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Duración</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let servicio of servicios | async">
-                    <td scope="row">{{servicio.idServicio}}</td>
-                    <td>{{servicio.nombre}}</td>
-                    <td>{{servicio.descripcion}}</td>
-                    <td class="text-center">{{servicio.precio}} €</td>
-                    <td>{{servicio.duracion.slice(0,5)}}</td>
-                    <td>
-                        <button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
-                        <!-- <button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp; -->
-                        <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, servicio)">Eliminar</button>
-                    </td> 
-                </tr>
-            </tbody>
-            <ng-template #contenido let-modal let-servicio="servicioSeleccionado">
-                <div class="modal-header">
-                  <h4 class="modal-title text-center">Eliminar servicio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-                    <span aria-hidden="true">&times;</span>
+  <h1 class="col-12 text-center mt-5">Servicios</h1>
+  <div class="col-12">
+      <div class="row">
+          <div class="col-6">
+              <a routerLink="/servicios/add-servicios" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo servicio</a>
+          </div>
+          <div class="col-3"></div>
+          <div class="col-3 mt-5 mb-3">
+              <div class="input-group">
+                  <div class="form-outline">
+                  <input type="search" id="form1" class="form-control" placeholder="Buscar"/>
+                  </div>
+                  <button type="button" class="btn btn-primary">
+                  <i class="bi bi-search"></i>
                   </button>
-                </div>
-                <div class="modal-body">
-                  <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente servicio?</p>
-                  <div class="card mb-3 card-margen">
-                    <div class="row g-0">
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">{{servicioSeleccionado.nombre}}</h5>
-                          <p class="card-text">{{servicioSeleccionado.descripcion}}</p>
-                          <p class="card-text">{{ servicioSeleccionado.duracion.slice(0, 5) }}</p>
-                          <p class="card-text"><small class="text-muted">{{servicioSeleccionado.precio | currency}}</small></p>
-                        </div>
-                      </div>                      
-                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="table-responsive mt-3">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Duración</th>
+                  <th scope="col">Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let servicio of servicios | async">
+                  <td scope="row">{{servicio.idServicio}}</td>
+                  <td>{{servicio.nombre}}</td>
+                  <td>{{abreviarTexto(servicio.descripcion,100)}}</td>
+                  <td class="text-center">{{servicio.precio}} €</td>
+                  <td>{{servicio.duracion.slice(0,5)}}</td>
+                  <td>
+                      <button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
+                      <!-- <button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp; -->
+                      <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, servicio)">Eliminar</button>
+                  </td> 
+              </tr>
+          </tbody>
+          <ng-template #contenido let-modal let-servicio="servicioSeleccionado">
+              <div class="modal-header">
+                <h4 class="modal-title text-center">Eliminar servicio</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente servicio?</p>
+                <div class="card mb-3 card-margen">
+                  <div class="row g-0">
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{servicioSeleccionado.nombre}}</h5>
+                        <p class="card-text">{{servicioSeleccionado.descripcion}}</p>
+                        <p class="card-text">{{ servicioSeleccionado.duracion.slice(0, 5) }}</p>
+                        <p class="card-text"><small class="text-muted">{{servicioSeleccionado.precio | currency}}</small></p>
+                      </div>
+                    </div>                      
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-                  <button type="button" class="btn btn-danger" (click)="eliminarServicio(servicioSeleccionado); modal.close()">Eliminar</button>
-                </div>
-              </ng-template>
-        </table>
-    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                <button type="button" class="btn btn-danger" (click)="eliminarServicio(servicioSeleccionado); modal.close()">Eliminar</button>
+              </div>
+            </ng-template>
+      </table>
+  </div>
 </div>
 <div class="container col-12" *ngIf="!logueado">
   <h1 class="text-center mt-5">Servicios</h1>
@@ -95,7 +95,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="card mb-3 card-margen">
+        <div class="card mb-3 card-margen logueado">
           <div class="row g-0">
             <div class="col-md-12">
               <div class="card-body">
