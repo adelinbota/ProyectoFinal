@@ -1,9 +1,10 @@
-export class Cita{
-    constructor(
-        public idCita: number,
-        public fechaReserva:string,
-        public fechaCita:string,
-        public idUsuario:number,
-        public idServicio:number
-    ){}
+export interface Cita{
+
+        idCita: number,
+        fechaReserva:string,
+        fechaCita:string,
+        idUsuario:number,
+        idServicio:number,
+        nombreUsuario?: string,
+        nombreServicio?: string
 }

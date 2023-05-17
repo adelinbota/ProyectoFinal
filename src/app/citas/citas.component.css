@@ -1,9 +1,14 @@
+table {
+  background-color: beige;
+}
+
 .card {
     border: 2px solid #beae54;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.2s ease-in-out;
     margin-top: 3rem;
+    margin: 30px;
   }
 
   .card-header{
@@ -20,6 +25,7 @@
   
   .card-body {
     font-size: 1.2rem;
+    margin: auto;
   }
   
   .card-footer {

@@ -35,8 +35,8 @@
                     <td scope="row">{{cita.idCita}}</td>
                     <td>{{cita.fechaReserva.slice(5,16)}}</td>
                     <td>{{cita.fechaCita.slice(5,16)}}</td>
-                    <td class="text-center">{{cita.idUsuario}} ?</td>
-                    <td>{{cita.idServicio}}</td>
+                    <td>{{cita.nombreUsuario}}</td>
+                    <td>{{cita.nombreServicio}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, cita)">Eliminar</button>
                     </td> 
@@ -55,9 +55,9 @@
                     <div class="row g-0">
                       <div class="col-md-8">
                         <div class="card-body">
-                          <p class="card-title">{{ citaSeleccionada.idUsuario}}</p>
+                          <p class="card-title">{{ citaSeleccionada.nombreUsuario}}</p>
                           <p class="card-text">{{citaSeleccionada.fechaCita.slice(5,16)}}</p>
-                          <p class="card-text"><small class="text-muted">{{citaSeleccionada.idServicio}}</small></p>
+                          <p class="card-text"><small class="text-muted">{{citaSeleccionada.nombreServicio}}</small></p>
                         </div>
                       </div>                      
                     </div>

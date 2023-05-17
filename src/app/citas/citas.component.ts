@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionesService } from '../funciones.service';
-import { Router } from '@angular/router';
 import { Cita } from './cita';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, map } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 import { CitasService } from './citas.service';
 
 @Component({
@@ -11,17 +10,36 @@ import { CitasService } from './citas.service';
   templateUrl: './citas.component.html',
   styleUrls: ['./citas.component.css']
 })
-export class CitasComponent implements OnInit{
+export class CitasComponent{
 
   citaSeleccionada:Cita
-  public citas: Observable<Cita[]> = this.citasFunciones.getCitas();
+  public citas: Observable<Cita[]>;
   logueado = true;
-
+ 
   constructor(private funciones:FuncionesService, private citasFunciones:CitasService, private modal:NgbModal){
-
-  }
+    this.citas = combineLatest([
+      this.citasFunciones.getCitas(),
+      this.funciones.getUsuarios(),
+      this.funciones.getServicios()
+    ]).pipe(
+      map(([citas, usuarios, servicios]) => {
+        return citas.map(cita => {
+          const usuario = usuarios.find(u => u.idUsuario === cita.idUsuario);
+          const servicio = servicios.find(s => s.idServicio === cita.idServicio);
+          console.log(cita); 
+          return {
+            ...cita,
+            nombreUsuario: usuario ? usuario.nombre : '',
+            nombreServicio: servicio ? servicio.nombre : ''
+          };
+        });
+  })
+    )
+}
   ngOnInit(): void {
-    this.funciones.getCitas().subscribe();
+    let hola = this.funciones.getCitas().subscribe();
+    console.log(this.citas);
+    console.log(hola);
   }
 
   abrirModal(contenido: any, cita:Cita){

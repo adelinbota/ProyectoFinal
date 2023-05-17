@@ -3,13 +3,22 @@ import { environment } from './environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap } from 'rxjs';
+import { Servicio } from './crud_servicios/servicio';
+import { Usuario } from './crud_usuarios/usuario';
+import { Cita } from './citas/cita';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuncionesService {
+  getUsuarios() {
+    return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
+  }
+  getServicios() {
+    return this.http.get<Servicio[]>(`${this.baseUrl}/servicios`);
+  }
   getCitas() {
-    return this.http.get<any[]>(`${this.baseUrl}/citas`);
+    return this.http.get<Cita[]>(`${this.baseUrl}/citas`);
   }
   obtenerTiposServicio() {
     return this.http.get<any[]>(`${this.baseUrl}/servicios/obtenerTiposServicio`);
