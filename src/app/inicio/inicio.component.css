@@ -1,37 +1,164 @@
-body{
-    background: linear-gradient(#F3DAC0, #E8C39E);
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.seccion-usuarios {
-    background-color: #F8BBD0;
-  }
+header {
+  background-image: linear-gradient(#c0c0c0, #7c7c7c);
+  padding: 20px;
+}
 
-  .seccion-productos {
-    background-color: #BBDEFB;
-  }
+h1 {
+  margin: 0;
+  color: #ffffff;
+}
 
-  .seccion-servicios {
-    background-color: #F0E68C;
-  }
+.section {
+  padding: 50px 0;
+}
 
-  .seccion-mapa {
-    background-color: #C8E6C9;
-  }
+.custom-card {
+  position: relative;
+  overflow: hidden;
+}
 
-  .boton-primario {
-    background-color: #E91E63;
-    border: none;
-  }
+.custom-card .card-img-top {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
 
-  .boton-primario:hover {
-    background-color: #D81B60;
-  }
+.custom-card .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-  .boton-secundario {
-    background-color: #FFC107;
-    border: none;
-  }
+.custom-card .card-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-  .boton-secundario:hover {
-    background-color: #FFB300;
-  }
+.custom-card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.custom-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.custom-card:hover .card-content {
+  opacity: 1;
+}
+
+.custom-card .card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-card .card-text {
+  margin-bottom: 20px;
+}
+
+.custom-card .btn-primary {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section-usuarios {
+  background-image: url('../../assets/img/clientes.jpeg');
+  background-size: cover;
+  background-position: center;
+  text-align: right;
+  color: #ffffff;
+}
+
+.section-servicios {
+  background-image: linear-gradient(#474747,#bebebe);
+  background-size: cover;
+  background-position: center;
+  text-align: left;
+  color: #ffffff;
+}
+
+.section-servicios .custom-card {
+  text-align: left;
+  margin-left: 20%;
+}
+
+.section-servicios .custom-card .card-content {
+  text-align: left;
+}
+
+.section-servicios .custom-card .btn-primary {
+  float: right;
+}
+
+.section-productos {
+  background-image: linear-gradient(#c0c0c0, #4b4b4b);
+  background-size: cover;
+  background-position: center;
+  text-align: left;
+  color: #ffffff;
+}
+
+.section-productos .custom-card {
+  text-align: left;
+}
+
+.section-productos .custom-card .card-content {
+  text-align: left;
+}
+
+.section-productos .custom-card .btn-primary {
+  float: right;
+}
+
+
+.custom-text {
+  background-image: linear-gradient(#9b9b9b, #4b4b4b);
+  padding: 20px;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.custom-text.custom-text-right {
+  text-align: left;
+  margin-left: 85px;
+}
+
+.custom-text:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.custom-text h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-text p {
+  font-size: 16px;
+}
+
+
+.custom-text.custom-text-left {
+  text-align: left;
+}

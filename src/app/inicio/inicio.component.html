@@ -1,36 +1,93 @@
-<body>
-<div class="container">
-    <div class="row">
-        <h1 class="col-12 text-center mt-5 mb-5">A&A Beauty Salon</h1>
-        <div class="card mb-5" style="margin-left:350px; width: 40rem;" *ngIf="logueado">
+<header>
+    <h1 class="text-center mt-5 mb-5">A&A Beauty Salon</h1>
+  </header>
+  
+  <section class="section section-usuarios" *ngIf="!logueado">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="custom-card custom-card-usuarios">
             <a routerLink="/usuarios"><img class="card-img-top" src="../../assets/img/clientes.jpeg" alt="Clientes"></a>
-            <div class="card-body">
-            <h5 class="card-title">Usuarios</h5>
-            <p class="card-text">Puedes ver los usuarios registrados a la peluquería y añadir los que desee.</p>
-            <a routerLink="/usuarios" class="btn btn-primary">Ver usuarios</a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Usuarios</h2>
+                <p class="card-text">Explora nuestros servicios de peluquería y descubre nuestras promociones exclusivas.</p>
+                <a routerLink="/usuarios" class="btn btn-primary">Ver usuarios</a>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="card mb-5" style="margin-left:350px; width: 40rem;">
-            <a routerLink="/productos"><img class="card-img-top" src="../../assets/img/productos.jpg" alt="Productos"></a>
-            <div class="card-body">
-            <h5 class="card-title">Productos</h5>
-            <p class="card-text">Puedes ver los productos asociados a la peluquería y añadir los que desee.</p>
-            <a routerLink="/productos" class="btn btn-primary">Ver productos</a>
-            </div>
-        </div>
-        <div class="card mb-5" style="margin-left:350px; width: 40rem;">
-            <a routerLink="/servicios"><img class="card-img-top" src="../../assets/img/servicios.jpg" alt="Servicios"></a>
-            <div class="card-body">
-            <h5 class="card-title">Servicios</h5>
-            <p class="card-text">Puedes ver los servicios que presta la peluquería y añadir los que desee.</p>
-            <a routerLink="/servicios" class="btn btn-primary">Ver servicios</a>
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <h4 class="mb-4">DIRECCIÓN</h4>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3041.8066983348713!2d-3.8592915!3d40.3244474!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418c29b20ecd0f%3A0x29be2918adac1809!2sPeluqueria%20Y%20Estetica%20Mar%C3%ADa%20%26%20Anca!5e0!3m2!1ses!2ses!4v1681137592196!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+      </div>
     </div>
-</div>
-<app-footer></app-footer>
-</body>
+  </section>
+  
+  <section class="section section-servicios">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="custom-card custom-card-servicios">
+            <a routerLink="/servicios"><img class="card-img-top" src="../../assets/img/servicios.jpg" alt="Servicios"></a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Servicios</h2>
+                <p class="card-text">Descubre nuestros servicios de peluquería y déjate consentir por nuestros profesionales.</p>
+                <a routerLink="/servicios" class="btn btn-primary">Ver servicios</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <div class="custom-text custom-text-right">
+              <!-- Texto adicional resaltado a la derecha -->
+              <h2>¿Qué hacemos?</h2>
+              <p class="card-texto">Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+              </p>
+              <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+              </p>
+            </div>
+          </div>
+      </div>
+  </section>
+  
+  <section class="section section-productos">
+      <div class="row">
+        <div class="col-md-6 offset-md-6">
+          <div class="custom-card custom-card-productos">
+            <a routerLink="/productos"><img class="card-img-top" src="../../assets/img/productos.jpg" alt="Productos"></a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Productos</h2>
+                <p class="card-text">Descubre nuestra selección de productos de calidad y encuentra los ideales para tu estilo.</p>
+                <a routerLink="/productos" class="btn btn-primary">Ver productos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="custom-text custom-text-left">
+              <!-- Texto adicional resaltado a la izquierda -->
+              <h2>Texto adicional</h2>
+              <p class="card-text">Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+              </p>
+              <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+              </p>
+              <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+                Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
+              </p>
+            </div>
+          </div>
+      </div>
+  </section>
+  
