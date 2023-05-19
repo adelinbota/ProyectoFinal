@@ -1,0 +1,52 @@
+<div class="container col-6">
+    <div class="card mt-5">
+        <div class="card-header">
+            Añade una cita
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <form (ngSubmit)="addDatos()">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <label for="cita" class="form-label">Fecha cita:</label>
+                                <input type="date" name="cita" id="" class="form-control" [(ngModel)]="cita.fechaCita" aria-describedby="helpId">
+                            </div>
+                            
+                            <div class="col mt-3">
+                                <label for="password" class="form-label">Usuario:</label>
+                                <select class="form-select" aria-label="Default select example" name="select" [(ngModel)]="cita.idUsuario">
+                                    <option *ngFor="let usuario of usuarios" 
+                                        value="{{usuario.idUsuario}}">{{usuario.nombre}}</option>
+                                  </select>                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-8 mt-3">
+                                <label for="cp" class="form-label">Comentarios:</label>
+                                <textarea type="text" name="cp" id="" class="form-control" [(ngModel)]="cita.comentarios" aria-describedby="helpId"></textarea>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <label for="select" class="form-label">Tipo servicio:</label>
+                                <select class="form-select" aria-label="Default select example" name="select" [(ngModel)]="cita.idServicio">
+                                    <option *ngFor="let servicio of servicios" 
+                                        value="{{servicio.idServicio}}">{{servicio.nombre}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <button type="button" routerLink="/citas" class="btn btn-outline-primary mt-4 col-3">Atrás</button>
+                            <div class="col-6"></div>
+                            <button type="submit" class="btn btn-outline-success mt-4 col-3">Agregar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

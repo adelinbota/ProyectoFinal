@@ -26,7 +26,6 @@ export class CitasComponent{
         return citas.map(cita => {
           const usuario = usuarios.find(u => u.idUsuario === cita.idUsuario);
           const servicio = servicios.find(s => s.idServicio === cita.idServicio);
-          console.log(cita); 
           return {
             ...cita,
             nombreUsuario: usuario ? usuario.nombre : '',
@@ -36,11 +35,6 @@ export class CitasComponent{
   })
     )
 }
-  ngOnInit(): void {
-    let hola = this.funciones.getCitas().subscribe();
-    console.log(this.citas);
-    console.log(hola);
-  }
 
   abrirModal(contenido: any, cita:Cita){
     this.citaSeleccionada = cita

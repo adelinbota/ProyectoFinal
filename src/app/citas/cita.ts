@@ -1,8 +1,8 @@
 export interface Cita{
 
         idCita: number,
-        fechaReserva:string,
         fechaCita:string,
+        comentarios:string,
         idUsuario:number,
         idServicio:number,
         nombreUsuario?: string,

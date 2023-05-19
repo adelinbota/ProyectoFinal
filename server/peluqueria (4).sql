@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2023 a las 12:13:21
+-- Tiempo de generación: 19-05-2023 a las 17:58:14
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `citas` (
   `idCita` int(11) NOT NULL,
-  `fechaReserva` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `fechaCita` datetime NOT NULL,
-  `fechaFinCita` datetime DEFAULT NULL,
-  `IdUsuario` int(11) NOT NULL,
-  `idServicio` int(11) NOT NULL
+  `comentarios` varchar(255) DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
+  `idServicio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `citas`
 --
 
-INSERT INTO `citas` (`idCita`, `fechaReserva`, `fechaCita`, `fechaFinCita`, `IdUsuario`, `idServicio`) VALUES
-(1, '2023-04-26 08:31:39', '2023-04-28 10:00:00', NULL, 10, 1);
+INSERT INTO `citas` (`idCita`, `fechaCita`, `comentarios`, `idUsuario`, `idServicio`) VALUES
+(1, '2023-04-28 10:00:00', '', 31, 2),
+(8, '2023-05-06 00:00:00', 'Ronmaldou', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -67,10 +67,10 @@ INSERT INTO `productos` (`idProducto`, `nombreProducto`, `descripcionProducto`, 
 (1, 'Champú Old Spice', 'Champú especial para hombres como tú, hombre.', 8.63, '../../assets/img/old_spice.jpg', 1, 1),
 (2, 'Crema de manos Nivea.', 'Crema de manos hombre.', 4.32, '../../assets/img/crema_manos.webp', 1, 3),
 (3, 'Laca Pantene', 'Fijación de pelo ultra resistente. 48 horas de duración.', 4.19, '../../assets/img/laca_pantene.webp', 1, 1),
-(4, 'Desodorante AXE', 'Combina olor, potencia y duración. 48 horas de resistencia.', 2.69, '../../assets/img/axe.jpg', 0, 3),
-(5, 'Plancha.', 'Ondulado y lisado perfecto para tu cabello perfecto.', 16.79, '../../assets/img/plancha.webp', 0, 1),
-(6, 'Maquinilla Phillips', 'Modelo Phillips, modelo perfecto para un rasurado sin daños, por muy pedazo de bruto que seas con tu pedazo de pelambrera, y no solo estoy hablando de la cara jajajaja.', 20.34, '../../assets/img/phillips.webp', 0, 2),
-(7, 'Mascarilla capilar.', 'Aumenta la suavidad de tu piel hasta un eliminado completo de tus arruguis.', 17.36, '../../assets/img/masc_capilar.jpg', 0, 2);
+(4, 'Desodorante AXE', 'Combina olor, potencia y duración. 48 horas de resistencia.', 2.69, '../../assets/img/axe.jpg', 1, 3),
+(5, 'Plancha.', 'Ondulado y lisado perfecto para tu cabello perfecto.', 16.79, '../../assets/img/plancha.webp', 1, 1),
+(6, 'Maquinilla Phillips', 'Modelo Phillips, modelo perfecto para un rasurado sin daños, por muy pedazo de bruto que seas con tu pedazo de pelambrera, y no solo estoy hablando de la cara.', 20.34, '../../assets/img/phillips.webp', 1, 2),
+(7, 'Mascarilla capilar.', 'Aumenta la suavidad de tu piel hasta un eliminado completo de tus arruguis.', 17.36, '../../assets/img/masc_capilar.jpg', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -92,9 +92,9 @@ CREATE TABLE `servicios` (
 --
 
 INSERT INTO `servicios` (`idServicio`, `nombre`, `descripcion`, `precio`, `duracion`, `idTipoServicio`) VALUES
-(1, 'Corte de pelo hombre.', 'Corte fácil hombre.', 11.5, '00:25:00', 1),
-(2, 'Corte de pelo mujer.', 'Corte nivel medio mujer.', 20.8, '00:45:00', 1),
-(3, 'Teñido de pelo.', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '01:30:00', 3);
+(1, 'Corte de pelo hombre', 'Corte fácil hombre', 11.5, '00:25:00', 1),
+(2, 'Corte de pelo mujer', 'Corte nivel medio mujer', 20.8, '00:45:00', 1),
+(3, 'Teñido de pelo', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '01:30:00', 3);
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `username`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `cp`, `fechaNac`, `idTipoUsuario`) VALUES
 (1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Admin', 'Admin', '643464656', 'admin@gmail.com', '44600', '2023-03-30', 1),
 (10, 'cliente', 'a60b85d409a01d46023f90741e01b79543a3cb1ba048eaefbe5d7a63638043bf', 'Manuel', 'Cáceres Artesero', '978754000', 'manolobombo@gmail.com', '62220', '1991-10-06', 2),
-(31, 'bertin', '2575cc396d2022c03270569cd41e44e8944fb9ac3457bcec21bf5d0c75171baa', 'Alberto', 'Otero', '696323201', 'albertin@berto.com', '10022', '1980-10-26', 2),
+(31, 'bertin', '2575cc396d2022c03270569cd41e44e8944fb9ac3457bcec21bf5d0c75171baa', 'Alberto Manuel de las Horcas', 'Otero', '696323201', 'albertin@berto.com', '10022', '1980-10-26', 2),
 (32, 'adelin', '5cfa0da81d678685e2a3e5f8802d5f8398d9ad1bf06a3f7aaf599524ee192ee6', 'Adelin', 'Bota', '643465789', 'adebota@gmail.com', '20030', '2000-12-12', 2);
 
 --
@@ -194,7 +194,7 @@ INSERT INTO `usuarios` (`idUsuario`, `username`, `password`, `nombre`, `apellido
 --
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`idCita`),
-  ADD KEY `IdUsuario` (`IdUsuario`),
+  ADD KEY `IdUsuario` (`idUsuario`),
   ADD KEY `idServicio` (`idServicio`);
 
 --
@@ -244,7 +244,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

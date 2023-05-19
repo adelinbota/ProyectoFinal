@@ -25,6 +25,8 @@ import { AddServiciosComponent } from './crud_servicios/add-servicios/add-servic
 import { ActualizarServiciosComponent } from './crud_servicios/actualizar-servicios/actualizar-servicios.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewCitaComponent } from './citas/new-cita/new-cita.component';
+import { AddCitaComponent } from './citas/add-cita/add-cita.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { NewCitaComponent } from './citas/new-cita/new-cita.component';
     ActualizarServiciosComponent,
     FooterComponent,
     NewCitaComponent,
+    AddCitaComponent,
+    CalendarioComponent,
     
   ],
   imports: [

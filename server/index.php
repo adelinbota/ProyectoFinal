@@ -425,6 +425,119 @@ header("Access-Control-Allow-Headers: Accept, Content-Type, Access-Control-Allow
                     }
                 }
                 break;
+            case 'citas':
+                if (!isset($recurso[1])){
+                    switch ($_SERVER['REQUEST_METHOD']){
+                        case 'POST':
+
+                            $datos = json_decode(file_get_contents('php://input'));
+
+                            $pdo = conectar();
+
+                            $stmt = $pdo->prepare("INSERT INTO citas(fechaCita, comentarios, idUsuario, idServicio) 
+                                                    VALUES (:fechaCita, :comentarios, :idUsuario, :idServicio)");
+                            $stmt->bindParam(':fechaCita', $datos->fechaCita);
+                            $stmt->bindParam(':comentarios', $datos->comentarios);
+                            $stmt->bindParam(':idUsuario', $datos->idUsuario);
+                            $stmt->bindParam(':idServicio', $datos->idServicio);
+                            $stmt->execute();
+                            
+                            break;
+                        case 'GET':
+                            switch ($_SERVER['HTTP_ACCEPT']){
+                                case 'application/json':
+                                default:
+                                    $pdo = conectar();
+
+                                    $stmt = $pdo->prepare("SELECT * FROM citas");
+                                    $stmt->execute();
+
+                                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                    echo json_encode($result);
+                                break;
+                            }
+                            break;
+                        default:
+                            header("HTTP/1.1 405 Method not allowed");
+                            exit();
+                        break;
+                    }
+                }else if (!isset($recurso[2])){
+                    if (is_numeric($recurso[1])){
+                        switch ($_SERVER['REQUEST_METHOD']){
+                            // case 'PUT':
+
+                            //     $datos = json_decode(file_get_contents('php://input'));
+                            //     $pdo = conectar();
+
+                            //     $id = intval($recurso[1]);
+
+                            //     $stmt = $pdo->prepare("UPDATE servicios SET nombre = :nombre, descripcion = :descripcion, precio = :precio, duracion = :duracion, idTipoServicio = :idTipoServicio
+                            //                             WHERE idServicio = $id");
+
+                            //     $stmt->bindParam(':nombre', $datos->nombre);
+                            //     $stmt->bindParam(':descripcion', $datos->descripcion);
+                            //     $stmt->bindParam(':precio', $datos->precio);
+                            //     $stmt->bindParam(':duracion', $datos->duracion);
+                            //     $stmt->bindParam(':idTipoServicio', $datos->idTipoServicio);
+
+                            //     $stmt->execute();
+
+                            //     break;
+                            case 'DELETE':
+                                $pdo = conectar();
+                                $id = intval($recurso[1]);
+                            
+                                $stmt = $pdo->prepare("DELETE FROM citas WHERE idCita = $id");
+                                $stmt->execute();
+                            
+                                break;
+                            case 'GET':
+                                $pdo = conectar();
+                                $id = intval($recurso[1]);
+                                $stmt = $pdo->prepare("SELECT * FROM citas WHERE idCita = $id");
+                                $stmt->execute();
+
+                                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                                if ( $result )
+                                {
+                                    echo json_encode($result);
+                                }
+                                else
+                                {
+                                    header("HTTP/1.1 404 Not found");
+                                    exit();
+                                }
+
+                                break;
+                            default:
+                                header("HTTP/1.1 405 Method not allowed");
+                                exit();
+                            break;
+                        }
+                    }
+                    else{
+                        switch ($recurso[1]){
+                            case 'obtenerTiposServicio':
+                                $pdo = conectar();
+
+                                $stmt = $pdo->prepare("SELECT * FROM tipo_servicio");
+                                $stmt->execute();
+
+                                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                header('Content-Type: application/json; charset=UTF-8');
+                                echo json_encode($result);
+                                break;
+                            default:
+                                header("HTTP/1.1 400 Bad Request");
+                                exit();
+                                break;
+                        }
+                    }
+                }
+                break;
             default:
                 header("HTTP/1.1 400 Bad request");
                 exit();

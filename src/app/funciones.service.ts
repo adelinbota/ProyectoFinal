@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from './environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Servicio } from './crud_servicios/servicio';
 import { Usuario } from './crud_usuarios/usuario';
 import { Cita } from './citas/cita';
@@ -30,7 +30,6 @@ export class FuncionesService {
   baseUrl = environment.baseUrl
 
   comprobar(user:any): Observable<any> {
-    console.log(user);
     return this.http.post(`${this.baseUrl}/usuarios/login`, user)
   }
   

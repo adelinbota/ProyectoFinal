@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="row">
             <div class="col-6">
-                <a routerLink="/citas/new" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
+                <a routerLink="/citas/add-citas" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
             </div>
             <div class="col-3"></div>
             <div class="col-3 mt-5 mb-3">
@@ -23,8 +23,8 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Fecha Reserva</th>
                     <th scope="col">Fecha Cita</th>
+                    <th scope="col">Observacaos</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Servicio</th>
                     <th scope="col">Acciones</th>
@@ -33,8 +33,8 @@
             <tbody>
                 <tr *ngFor="let cita of citas | async">
                     <td scope="row">{{cita.idCita}}</td>
-                    <td>{{cita.fechaReserva.slice(5,16)}}</td>
                     <td>{{cita.fechaCita.slice(5,16)}}</td>
+                    <td>{{cita.comentarios}}</td>
                     <td>{{cita.nombreUsuario}}</td>
                     <td>{{cita.nombreServicio}}</td>
                     <td>

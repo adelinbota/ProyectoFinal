@@ -16,12 +16,16 @@ import { RegistroComponent } from './crud_usuarios/registro/registro.component';
 import { AddServiciosComponent } from './crud_servicios/add-servicios/add-servicios.component';
 import { ActualizarServiciosComponent } from './crud_servicios/actualizar-servicios/actualizar-servicios.component';
 import { NewCitaComponent } from './citas/new-cita/new-cita.component';
+import { AddCitaComponent } from './citas/add-cita/add-cita.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 const rutas: Routes = [
   {path: '', component: InicioComponent},
   {path: 'contacto', component: ContactoComponent},
+  {path: 'calendario', component: CalendarioComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'citas/new', component: NewCitaComponent},
+  {path: 'citas/add-citas', component: AddCitaComponent},
   {path: 'servicios', component: ServiciosComponent},
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'productos', component: VerProductosComponent},

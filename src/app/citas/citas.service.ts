@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CitasService {
+  anadirCita(cita: Cita) {
+    return this.http.post<Cita[]>(`${this.baseUrl}/citas`, cita)
+  }
 
   baseUrl = environment.baseUrl
   eliminarCita(cita: Cita) {
