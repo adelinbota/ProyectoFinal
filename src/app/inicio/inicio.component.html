@@ -1,93 +1,106 @@
-<header>
-  <h1 class="text-center mt-5 mb-5">A&A Beauty Salon</h1>
-</header>
-
-<section class="section section-usuarios" *ngIf="!logueado">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="custom-card custom-card-usuarios">
-          <a routerLink="/usuarios"><img class="card-img-top" src="../../assets/img/clientes.jpeg" alt="Clientes"></a>
-          <div class="card-overlay">
-            <div class="card-content">
-              <h2 class="card-title">Usuarios</h2>
-              <p class="card-text">Explora nuestros servicios de peluquería y descubre nuestras promociones exclusivas.</p>
-              <a routerLink="/usuarios" class="btn btn-primary">Ver usuarios</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-servicios">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="custom-card custom-card-servicios">
-          <a routerLink="/servicios"><img class="card-img-top" src="../../assets/img/servicios.jpg" alt="Servicios"></a>
-          <div class="card-overlay">
-            <div class="card-content">
-              <h2 class="card-title">Servicios</h2>
-              <p class="card-text">Descubre nuestros servicios de peluquería y déjate consentir por nuestros profesionales.</p>
-              <a routerLink="/servicios" class="btn btn-primary">Ver servicios</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5">
-          <div class="custom-text custom-text-right">
-            <!-- Texto adicional resaltado a la derecha -->
-            <h2>¿Qué hacemos?</h2>
-            <p class="card-texto">Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-            </p>
-            <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-            </p>
-          </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section-productos">
-    <div class="row">
-      <div class="col-md-6 offset-md-6">
-        <div class="custom-card custom-card-productos">
-          <a routerLink="/productos"><img class="card-img-top" src="../../assets/img/productos.jpg" alt="Productos"></a>
-          <div class="card-overlay">
-            <div class="card-content">
-              <h2 class="card-title">Productos</h2>
-              <p class="card-text">Descubre nuestra selección de productos de calidad y encuentra los ideales para tu estilo.</p>
-              <a routerLink="/productos" class="btn btn-primary">Ver productos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 ">
-          <div class="custom-text custom-text-left">
-            <!-- Texto adicional resaltado a la izquierda -->
-            <h2>Texto adicional</h2>
-            <p class="card-text">Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-            </p>
-            <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-            </p>
-            <p>Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-              Este es el texto adicional resaltado que se muestra a la derecha de la tarjeta de servicios.
-            </p>
-          </div>
-        </div>
-    </div>
-</section>
+<body>
+  <header>
+    <h1 class="text-center mt-5">A&A Beauty Salon</h1>
+  </header>
   
+  <section class="section section-usuarios" *ngIf="logueado">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="custom-card custom-card-usuarios">
+            <a routerLink="/usuarios"><img class="card-img-top" src="../../assets/img/clientes.jpeg" alt="Clientes"></a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Usuarios</h2>
+                <p class="card-text">Explora nuestros servicios de peluquería y descubre nuestras promociones exclusivas.</p>
+                <a routerLink="/usuarios" class="btn btn-primary">Ver usuarios</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section section-servicios">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="custom-card custom-card-servicios">
+            <a routerLink="/servicios"><img class="card-img-top" src="../../assets/img/servicios.jpg" alt="Servicios"></a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Servicios</h2>
+                <p class="card-text">Descubre nuestros servicios de peluquería y déjate consentir por nuestros profesionales.</p>
+                <a routerLink="/servicios" class="btn btn-primary">Ver servicios</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="custom-text custom-text-right">
+            <h2>Descubre nuestros servicios</h2>
+            <p class="card-text">
+              En nuestro salón de belleza, ofrecemos una amplia gama de servicios para realzar tu belleza y cuidar de tu cabello. Nuestro talentoso equipo de estilistas está listo para brindarte una experiencia única y transformar tu apariencia.
+            </p>
+            <p>
+              Permítenos consentirte con cortes de pelo modernos y a la moda que reflejen tu estilo único. Además, te ofrecemos tratamientos capilares de calidad que nutrirán y revitalizarán tu cabello, dejándolo suave, brillante y saludable.
+            </p>
+            <p>
+              Nuestros expertos en coloración te ayudarán a encontrar el tono perfecto para resaltar tus rasgos y realzar tu belleza natural. Ya sea que busques un cambio sutil o un look audaz, estamos aquí para hacer realidad tus deseos.
+            </p>
+            <p>
+              También ofrecemos servicios de peinado y styling para ocasiones especiales, como bodas o eventos importantes, para que luzcas radiante en cada momento memorable de tu vida.
+            </p>
+            <p>
+              En nuestro salón, nos comprometemos a brindarte una experiencia de lujo, un ambiente relajante y resultados que superen tus expectativas. ¡Visítanos y déjanos cuidar de ti!
+            </p>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+  
+  <section class="section section-productos">
+    <div class="container">
+      <div class="row align-items-start flex-row-reverse">
+        <div class="col-md-6">
+          <div class="custom-card custom-card-productos">
+            <a routerLink="/productos"><img class="card-img-top" src="../../assets/img/productos.jpg" alt="Productos"></a>
+            <div class="card-overlay">
+              <div class="card-content">
+                <h2 class="card-title">Productos</h2>
+                <p class="card-text">Descubre nuestra selección de productos de calidad y encuentra los ideales para tu estilo.</p>
+                <a routerLink="/productos" class="btn btn-primary">Ver productos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="custom-text custom-text-left">
+            <h2>Descubre nuestra selección de productos</h2>
+            <p class="card-text">
+              En nuestro salón de belleza, no solo nos preocupamos por brindarte servicios de calidad, sino también por ofrecerte los mejores productos para el cuidado de tu cabello.
+            </p>
+            <p>
+              Nuestra selección de productos incluye champús, acondicionadores y tratamientos capilares de marcas reconocidas en la industria de la belleza. Estos productos han sido cuidadosamente seleccionados por nuestros expertos para satisfacer las necesidades de todo tipo de cabello.
+            </p>
+            <p>
+              Descubre productos diseñados para hidratar y nutrir tu cabello, dejándolo suave, sedoso y lleno de vida. Además, contamos con productos especializados para el cuidado del cabello teñido, prolongando la duración y el brillo de tu coloración.
+            </p>
+            <p>
+              Nuestros productos para peinado te ayudarán a lograr looks increíbles en casa. Desde geles y ceras moldeadoras hasta sprays de fijación, encontrarás todo lo que necesitas para crear peinados versátiles y duraderos.
+            </p>
+            <p>
+              En nuestro salón, nos enorgullece ofrecerte productos de alta calidad que te permitan mantener tu cabello hermoso y saludable entre visitas. Nuestro equipo estará encantado de asesorarte y recomendarte los productos más adecuados para ti.
+            </p>
+            <p>
+              Ven y explora nuestra selección de productos, y lleva contigo los secretos de una cabellera radiante. ¡Te esperamos en nuestro salón de belleza!
+            </p>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</body>

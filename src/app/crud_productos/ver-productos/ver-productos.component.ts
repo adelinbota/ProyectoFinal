@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
-import { Observable, map, Subject } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
