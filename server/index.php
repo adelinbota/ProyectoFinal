@@ -434,9 +434,10 @@ header("Access-Control-Allow-Headers: Accept, Content-Type, Access-Control-Allow
 
                             $pdo = conectar();
 
-                            $stmt = $pdo->prepare("INSERT INTO citas(fechaCita, comentarios, idUsuario, idServicio) 
-                                                    VALUES (:fechaCita, :comentarios, :idUsuario, :idServicio)");
+                            $stmt = $pdo->prepare("INSERT INTO citas(fechaCita, horaCita, comentarios, idUsuario, idServicio) 
+                                                    VALUES (:fechaCita, :horaCita, :comentarios, :idUsuario, :idServicio)");
                             $stmt->bindParam(':fechaCita', $datos->fechaCita);
+                            $stmt->bindParam(':horaCita', $datos->horaCita);
                             $stmt->bindParam(':comentarios', $datos->comentarios);
                             $stmt->bindParam(':idUsuario', $datos->idUsuario);
                             $stmt->bindParam(':idServicio', $datos->idServicio);
@@ -466,25 +467,25 @@ header("Access-Control-Allow-Headers: Accept, Content-Type, Access-Control-Allow
                 }else if (!isset($recurso[2])){
                     if (is_numeric($recurso[1])){
                         switch ($_SERVER['REQUEST_METHOD']){
-                            // case 'PUT':
+                            case 'PUT':
 
-                            //     $datos = json_decode(file_get_contents('php://input'));
-                            //     $pdo = conectar();
+                                $datos = json_decode(file_get_contents('php://input'));
+                                $pdo = conectar();
 
-                            //     $id = intval($recurso[1]);
+                                $id = intval($recurso[1]);
 
-                            //     $stmt = $pdo->prepare("UPDATE servicios SET nombre = :nombre, descripcion = :descripcion, precio = :precio, duracion = :duracion, idTipoServicio = :idTipoServicio
-                            //                             WHERE idServicio = $id");
+                                $stmt = $pdo->prepare("UPDATE citas SET fechaCita = :fechaCita, horaCita = :horaCita, comentarios = :comentarios, idUsuario = :idUsuario, idServicio = :idServicio
+                                                        WHERE idServicio = $id");
 
-                            //     $stmt->bindParam(':nombre', $datos->nombre);
-                            //     $stmt->bindParam(':descripcion', $datos->descripcion);
-                            //     $stmt->bindParam(':precio', $datos->precio);
-                            //     $stmt->bindParam(':duracion', $datos->duracion);
-                            //     $stmt->bindParam(':idTipoServicio', $datos->idTipoServicio);
+                                $stmt->bindParam(':fechaCita', $datos->nombre);
+                                $stmt->bindParam(':horaCita', $datos->horaCita);
+                                $stmt->bindParam(':comentarios', $datos->comentarios);
+                                $stmt->bindParam(':idUsuario', $datos->idUsuario);
+                                $stmt->bindParam(':idServicio', $datos->idServicio);
 
-                            //     $stmt->execute();
+                                $stmt->execute();
 
-                            //     break;
+                                break;
                             case 'DELETE':
                                 $pdo = conectar();
                                 $id = intval($recurso[1]);
