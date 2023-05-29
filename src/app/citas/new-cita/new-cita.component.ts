@@ -14,13 +14,13 @@ export class NewCitaComponent {
 
   }
 
-  tiposServicio: any[];
-  tiposServicioConMayuscula: any[];
+  servicio: any[];
+  servicioConMayuscula: any[];
   
   ngOnInit(): void {
-    this.funciones.obtenerTiposServicio().subscribe(
-        tipos => {this.tiposServicio = tipos,
-        this.tiposServicioConMayuscula = tipos.map(tipo => {
+    this.funciones.getServicios().subscribe(
+        tipos => {this.servicio = tipos,
+        this.servicioConMayuscula = tipos.map(tipo => {
           return {
             idTipoServicio: tipo.idTipoServicio,
             nombre: this.capitalize(tipo.nombre)
@@ -30,8 +30,6 @@ export class NewCitaComponent {
         )
   }
   
-
-
   capitalize(nombre: string): string {
     return nombre.replace(/\b\w/g, c => c.toUpperCase());
   }

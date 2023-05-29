@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FuncionesService } from 'src/app/funciones.service';
 import { Cita } from '../cita';
+import { FuncionesService } from 'src/app/funciones.service';
 import { CitasService } from '../citas.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-cita',
-  templateUrl: './add-cita.component.html',
-  styleUrls: ['./add-cita.component.css']
+  selector: 'app-actualizar-citas',
+  templateUrl: './actualizar-citas.component.html',
+  styleUrls: ['./actualizar-citas.component.css']
 })
-export class AddCitaComponent implements OnInit {
+export class ActualizarCitasComponent implements OnInit {
 
-  constructor(private funciones: FuncionesService, private funcionesCita: CitasService, private router: Router) { }
+  constructor(private citasServicio: CitasService, private route: ActivatedRoute, funciones: FuncionesService, private router: Router) { }
+
+  public usuarios: any[];
+  public servicios: any[];
 
   ngOnInit(): void {
-    this.funciones.getUsuarios().subscribe(
+    let idCita = this.route.snapshot.paramMap.get('idCita');
+    this.citasServicio.getCita(idCita).subscribe(
+      (cita:Cita) => this.cita = cita
+    );
+    this.citasServicio.getUsuarios().subscribe(
       usuarios => {
         this.usuarios = usuarios.map(usuario => {
           return {
@@ -25,7 +32,7 @@ export class AddCitaComponent implements OnInit {
       error => {
         console.error(error);
       })
-    this.funciones.getServicios().subscribe(
+    this.citasServicio.getServicios().subscribe(
       servicios => {
         this.servicios = servicios.map(servicio => {
           return {
@@ -38,22 +45,7 @@ export class AddCitaComponent implements OnInit {
       });
   }
 
-  public usuarios: any[];
-  public servicios: any[];
-
-  datosPersona: string;
-  idUsuario: number;
-  fechaCita: string;
-  idServicio: number;
-  tiposServicioConMayuscula: any
-
-  cita = new Cita(1,"","","",1,1)
-
-  addDatos() {
-    this.funcionesCita.anadirCita(this.cita).subscribe();
-    console.log(this.cita);
-    this.router.navigate(['/citas']);
-  }
+  cita = new Cita(1,"","","",1,1,"");
 
   getCurrentDate(): string {
     const today = new Date();
@@ -71,4 +63,10 @@ export class AddCitaComponent implements OnInit {
 
     return `${year}-${month}-${day}`;
   }
+
+  actualizar() {
+    this.citasServicio.actualizarCita(this.cita).subscribe();
+    this.router.navigate(['/citas']);
+  }
+
 }

@@ -27,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NewCitaComponent } from './citas/new-cita/new-cita.component';
 import { AddCitaComponent } from './citas/add-cita/add-cita.component';
 import { CalendarioComponent } from './calendario/calendario.component';
+import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-citas.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
     NewCitaComponent,
     AddCitaComponent,
     CalendarioComponent,
+    ActualizarCitasComponent,
     
   ],
   imports: [

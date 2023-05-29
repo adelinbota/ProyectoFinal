@@ -1,17 +1,9 @@
 body{
-    background-color:#F3DAC0;
+  margin: 0;
+  overflow-x: hidden;
+  background-image: linear-gradient(beige, rgb(255, 255, 174));
 }
-/* Estilos para el encabezado de la página */
-h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-  }
-  
-  /* Estilos para el formulario de contacto */
+
   .form-group label {
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -51,14 +43,12 @@ h1 {
     cursor: pointer;
   }
   
-  /* Estilos para la sección de información de contacto */
   .my-5 {
     margin-top: 5rem;
   }
   
   .col-md-4 {
     padding: 2rem;
-    background-color: #f7f7f7;
     border-radius: 5px;
     margin-bottom: 2rem;
     text-align: center;
@@ -75,4 +65,18 @@ h1 {
     margin-bottom: 0.5rem;
   }
   
+  .btn-valoracion {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .btn-valoracion i {
+    font-size: 1.8rem;
+    padding-right: 3.5px;
+  }
+
+  .btn-valoracion.active .bi-star {
+    color: #f5d041;
+  }
   

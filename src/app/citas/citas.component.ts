@@ -13,6 +13,7 @@ import { CitasService } from './citas.service';
 export class CitasComponent{
 
   citaSeleccionada:Cita
+  contenido:any
   public citas: Observable<Cita[]>;
   logueado = true;
  

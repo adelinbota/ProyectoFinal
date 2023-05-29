@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ContactoComponent {
   variable = true;
+  valoracion:number
+  resena:string
+
+  setValoracion(valor:number){
+    this.valoracion = valor
+  }
 }

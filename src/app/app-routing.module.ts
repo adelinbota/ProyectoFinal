@@ -18,6 +18,7 @@ import { ActualizarServiciosComponent } from './crud_servicios/actualizar-servic
 import { NewCitaComponent } from './citas/new-cita/new-cita.component';
 import { AddCitaComponent } from './citas/add-cita/add-cita.component';
 import { CalendarioComponent } from './calendario/calendario.component';
+import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-citas.component';
 
 const rutas: Routes = [
   {path: '', component: InicioComponent},
@@ -26,6 +27,7 @@ const rutas: Routes = [
   {path: 'citas', component: CitasComponent},
   {path: 'citas/new', component: NewCitaComponent},
   {path: 'citas/add-citas', component: AddCitaComponent},
+  {path: 'citas/actualizar-citas/:idCita', component: ActualizarCitasComponent},
   {path: 'servicios', component: ServiciosComponent},
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'productos', component: VerProductosComponent},

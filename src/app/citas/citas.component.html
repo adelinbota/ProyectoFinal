@@ -1,91 +1,107 @@
-<div class="container col-12 mt-5" *ngIf="logueado">
+<body>
+  <div class="container col-12 mt-5" *ngIf="logueado">
     <h1 class="col-12 text-center mt-5">Citas</h1>
     <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <a routerLink="/citas/add-citas" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
-            </div>
-            <div class="col-3"></div>
-            <div class="col-3 mt-5 mb-3">
-                <div class="input-group">
-                    <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" placeholder="Buscar"/>
-                    </div>
-                    <button type="button" class="btn btn-primary">
-                    <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-6">
+            <a routerLink="/citas/add-citas" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
         </div>
+      </div>
     </div>
     <div class="table-responsive mt-3">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Fecha Cita</th>
-                    <th scope="col">Observacaos</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Servicio</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let cita of citas | async">
-                    <td scope="row">{{cita.idCita}}</td>
-                    <td>{{cita.fechaCita.slice(5,16)}}</td>
-                    <td>{{cita.comentarios}}</td>
-                    <td>{{cita.nombreUsuario}}</td>
-                    <td>{{cita.nombreServicio}}</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, cita)">Eliminar</button>
-                    </td> 
-                </tr>
-            </tbody>
-            <ng-template #contenido let-modal let-cita="citaSeleccionado">
-                <div class="modal-header">
-                  <h4 class="modal-title text-center">Eliminar cita</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p class="text-center mb-4">¿Estás seguro que deseas eliminar la siguiente cita?</p>
-                  <div class="card mb-3 card-margen">
-                    <div class="row g-0">
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <p class="card-title">{{ citaSeleccionada.nombreUsuario}}</p>
-                          <p class="card-text">{{citaSeleccionada.fechaCita.slice(5,16)}}</p>
-                          <p class="card-text"><small class="text-muted">{{citaSeleccionada.nombreServicio}}</small></p>
-                        </div>
-                      </div>                      
-                    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Fecha Cita</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of citas | async">
+            <td scope="row">{{cita.idCita}}</td>
+            <td>{{cita.fechaCita.slice(5,16)}} {{cita.horaCita.slice(3,8)}}</td>
+            <td>{{cita.comentarios}}</td>
+            <td>{{cita.nombreUsuario}}</td>
+            <td>{{cita.nombreServicio}}</td>
+            <td>
+                <button type="button" routerLink="/citas/actualizar-citas/{{cita.idCita}}" class="btn btn-outline-success btn-sm">Editar</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, cita)">Eliminar</button>
+            </td> 
+          </tr>
+        </tbody>
+        <ng-template #contenido let-modal let-cita="citaSeleccionada">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Eliminar cita</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center mb-4">¿Estás seguro que deseas eliminar la siguiente cita?</p>
+            <div class="card mb-3 card-margen">
+              <div class="row g-0">
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <p class="card-title">{{ citaSeleccionada.nombreUsuario}}</p>
+                    <p class="card-text">{{citaSeleccionada.fechaCita.slice(5,16)}}</p>
+                    <p class="card-text"><small class="text-muted">{{citaSeleccionada.nombreServicio}}</small></p>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-                  <button type="button" class="btn btn-danger" (click)="eliminarCita(citaSeleccionada); modal.close()">Eliminar</button>
-                </div>
-              </ng-template>
-        </table>
+                </div>                      
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+            <button type="button" class="btn btn-danger" (click)="eliminarCita(citaSeleccionada); modal.close()">Eliminar</button>
+          </div>
+        </ng-template>
+      </table>
     </div>
-</div>
-<div class="container col-5 mt-5 mb-5" *ngIf="!logueado">
+  </div>
+  <div class="container col-5 mt-5 mb-5" *ngIf="!logueado">
     <h1 class="text-center">Mis Citas</h1>
     <div class="card text-center">
-        <div class="card-header">
-            <h2 class="mb-0">Cita Reservada</h2>
-            <p class="mb-0">28 de mayo, 10:00 AM</p>
-        </div>
-        <div class="card-body">
-            <h3 class="card-title">Belleza Total</h3>
-            <p class="card-text">Servicio: Corte de pelo</p>
-            <p class="card-text">Peluquera: Maria Costin</p>
-            <p class="card-text">Dirección: Calle Barcelona, 53</p>
-            <button class="btn btn-primary mt-3">Ver detalles</button>
-            <button class="btn btn-success mt-3" routerLink="new" style="margin-left: 1rem;">Nueva cita</button>
-        </div>
-        <app-footer></app-footer>
+      <div class="card-header">
+        <h2 class="mb-0">Cita Reservada</h2>
+        <p class="mb-0">28 de mayo, 10:00 AM</p>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Belleza Total</h3>
+        <p class="card-text">Servicio: Corte de pelo</p>
+        <p class="card-text">Peluquera: Maria Costin</p>
+        <p class="card-text">Dirección: Calle Barcelona, 53</p>
+        <button class="btn btn-primary mt-3">Ver detalles</button>
+        <button class="btn btn-success mt-3" routerLink="new" style="margin-left: 1rem;">Nueva cita</button>
+        <!-- <ng-template #contenido let-modal let-cita="citaSeleccionado">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Informaci�n cita</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card mb-3 card-margen logueado">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h5 class="card-title">{{citaSeleccionada.fechaCita}}</h5>
+                    <p class="card-text">{{citaSeleccionada.comentarios}}</p>
+                  </div>
+                </div>                      
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+            <button type="button" class="btn btn-success" routerLink="../citas/new" (click)="modal.close()">Pedir cita</button>
+          </div>
+        </ng-template> -->
+      </div>
     </div>
-</div>
+    <app-footer></app-footer>
+  </div>
+</body>
