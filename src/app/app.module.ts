@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { CalendarModule } from 'angular-calendar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,8 +63,7 @@ import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-ci
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule
-
+    NgbModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Contacto } from '../contacto/contacto';
+import { FuncionesService } from '../funciones.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-inicio',
@@ -7,4 +10,8 @@ import { Component } from '@angular/core';
 })
 export class InicioComponent {
   logueado = false
+
+  constructor(private funciones:FuncionesService){}
+
+  public contactosAct: Observable<Contacto[]> = this.funciones.getContactosActivos();
 }

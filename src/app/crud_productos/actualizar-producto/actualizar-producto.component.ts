@@ -10,12 +10,12 @@ import { TipoProducto } from '../tipoProducto';
   templateUrl: './actualizar-producto.component.html',
   styleUrls: ['./actualizar-producto.component.css']
 })
-export class ActualizarProductoComponent implements OnInit{
+export class ActualizarProductoComponent implements OnInit {
 
-  producto = new Producto(1,"","",1,"",0,1);
+  producto = new Producto(1, "", "", 1, "", 0, 1);
   tiposProducto: TipoProducto[];
 
-  constructor(private productoService:ProductoService, private router:Router, private route:ActivatedRoute){}
+  constructor(private productoService: ProductoService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     let idProducto = this.route.snapshot.paramMap.get('idProducto');
@@ -30,9 +30,9 @@ export class ActualizarProductoComponent implements OnInit{
         this.tiposProducto = tiposProducto;
       }
     );
-  }  
-  
-  actualizarDatos(){
+  }
+
+  actualizarDatos() {
     this.productoService.actualizarProducto(this.producto).subscribe();
     this.router.navigate(['productos']);
   }

@@ -6,11 +6,15 @@ import { Observable} from 'rxjs';
 import { Servicio } from './crud_servicios/servicio';
 import { Usuario } from './crud_usuarios/usuario';
 import { Cita } from './citas/cita';
+import { Contacto } from './contacto/contacto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuncionesService {
+  getContactosActivos() {
+    return this.http.get<Contacto[]>(`${this.baseUrl}/contactos/activos`)
+  }
   getUsuarios() {
     return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
   }

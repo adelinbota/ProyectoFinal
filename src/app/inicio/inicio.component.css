@@ -132,6 +132,17 @@ h1 {
   margin-right: 10%;
 }
 
+.direccion{
+  transform: scale(1.7);
+}
+
+.section-citas h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .custom-text h2 {
   font-size: 24px;
   font-weight: bold;
@@ -150,4 +161,19 @@ h1 {
 
 .flex-row-reverse {
   flex-direction: row-reverse;
+}
+
+.bi-star-fill {
+  color: #FFD700;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ffc107;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }

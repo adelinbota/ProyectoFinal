@@ -1,48 +1,53 @@
 <div class="container col-6">
-    <div class="card mt-5">
-        <div class="card-header">
-            Actualiza tu producto
-        </div>
-        <div class="card-body">
-            <div class="mb-3">
-                <form (ngSubmit)="actualizarDatos()">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-6 mt-3">
-                                <label for="nombre" class="form-label">Nombre:</label>
-                                <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="producto.nombreProducto" aria-describedby="helpId" >
-                            </div>
-                            <div class="col mt-3">
-                                <label for="imagen" class="form-label">Imagen:</label>
-                                <input type="text" name="imagen" id="" class="form-control" [(ngModel)]="producto.rutaImagenProducto" aria-describedby="helpId">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 mt-3">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <input type="text" name="descripcion" id="" class="form-control" [(ngModel)]="producto.descripcionProducto" aria-describedby="helpId">
-                    </div>
-
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-3 mt-3">
-                                <label for="precio" class="form-label">Precio:</label>
-                                <input type="text" name="precio" id="" class="form-control" [(ngModel)]="producto.precioProducto" aria-describedby="helpId">
-                            </div>
-                            <div class="col-4 mt-3">
-                                <label for="tipoProducto">Tipo producto:</label>
-                                <select class="form-select" id="tipoProducto" name="tipoProducto" [(ngModel)]="producto.idTipoProducto">
-                                    <option *ngFor="let tipoProducto of tiposProducto" [value]="tipoProducto.idTipoProducto">{{ tipoProducto.nombre }}</option>
-                                </select>                                  
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-outline-success mt-4">Editar</button>&nbsp;
-                    <button type="button" routerLink="/productos" class="btn btn-outline-primary mt-4">Atrás</button>
-                </form>
-            </div>
-        </div>
+  <div class="card mt-5">
+    <div class="card-header">
+      Actualiza tu producto
     </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <form (ngSubmit)="actualizarDatos()">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-6 mt-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="producto.nombreProducto"
+                  aria-describedby="helpId">
+              </div>
+              <div class="col mt-3">
+                <label for="imagen" class="form-label">Imagen:</label>
+                <input type="text" name="imagen" id="" class="form-control" [(ngModel)]="producto.rutaImagenProducto"
+                  aria-describedby="helpId">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <input type="text" name="descripcion" id="" class="form-control" [(ngModel)]="producto.descripcionProducto"
+              aria-describedby="helpId">
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-3 mt-3">
+                <label for="precio" class="form-label">Precio:</label>
+                <input type="text" name="precio" id="" class="form-control" [(ngModel)]="producto.precioProducto"
+                  aria-describedby="helpId">
+              </div>
+              <div class="col-4 mt-3">
+                <label for="tipoProducto">Tipo producto:</label>
+                <select class="form-select" id="tipoProducto" name="tipoProducto" [(ngModel)]="producto.idTipoProducto">
+                  <option *ngFor="let tipoProducto of tiposProducto" [value]="tipoProducto.idTipoProducto">{{
+                    tipoProducto.nombre }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-success mt-4">Editar</button>&nbsp;
+          <button type="button" routerLink="/productos" class="btn btn-outline-primary mt-4">Atrás</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

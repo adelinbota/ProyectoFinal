@@ -1,81 +1,87 @@
 <body>
   <div class="container mb-5" *ngIf="logueado">
-      <h1 class="col-12 text-center mt-5">Productos</h1>
-      <div class="col-12">
-          <div class="row">
-              <div class="col-6">
-                  <a routerLink="/productos/add-productos" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo producto</a>
-              </div>
-              <div class="col-3"></div>
-              <div class="col-3 mt-5 mb-3">
-                  <div class="input-group">
-                      <div class="form-outline">
-                      <input type="search" id="form1" class="form-control" placeholder="Buscar"/>
-                      </div>
-                      <button type="button" class="btn btn-primary">
-                      <i class="bi bi-search"></i>
-                      </button>
-                  </div>
-              </div>
+    <h1 class="col-12 text-center mt-5">Productos</h1>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6">
+          <a routerLink="/productos/add-productos" class="btn btn-outline-primary mt-5 mb-3 col-4">Nuevo producto</a>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3 mt-5 mb-3">
+          <div class="input-group">
+            <div class="form-outline">
+              <input type="search" id="form1" class="form-control" placeholder="Buscar" />
+            </div>
+            <button type="button" class="btn btn-primary">
+              <i class="bi bi-search"></i>
+            </button>
           </div>
+        </div>
       </div>
-      <div class="table-responsive mt-3">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Descripción</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Imagen</th>
-                      <th scope="col">Acciones</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let producto of productos | async">
-                      <td scope="row">{{producto.idProducto}}</td>
-                      <td>{{producto.nombreProducto}}</td>
-                      <td>{{abreviarTexto(producto.descripcionProducto, 87)}}</td>
-                      <td class="text-end">{{producto.precioProducto}} €</td>
-                      <td><a href="{{producto.rutaImagenProducto}}" target="_blank"><img src="{{producto.rutaImagenProducto}}" alt="" style="width: 50px; max-height: 50px;" ></a></td>
-                      <td>
-                          <button type="button" routerLink="/productos/actualizar-productos/{{producto.idProducto}}" class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
-                          <button type="button" class="btn btn-outline-info btn-sm" (click)="producto.activo ? quitarVenta(producto) : ponerVenta(producto)">{{producto.activo ? 'Quitar de venta' : 'Poner a la venta'}}</button>&nbsp;
-                          <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, producto)">Eliminar</button>
-                      </td> 
-                  </tr>
-              </tbody>
-              <ng-template #contenido let-modal let-producto="productoSeleccionado">
-                  <div class="modal-header">
-                    <h4 class="modal-title text-center">Eliminar producto</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+    </div>
+    <div class="table-responsive mt-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos | async">
+            <td scope="row">{{producto.idProducto}}</td>
+            <td>{{producto.nombreProducto}}</td>
+            <td>{{abreviarTexto(producto.descripcionProducto, 87)}}</td>
+            <td class="text-end">{{producto.precioProducto}} €</td>
+            <td><a href="{{producto.rutaImagenProducto}}" target="_blank"><img src="{{producto.rutaImagenProducto}}"
+                  alt="" style="width: 50px; max-height: 50px;"></a></td>
+            <td>
+              <button type="button" routerLink="/productos/actualizar-productos/{{producto.idProducto}}"
+                class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
+              <button type="button" class="btn btn-outline-info btn-sm"
+                (click)="producto.activo ? quitarVenta(producto) : ponerVenta(producto)">{{producto.activo ? 'Quitar de venta' : 'Poner a la venta'}}</button>&nbsp;
+              <button type="button" class="btn btn-outline-danger btn-sm"
+                (click)="abrirModal(contenido, producto)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #contenido let-modal let-producto="productoSeleccionado">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Eliminar producto</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente producto?</p>
+            <div class="card mb-3 card-margen logueado">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}"
+                    class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{productoSeleccionado.nombreProducto}}</h5>
+                    <p class="card-text">{{productoSeleccionado.descripcionProducto}}</p>
+                    <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto}} €</small></p>
                   </div>
-                  <div class="modal-body">
-                    <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente producto?</p>
-                    <div class="card mb-3 card-margen logueado">
-                      <div class="row g-0">
-                        <div class="col-md-4">
-                          <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                          <div class="card-body">
-                            <h5 class="card-title">{{productoSeleccionado.nombreProducto}}</h5>
-                            <p class="card-text">{{productoSeleccionado.descripcionProducto}}</p>
-                            <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto}} €</small></p>
-                          </div>
-                        </div>                      
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-                    <button type="button" class="btn btn-danger" (click)="eliminarProducto(productoSeleccionado); modal.close()">Eliminar</button>
-                  </div>
-                </ng-template>
-          </table>
-      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+            <button type="button" class="btn btn-danger"
+              (click)="eliminarProducto(productoSeleccionado); modal.close()">Eliminar</button>
+          </div>
+        </ng-template>
+      </table>
+    </div>
   </div>
   <div class="container col-12" *ngIf="!logueado">
     <h1 class="text-center mt-5">Productos</h1>
@@ -102,7 +108,8 @@
           <div class="card mb-3 card-margen logueado">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}" class="img-fluid">
+                <img src="{{productoSeleccionado.rutaImagenProducto}}" alt="{{productoSeleccionado.nombreProducto}}"
+                  class="img-fluid">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -110,12 +117,12 @@
                   <p class="card-text">{{productoSeleccionado.descripcionProducto}}</p>
                   <p class="card-text"><small class="text-muted">{{productoSeleccionado.precioProducto}} €</small></p>
                 </div>
-              </div>                      
+              </div>
             </div>
           </div>
         </div>
       </ng-template>
-    <app-footer></app-footer>
+      <app-footer></app-footer>
     </div>
   </div>
 </body>

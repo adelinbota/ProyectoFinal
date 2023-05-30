@@ -1,79 +1,87 @@
 <div class="container col-6">
-    <div class="card mt-5">
-        <div class="card-header">
-            Añade un usuario
-        </div>
-        <div class="card-body">
-            <div class="mb-3">
-                <form (ngSubmit)="addDatos()">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-6 mt-3">
-                                <label for="usuario" class="form-label">Usuario:</label>
-                                <input type="text" name="usuario" id="" class="form-control" [(ngModel)]="username" aria-describedby="helpId">
-                            </div>
-                            
-                            <div class="col mt-3">
-                                <label for="password" class="form-label">Contraseña:</label>
-                                <input type="password" name="password" id="" class="form-control" [(ngModel)]="password" aria-describedby="helpId">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col mt-3">
-                                <label for="nombre" class="form-label">Nombre:</label>
-                                <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="nombre" aria-describedby="helpId" >
-                            </div>
-                            
-                            <div class="col mt-3">
-                                <label for="apellidos" class="form-label">Apellidos:</label>
-                                <input type="text" name="apellidos" id="" class="form-control" [(ngModel)]="apellidos" aria-describedby="helpId">
-                            </div>
-                        </div>
-                    </div>
+	<div class="card mt-5">
+		<div class="card-header">
+			Añade un usuario
+		</div>
+		<div class="card-body">
+			<div class="mb-3">
+				<form (ngSubmit)="addDatos()">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-6 mt-3">
+								<label for="usuario" class="form-label">Usuario:</label>
+								<input type="text" name="usuario" id="" class="form-control" [(ngModel)]="username"
+									aria-describedby="helpId">
+							</div>
 
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-4 mt-3">
-                                <label for="telefono" class="form-label">Teléfono:</label>
-                                <input type="text" name="telefono" id="" class="form-control" [(ngModel)]="telefono" aria-describedby="helpId">
-                            </div>
-                            
-                            <div class="col mt-3">
-                                <label for="email" class="form-label">Correo:</label>
-                                <input type="email" name="email" id="" class="form-control" [(ngModel)]="email" aria-describedby="helpId">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-4 mt-3">
-                                <label for="cp" class="form-label">Código postal:</label>
-                                <input type="text" name="cp" id="" class="form-control" [(ngModel)]="cp" aria-describedby="helpId">
-                            </div>
-                            <div class="col-4 mt-3">
-                                <label for="fechaNac" class="form-label">Fecha nacimiento:</label>
-                                <input type="date" name="fechaNac" id="" class="form-control" [(ngModel)]="fechaNac" aria-describedby="helpId">
-                            </div>
-                            <div class="col-4 mt-3">
-                                <label for="select" class="form-label">Tipo usuario:</label>
-                                <select class="form-select" aria-label="Default select example" name="select" [(ngModel)]="idTipoUsuario">
-                                    <option *ngFor="let tiposUsuario of tiposUsuarioConMayuscula" 
-                                        value="{{tiposUsuario.idTipoUsuario}}">{{tiposUsuario.nombre}}</option>
-                                  </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <button type="button" routerLink="/usuarios" class="btn btn-outline-primary mt-4 col-3">Atrás</button>
-                            <div class="col-6"></div>
-                            <button type="submit" class="btn btn-outline-success mt-4 col-3">Agregar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+							<div class="col mt-3">
+								<label for="password" class="form-label">Contraseña:</label>
+								<input type="password" name="password" id="" class="form-control" [(ngModel)]="password"
+									aria-describedby="helpId">
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="row">
+							<div class="col mt-3">
+								<label for="nombre" class="form-label">Nombre:</label>
+								<input type="text" name="nombre" id="" class="form-control" [(ngModel)]="nombre"
+									aria-describedby="helpId">
+							</div>
+
+							<div class="col mt-3">
+								<label for="apellidos" class="form-label">Apellidos:</label>
+								<input type="text" name="apellidos" id="" class="form-control" [(ngModel)]="apellidos"
+									aria-describedby="helpId">
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="row">
+							<div class="col-4 mt-3">
+								<label for="telefono" class="form-label">Teléfono:</label>
+								<input type="text" name="telefono" id="" class="form-control" [(ngModel)]="telefono"
+									aria-describedby="helpId">
+							</div>
+
+							<div class="col mt-3">
+								<label for="email" class="form-label">Correo:</label>
+								<input type="email" name="email" id="" class="form-control" [(ngModel)]="email"
+									aria-describedby="helpId">
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="row">
+							<div class="col-4 mt-3">
+								<label for="cp" class="form-label">Código postal:</label>
+								<input type="text" name="cp" id="" class="form-control" [(ngModel)]="cp" aria-describedby="helpId">
+							</div>
+							<div class="col-4 mt-3">
+								<label for="fechaNac" class="form-label">Fecha nacimiento:</label>
+								<input type="date" name="fechaNac" id="" class="form-control" [(ngModel)]="fechaNac"
+									aria-describedby="helpId">
+							</div>
+							<div class="col-4 mt-3">
+								<label for="select" class="form-label">Tipo usuario:</label>
+								<select class="form-select" aria-label="Default select example" name="select"
+									[(ngModel)]="idTipoUsuario">
+									<option *ngFor="let tiposUsuario of tiposUsuarioConMayuscula" value="{{tiposUsuario.idTipoUsuario}}">
+										{{tiposUsuario.nombre}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="row">
+							<button type="button" routerLink="/usuarios" class="btn btn-outline-primary mt-4 col-3">Atrás</button>
+							<div class="col-6"></div>
+							<button type="submit" class="btn btn-outline-success mt-4 col-3">Agregar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
-import { FuncionesService } from 'src/app/funciones.service';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/app/environment/environment';
 
@@ -34,24 +32,24 @@ export class AnadirProductoComponent implements OnInit {
       }
     );
   }
-  
+
   capitalize(str: string): string {
     return str.replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  constructor(private router: Router, private productoService: ProductoService, private http:HttpClient){
-    
+  constructor(private router: Router, private productoService: ProductoService, private http: HttpClient) {
+
   };
-  nombreProducto:string;
-  descripcionProducto:string;
-  precioProducto:number;
-  rutaImagenProducto:string;
-  idTipoProducto:number;
-  
+  nombreProducto: string;
+  descripcionProducto: string;
+  precioProducto: number;
+  rutaImagenProducto: string;
+  idTipoProducto: number;
 
-  productoModelo = new Producto(1,"","",0,"",0,1);
 
-  addDatos(){
+  productoModelo = new Producto(1, "", "", 0, "", 0, 1);
+
+  addDatos() {
     this.productoModelo.nombreProducto = this.nombreProducto;
     this.productoModelo.descripcionProducto = this.descripcionProducto;
     this.productoModelo.precioProducto = this.precioProducto;

@@ -22,10 +22,10 @@ export class UsuarioService {
     console.log(usuario)
     return this.http.delete(`${this.baseUrl}/usuarios/${usuario.idUsuario}`)
   }
-  getUsuarios(){
+  getUsuarios() {
     return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
   }
-  getUsuario(idUsuario: string | null){
+  getUsuario(idUsuario: string | null) {
     return this.http.get<Usuario>(`${this.baseUrl}/usuarios/${idUsuario}`)
   }
   addUsuario(usuario: Usuario) {
@@ -35,5 +35,5 @@ export class UsuarioService {
     return this.http.put(`${this.baseUrl}/usuarios/${usuario.idUsuario}`, usuario);
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 }

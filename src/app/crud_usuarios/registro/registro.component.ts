@@ -10,21 +10,21 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent {
 
-  constructor(private usuarioService: UsuarioService, private router:Router){}
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
-  username:string;
-  password:string;
-  nombre:string;
-  apellidos:string;
-  telefono:string;
-  email:string;
-  cp:string;
-  fechaNac:string;
-  idTipoUsuario:number;
-  
-  usuario = new Usuario(1, "", "","","", "", "", "", "", 10);
+  username: string;
+  password: string;
+  nombre: string;
+  apellidos: string;
+  telefono: string;
+  email: string;
+  cp: string;
+  fechaNac: string;
+  idTipoUsuario: number;
 
-  addDatos(){
+  usuario = new Usuario(1, "", "", "", "", "", "", "", "", 10);
+
+  addDatos() {
     this.usuario.username = this.username;
     this.usuario.password = this.password;
     this.usuario.nombre = this.nombre;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2023 a las 18:00:22
+-- Tiempo de generación: 30-05-2023 a las 17:59:48
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -41,8 +41,37 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`idCita`, `fechaCita`, `horaCita`, `comentarios`, `idUsuario`, `idServicio`) VALUES
-(1, '2023-04-28', '00:00:00', '', 31, 2),
-(8, '0000-00-00', '00:00:00', '', 32, 1);
+(1, '2023-05-31', '12:30:00', '', 31, 1),
+(8, '2023-05-31', '19:00:00', 'Ronaldos', 10, 1),
+(26, '2023-06-04', '15:30:00', 'Cristina 633055899 30799 24 de ani asa frumoasa', NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `idContacto` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `correo` varchar(100) DEFAULT NULL,
+  `mensaje` varchar(255) DEFAULT NULL,
+  `valoracion` int(11) DEFAULT NULL,
+  `resena` varchar(255) DEFAULT NULL,
+  `activo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
+INSERT INTO `contacto` (`idContacto`, `nombre`, `correo`, `mensaje`, `valoracion`, `resena`, `activo`) VALUES
+(1, 'Costel', 'coroamasteaua@steaua.ro', 'Cam nos cam gatamos', 4, 'Serviciul nu pre, dar fete frumoase', 0),
+(2, 'Vecina', 'cristina.antonia@gmail.com', 'AM VREA SATI MULTUMESC FOARTE MULT DRAGA MEA SCUMPA MEA MARIA VAI SA TRAIESTI', 5, 'Vai sa-ti manc viata ta scumpa mea draga, ce frumos ti nepotul', 1),
+(3, 'Bunica', NULL, '', 5, 'Cea mai frumoasa fata din lume. IOOOOOI cum mi-o facut unghile Ancuta noastra, ce frumos trebuie sa fie prietenul ei', 1),
+(4, 'Mario', NULL, NULL, 2, 'Cam napotNaspa', 0),
+(5, 'Paquita', NULL, NULL, 5, 'Eres la más guapa, y su chica ni te digo y el novio ya...', 1),
+(6, 'Adelin', NULL, NULL, 5, 'Porque le tengo que hacer la pelota, que si no no me da pa la boda...', 1);
 
 -- --------------------------------------------------------
 
@@ -69,7 +98,7 @@ INSERT INTO `productos` (`idProducto`, `nombreProducto`, `descripcionProducto`, 
 (2, 'Crema de manos Nivea', 'Crema de manos hombre.', 4.32, '../../assets/img/crema_manos.webp', 1, 3),
 (3, 'Laca Pantene', 'Fijación de pelo ultra resistente. 48 horas de duración.', 4.19, '../../assets/img/laca_pantene.webp', 1, 1),
 (4, 'Desodorante AXE', 'Combina olor, potencia y duración. 48 horas de resistencia.', 2.69, '../../assets/img/axe.jpg', 1, 3),
-(5, 'Plancha', 'Ondulado y lisado perfecto para tu cabello perfecto.', 16.79, '../../assets/img/plancha.webp', 1, 1),
+(5, 'Plancha', 'Ondulado y lisado perfecto para tu cabello perfecto.', 16.79, '../../assets/img/plancha.webp', 0, 1),
 (6, 'Maquinilla Phillips', 'Modelo Phillips, modelo perfecto para un rasurado sin daños, por muy pedazo de bruto que seas con tu pedazo de pelambrera, y no solo estoy hablando de la cara.', 20.34, '../../assets/img/phillips.webp', 1, 2),
 (7, 'Mascarilla capilar', 'Aumenta la suavidad de tu piel hasta un eliminado completo de tus arruguis.', 17.36, '../../assets/img/masc_capilar.jpg', 1, 2);
 
@@ -199,6 +228,12 @@ ALTER TABLE `citas`
   ADD KEY `idServicio` (`idServicio`);
 
 --
+-- Indices de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`idContacto`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -245,7 +280,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

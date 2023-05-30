@@ -19,12 +19,13 @@ export class ActualizarCitasComponent implements OnInit {
   ngOnInit(): void {
     let idCita = this.route.snapshot.paramMap.get('idCita');
     this.citasServicio.getCita(idCita).subscribe(
-      (cita:Cita) => this.cita = cita
+      (cita: Cita) => this.cita = cita
     );
     this.citasServicio.getUsuarios().subscribe(
       usuarios => {
         this.usuarios = usuarios.map(usuario => {
           return {
+            idUsuario: usuario.idUsuario,
             nombre: usuario.nombre
           };
         });
@@ -36,6 +37,7 @@ export class ActualizarCitasComponent implements OnInit {
       servicios => {
         this.servicios = servicios.map(servicio => {
           return {
+            idServicio: servicio.idServicio,
             nombre: servicio.nombre
           };
         });
@@ -45,7 +47,7 @@ export class ActualizarCitasComponent implements OnInit {
       });
   }
 
-  cita = new Cita(1,"","","",1,1,"");
+  cita = new Cita(1, "", "", "", 1, 1);
 
   getCurrentDate(): string {
     const today = new Date();

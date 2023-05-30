@@ -1,69 +1,139 @@
 <body>
-  <div class="container" *ngIf="variable">
+  <div class="container">
     <div class="row">
       <h1 class="text-center mb-5 mt-5">Contacto</h1>
+      <div class="col-12" *ngIf="variable">
+        <form (ngSubmit)="addContacto()">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingresa tu nombre"
+              [(ngModel)]="nombre">
+          </div>
 
-      <form>
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
-        </div>
-        <div class="form-group">
-          <label for="correo">Correo electrónico</label>
-          <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo electrónico">
-        </div>
-        <div class="form-group">
-          <label for="mensaje">Mensaje</label>
-          <textarea class="form-control" id="mensaje" rows="5" placeholder="Ingresa tu mensaje"></textarea>
-        </div>
-                    
-        <div class="form-group">
-          <label>Valoración</label>
-          <div class="valoracion">
-            <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 1}" (click)="setValoracion(1)">
-              <i class="bi bi-star"></i>
-            </button>
-            <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 2}" (click)="setValoracion(2)">
-              <i class="bi bi-star"></i>
-            </button>
-            <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 3}" (click)="setValoracion(3)">
-              <i class="bi bi-star"></i>
-            </button>
-            <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 4}" (click)="setValoracion(4)">
-              <i class="bi bi-star"></i>
-            </button>
-            <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 5}" (click)="setValoracion(5)">
-              <i class="bi bi-star"></i>
-            </button>
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo"
+              placeholder="Ingresa tu correo electrónico" [(ngModel)]="correo">
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Ingresa tu mensaje"
+              [(ngModel)]="mensaje"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Valoración</label>
+            <div class="valoracion">
+              <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 1}"
+                (click)="setValoracion(1)">
+                <i [class]="'bi ' + (valoracion >= 1 ? 'bi-star-fill' : 'bi-star')"></i>
+              </button>
+              <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 2}"
+                (click)="setValoracion(2)">
+                <i [class]="'bi ' + (valoracion >= 2 ? 'bi-star-fill' : 'bi-star')"></i>
+              </button>
+              <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 3}"
+                (click)="setValoracion(3)">
+                <i [class]="'bi ' + (valoracion >= 3 ? 'bi-star-fill' : 'bi-star')"></i>
+              </button>
+              <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 4}"
+                (click)="setValoracion(4)">
+                <i [class]="'bi ' + (valoracion >= 4 ? 'bi-star-fill' : 'bi-star')"></i>
+              </button>
+              <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 5}"
+                (click)="setValoracion(5)">
+                <i [class]="'bi ' + (valoracion >= 5 ? 'bi-star-fill' : 'bi-star')"></i>
+              </button>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="resena">Reseña</label>
+            <textarea class="form-control" name="resena" id="resena" rows="3" placeholder="Escribe tu reseña"
+              [(ngModel)]="resena"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <div class="row my-5">
+          <div class="col-md-4">
+            <h3 class="mb-4">Dirección</h3>
+            <p>C. Barcelona, 14</p>
+            <p>28937 Móstoles, Madrid</p>
+          </div>
+          <div class="col-md-4">
+            <h3 class="mb-4">Teléfono</h3>
+            <p>617 97 62 89</p>
+          </div>
+          <div class="col-md-4">
+            <h3 class="mb-4">Correo electrónico</h3>
+            <p>info@aabeautysalon.com</p>
+            <p>reservas@aabeautysalon.com</p>
           </div>
         </div>
-        <div class="form-group">
-          <label for="resena">Reseña</label>
-          <textarea class="form-control" id="resena" rows="3" placeholder="Escribe tu reseña" [(ngModel)]="resena"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
-
-      <div class="row my-5">
-        <div class="col-md-4">
-          <h3 class="mb-4">Dirección</h3>
-          <p>C. Barcelona, 14</p>
-          <p>28937 Móstoles, Madrid</p>
-        </div>
-        <div class="col-md-4">
-          <h3 class="mb-4">Teléfono</h3>
-          <p>+1 (123) 456-7890</p>
-        </div>
-        <div class="col-md-4">
-          <h3 class="mb-4">Correo electrónico</h3>
-          <p>info@aabeautysalon.com</p>
-          <p>reservas@aabeautysalon.com</p>
-        </div>
+        <app-footer></app-footer>
       </div>
-      <app-footer></app-footer>
     </div>
   </div>
-  <div class="row" *ngIf="!variable">
-      <h1 class="text-center mb-5 mt-5">Cristiano Ronaldo</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let contacto of contactos | async">
+        <div class="card mb-3 custom-card">
+          <div class="card-body">
+            <h5 class="card-title">{{contacto.nombre}}</h5>
+            <div class="valoracion">
+              <span class="star"
+                [ngClass]="{'bi bi-star-fill': contacto.valoracion >= 1, 'bi bi-star': contacto.valoracion < 1}"></span>
+              <span class="star"
+                [ngClass]="{'bi bi-star-fill': contacto.valoracion >= 2, 'bi bi-star': contacto.valoracion < 2}"></span>
+              <span class="star"
+                [ngClass]="{'bi bi-star-fill': contacto.valoracion >= 3, 'bi bi-star': contacto.valoracion < 3}"></span>
+              <span class="star"
+                [ngClass]="{'bi bi-star-fill': contacto.valoracion >= 4, 'bi bi-star': contacto.valoracion < 4}"></span>
+              <span class="star"
+                [ngClass]="{'bi bi-star-fill': contacto.valoracion >= 5, 'bi bi-star': contacto.valoracion < 5}"></span>
+            </div>
+            <p class="card-text"><small class="text-muted">{{contacto.correo}}</small></p>
+            <p class="card-text"><small class="text-muted">{{contacto.mensaje}}</small></p>
+            <p class="card-text mb-3">{{contacto.resena}}</p>
+            <button type="button" class="btn btn-danger"
+              (click)="abrirModal(contenido, contacto)">Eliminar</button>&nbsp;
+            <button type="button" class="btn btn-info"
+              (click)="contacto.activo ? quitar(contacto) : publicar(contacto)">{{contacto.activo ? 'Quitar' :
+              'Publicar'}}</button>&nbsp;
+          </div>
+        </div>
+        <ng-template #contenido let-modal let-contacto="contactoSeleccionado">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Eliminar contacto</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center mb-4">¿Estás seguro que deseas eliminar el siguiente contacto?</p>
+            <div class="card mb-3 card-margen">
+              <div class="row g-0">
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{contactoSeleccionado.nombre}}</h5>
+                    <p class="card-text">{{contactoSeleccionado.correo}}</p>
+                    <p class="card-text">{{ contactoSeleccionado.resena}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+            <button type="button" class="btn btn-danger"
+              (click)="eliminar(contactoSeleccionado); modal.close()">Eliminar</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
   </div>
+
 </body>

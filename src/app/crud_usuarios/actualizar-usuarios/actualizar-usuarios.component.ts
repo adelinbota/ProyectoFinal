@@ -9,9 +9,9 @@ import { TiposUsuario } from '../tiposUsuario';
   templateUrl: './actualizar-usuarios.component.html',
   styleUrls: ['./actualizar-usuarios.component.css']
 })
-export class ActualizarUsuariosComponent implements OnInit{
+export class ActualizarUsuariosComponent implements OnInit {
 
-  constructor(private usuarioServicio: UsuarioService, private router: Router, private route:ActivatedRoute){}
+  constructor(private usuarioServicio: UsuarioService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let idUsuario = this.route.snapshot.paramMap.get('idUsuario');
@@ -26,10 +26,10 @@ export class ActualizarUsuariosComponent implements OnInit{
     )
   }
 
-  usuario = new Usuario(1,"","","","","","","","",1);
-  tipoUsuario:TiposUsuario[];
+  usuario = new Usuario(1, "", "", "", "", "", "", "", "", 1);
+  tipoUsuario: TiposUsuario[];
 
-  actualizar(){
+  actualizar() {
     this.usuarioServicio.actualizarUsuario(this.usuario).subscribe();
     this.router.navigate(['/usuarios']);
   }

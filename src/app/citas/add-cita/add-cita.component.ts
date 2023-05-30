@@ -18,6 +18,7 @@ export class AddCitaComponent implements OnInit {
       usuarios => {
         this.usuarios = usuarios.map(usuario => {
           return {
+            idUsuario: usuario.idUsuario,
             nombre: usuario.nombre
           };
         });
@@ -29,6 +30,7 @@ export class AddCitaComponent implements OnInit {
       servicios => {
         this.servicios = servicios.map(servicio => {
           return {
+            idServicio: servicio.idServicio,
             nombre: servicio.nombre
           };
         });
@@ -41,15 +43,25 @@ export class AddCitaComponent implements OnInit {
   public usuarios: any[];
   public servicios: any[];
 
-  datosPersona: string;
   idUsuario: number;
   fechaCita: string;
+  horaCita: string;
+  comentarios: string;
   idServicio: number;
   tiposServicioConMayuscula: any
 
-  cita = new Cita(1,"","","",1,1)
+  cita = new Cita(1, "", "", "", 1, 1)
 
   addDatos() {
+    this.cita.comentarios = this.comentarios;
+    this.cita.horaCita = this.horaCita;
+    this.cita.fechaCita = this.fechaCita;
+    this.cita.idServicio = this.idServicio;
+    if (this.idUsuario) {
+      this.cita.idUsuario = this.idUsuario;
+    } else {
+      this.cita.idUsuario = null;
+    }
     this.funcionesCita.anadirCita(this.cita).subscribe();
     console.log(this.cita);
     this.router.navigate(['/citas']);

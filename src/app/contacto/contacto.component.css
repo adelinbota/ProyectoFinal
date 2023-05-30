@@ -1,82 +1,98 @@
-body{
+body {
   margin: 0;
   overflow-x: hidden;
   background-image: linear-gradient(beige, rgb(255, 255, 174));
 }
 
-  .form-group label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  .form-control {
-    width: 100%;
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid #ccc;
-    padding: 0.5rem 1rem;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-control:focus {
-    outline: none;
-    border-bottom: 2px solid #007bff;
-  }
-  
-  textarea.form-control {
-    resize: none;
-  }
-  
-  button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0062cc;
-    cursor: pointer;
-  }
-  
-  .my-5 {
-    margin-top: 5rem;
-  }
-  
-  .col-md-4 {
-    padding: 2rem;
-    border-radius: 5px;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .col-md-4 h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .col-md-4 p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .btn-valoracion {
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-  
-  .btn-valoracion i {
-    font-size: 1.8rem;
-    padding-right: 3.5px;
-  }
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
 
-  .btn-valoracion.active .bi-star {
-    color: #f5d041;
-  }
-  
+.form-control {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #ccc;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-bottom: 2px solid #007bff;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0;
+}
+
+button[type="submit"]:hover {
+  background-color: #0062cc;
+  cursor: pointer;
+}
+
+.my-5 {
+  margin-top: 5rem;
+}
+
+.col-md-4 {
+  padding: 2rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.col-md-4 h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.col-md-4 p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-valoracion {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-valoracion i {
+  font-size: 1.8rem;
+  padding-right: 3.5px;
+}
+
+.custom-card {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ffc107;
+}
+
+.bi-star-fill {
+  color: #FFD700;
+}

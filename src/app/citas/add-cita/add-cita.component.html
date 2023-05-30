@@ -9,21 +9,20 @@
           <div class="col-12">
             <div class="row">
               <div class="col-4 mt-3">
-                <label for="cita" class="form-label">Fecha cita:</label>
-                <input type="date" [min]="getCurrentDate()" name="cita" id="cita" class="form-control"
-                  [(ngModel)]="cita.fechaCita" aria-describedby="helpId">
+                <label for="fechaCita" class="form-label">Fecha cita:</label>
+                <input type="date" [min]="getCurrentDate()" name="fechaCita" id="fechaCita" class="form-control"
+                  [(ngModel)]="fechaCita" aria-describedby="helpId">
               </div>
 
               <div class="col-3 mt-3">
-                <label for="hora" class="form-label">Hora cita:</label>
-                <input type="time" name="horaCita" id="hora" class="form-control" [(ngModel)]="cita.horaCita"
+                <label for="horaCita" class="form-label">Hora cita:</label>
+                <input type="time" name="horaCita" id="horaCita" class="form-control" [(ngModel)]="horaCita"
                   aria-describedby="helpId">
               </div>
 
               <div class="col mt-3">
                 <label for="password" class="form-label">Usuario:</label>
-                <select class="form-select" aria-label="Default select example" name="select"
-                  [(ngModel)]="cita.idUsuario">
+                <select class="form-select" aria-label="Default select example" name="selectUsuario" [(ngModel)]="idUsuario">
                   <option value="">-- Seleccione un usuario --</option>
                   <option *ngFor="let usuario of usuarios" value="{{usuario.idUsuario}}">{{usuario.nombre}}</option>
                 </select>
@@ -34,14 +33,13 @@
           <div class="col-12">
             <div class="row">
               <div class="col-8 mt-3">
-                <label for="cp" class="form-label">Otros datos:</label>
-                <textarea type="text" name="cp" id="" class="form-control" [(ngModel)]="cita.comentarios"
+                <label for="comentarios" class="form-label">Otros datos:</label>
+                <textarea type="text" name="comentarios" id="comentarios" class="form-control" [(ngModel)]="comentarios"
                   aria-describedby="helpId"></textarea>
               </div>
               <div class="col-4 mt-3">
                 <label for="select" class="form-label">Tipo servicio:</label>
-                <select class="form-select" aria-label="Default select example" name="select"
-                  [(ngModel)]="cita.idServicio">
+                <select class="form-select" aria-label="Default select example" name="selectServicios" [(ngModel)]="idServicio">
                   <option *ngFor="let servicio of servicios" value="{{servicio.idServicio}}">{{servicio.nombre}}
                   </option>
                 </select>
