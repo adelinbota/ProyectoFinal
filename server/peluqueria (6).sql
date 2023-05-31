@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2023 a las 17:59:48
+-- Tiempo de generación: 31-05-2023 a las 17:53:45
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -66,7 +66,7 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`idContacto`, `nombre`, `correo`, `mensaje`, `valoracion`, `resena`, `activo`) VALUES
-(1, 'Costel', 'coroamasteaua@steaua.ro', 'Cam nos cam gatamos', 4, 'Serviciul nu pre, dar fete frumoase', 0),
+(1, 'Costel', 'coroamasteaua@steaua.ro', 'Cam nos cam gatamos', 4, 'Serviciul nu pre, dar fete frumoase', 1),
 (2, 'Vecina', 'cristina.antonia@gmail.com', 'AM VREA SATI MULTUMESC FOARTE MULT DRAGA MEA SCUMPA MEA MARIA VAI SA TRAIESTI', 5, 'Vai sa-ti manc viata ta scumpa mea draga, ce frumos ti nepotul', 1),
 (3, 'Bunica', NULL, '', 5, 'Cea mai frumoasa fata din lume. IOOOOOI cum mi-o facut unghile Ancuta noastra, ce frumos trebuie sa fie prietenul ei', 1),
 (4, 'Mario', NULL, NULL, 2, 'Cam napotNaspa', 0),
@@ -124,7 +124,7 @@ CREATE TABLE `servicios` (
 INSERT INTO `servicios` (`idServicio`, `nombre`, `descripcion`, `precio`, `duracion`, `idTipoServicio`) VALUES
 (1, 'Corte de pelo hombre', 'Corte fácil hombre', 11.5, '00:25:00', 1),
 (2, 'Corte de pelo mujer', 'Corte nivel medio mujer', 20.8, '00:45:00', 1),
-(3, 'Teñido de pelo', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '01:30:00', 3);
+(3, 'Teñido de pelo', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '01:30:00', 1);
 
 -- --------------------------------------------------------
 
@@ -163,9 +163,8 @@ CREATE TABLE `tipo_servicio` (
 --
 
 INSERT INTO `tipo_servicio` (`idTipoServicio`, `nombre`) VALUES
-(1, 'corte'),
-(2, 'lavado'),
-(3, 'teñido');
+(1, 'pelo'),
+(2, 'uñas');
 
 -- --------------------------------------------------------
 
