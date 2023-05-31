@@ -15,7 +15,7 @@ export class CitasComponent{
   citaSeleccionada:Cita
   contenido:any
   public citas: Observable<Cita[]>;
-  logueado = true;
+  logueado = false;
  
   constructor(private funciones:FuncionesService, private citasFunciones:CitasService, private modal:NgbModal){
     this.citas = combineLatest([
