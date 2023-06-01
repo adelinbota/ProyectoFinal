@@ -7,8 +7,11 @@
           <input type="text" id="nombre" name="nombre" required>
         </div>
         <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+          <label for="select">Servicio:</label>
+          <select class="form-select" name="select" [(ngModel)]="idTipoServicio">
+              <option *ngFor="let servicio of servicioConMayuscula" 
+                  value="{{servicio.idTipoServicio}}">{{servicio.nombre}}</option>
+            </select>
         </div>
         <div class="form-group">
           <label for="fecha">Fecha:</label>
@@ -17,13 +20,6 @@
         <div class="form-group">
           <label for="hora">Hora:</label>
           <input type="time" id="hora" name="hora" required>
-        </div>
-        <div class="form-group">
-          <label for="select">Servicio:</label>
-          <select class="form-select" name="select" [(ngModel)]="idTipoServicio">
-              <option *ngFor="let servicio of servicioConMayuscula" 
-                  value="{{servicio.idTipoServicio}}">{{servicio.nombre}}</option>
-            </select>
         </div>
         <div class="form-group">
           <label for="comentarios">Comentarios:</label>
