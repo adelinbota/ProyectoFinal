@@ -9,7 +9,7 @@
     </div>
 
     <div class="navigation-buttons">
-      <button class="btn btn-secondary" (click)="anterior()">
+      <button class="btn btn-secondary" [class.disabled]="semanaActual <= diaActual" (click)="anterior()">
         <<</button>
           <button class="btn btn-secondary" (click)="siguiente()">>></button>
     </div>
@@ -24,7 +24,7 @@
       <ng-container *ngFor="let hora of horas">
         <tr>
           <td>{{ hora }}</td>
-          <td (click)="abrirModal(contenido, semana, hora)" *ngFor="let semana of semanas"></td>
+          <td [ngClass]="{ 'ocupado': estaOcupada(semana, hora) }" (click)="abrirModal(contenido, semana, hora)" *ngFor="let semana of semanas"></td>
         </tr>
       </ng-container>
       <ng-template #contenido let-modal>

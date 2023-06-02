@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionesService } from '../funciones.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Cita } from '../citas/cita';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
@@ -9,11 +11,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CalendarioComponent implements OnInit {
 
-  constructor(private funciones: FuncionesService, private modal: NgbModal) {
+  constructor(private funciones: FuncionesService, private modal: NgbModal, private router: Router) {
     this.diaActual = new Date();
     this.semanaActual = this.inicioSemana(this.diaActual);
     this.semanas = this.generarSemanas();
   }
+
+  public citas: Cita[] = [];
 
   diaActual: Date;
   semanaActual: Date;
@@ -24,10 +28,17 @@ export class CalendarioComponent implements OnInit {
   semanas: string[];
 
   ngOnInit(): void {
-    console.log(this.anio)
+    this.funciones.getCitas().subscribe(
+      citas => {
+        this.citas = citas;
+        console.log(citas);
+      },
+      error => {
+        console.error(error);
+      }
+    );
     this.funciones.obtenerTiposServicio().subscribe(
       tipos => {
-        console.log(tipos);
         this.tiposServicio = tipos;
         this.tiposServicioConMayuscula = tipos.map(tipo => {
           return {
@@ -69,6 +80,11 @@ export class CalendarioComponent implements OnInit {
     return str.replace(/\b\w/g, c => c.toUpperCase());
   }
 
+  estaOcupada(fecha: string, hora: string): boolean {
+    const hola = this.citas.some(cita => cita.fechaCita === fecha && cita.horaCita === hora);
+    return hola;
+  }
+
   anterior() {
     this.semanaActual.setDate(this.semanaActual.getDate() - 7);
     this.semanas = this.generarSemanas();
@@ -81,7 +97,7 @@ export class CalendarioComponent implements OnInit {
 
   private inicioSemana(date: Date): Date {
     const diasemana = date.getDay();
-    const diff = date.getDate() - diasemana + (diasemana === 0 ? -6 : 1);
+    const diff = date.getDate() - diasemana + (diasemana === 0 ? -6 : diasemana);
     const comienzosemana = new Date(date.setDate(diff));
 
     if (comienzosemana.getMonth() !== date.getMonth()) {
@@ -96,7 +112,7 @@ export class CalendarioComponent implements OnInit {
     const semanas: string[] = [];
     const fecha = new Date(this.semanaActual);
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       const dia = fecha.getDate().toString().padStart(2, '0');
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
       const formato = `${dia}/${mes}`;
@@ -129,15 +145,32 @@ export class CalendarioComponent implements OnInit {
 
   public usuarios: any[];
   public servicios: any[];
-  idUsuario: number;
+  idUsuario: number | null;
   fechaSeleccionada: string;
   horaSeleccionada: string;
   comentarios: string;
   idServicio: number;
 
+  cita = new Cita(1, "", "", "", 1, 1)
 
   addDatos() {
+    const fechaMysql = this.formatear(this.fechaSeleccionada);
+    this.cita.fechaCita = fechaMysql
+    this.cita.horaCita = this.horaSeleccionada
+    this.cita.comentarios = this.comentarios
+    this.cita.idUsuario = this.idUsuario
+    this.cita.idServicio = this.idServicio
+    console.log(this.cita);
+    this.funciones.agregarCita(this.cita).subscribe();
+    this.router.navigate(['/citas']);
+    this.modal.dismissAll();
+  }
 
+  formatear(fechaSeleccionada: string): string {
+    const [dia, mes] = fechaSeleccionada.split('/');
+    const anio = this.fechaHoy.getFullYear();
+    
+    return `${anio}-${mes}-${dia}`;
   }
 
   getCurrentDate(): string {

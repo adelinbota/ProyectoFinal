@@ -10,14 +10,14 @@ import { CitasService } from './citas.service';
   templateUrl: './citas.component.html',
   styleUrls: ['./citas.component.css']
 })
-export class CitasComponent{
+export class CitasComponent {
 
-  citaSeleccionada:Cita
-  contenido:any
+  citaSeleccionada: Cita
+  contenido: any
   public citas: Observable<Cita[]>;
-  logueado = false;
- 
-  constructor(private funciones:FuncionesService, private citasFunciones:CitasService, private modal:NgbModal){
+  logueado = true;
+
+  constructor(private funciones: FuncionesService, private citasFunciones: CitasService, private modal: NgbModal) {
     this.citas = combineLatest([
       this.citasFunciones.getCitas(),
       this.funciones.getUsuarios(),
@@ -33,21 +33,21 @@ export class CitasComponent{
             nombreServicio: servicio ? servicio.nombre : ''
           };
         });
-  })
+      })
     )
-}
-
-  abrirModal(contenido: any, cita:Cita){
-    this.citaSeleccionada = cita
-    this.modal.open(contenido, { centered: true})
   }
 
-  eliminarCita(cita:Cita){
+  abrirModal(contenido: any, cita: Cita) {
+    this.citaSeleccionada = cita
+    this.modal.open(contenido, { centered: true })
+  }
+
+  eliminarCita(cita: Cita) {
     this.citasFunciones.eliminarCita(cita).subscribe();
     this.citas = this.citas.pipe(
       map((servicios: any[]) => servicios.filter((c: Cita) => c !== cita)))
     this.modal.dismissAll();
   }
 
-  
+
 }
