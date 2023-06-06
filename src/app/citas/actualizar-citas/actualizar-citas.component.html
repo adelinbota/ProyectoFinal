@@ -15,8 +15,14 @@
               </div>
 
               <div class="col-3 mt-3">
-                <label for="hora" class="form-label">Hora cita:</label>
+                <label for="hora" class="form-label">Hora entrada:</label>
                 <input type="time" name="horaCita" id="hora" class="form-control" [(ngModel)]="cita.horaCita"
+                  aria-describedby="helpId">
+              </div>
+
+              <div class="col-3 mt-3">
+                <label for="hora" class="form-label">Hora salida:</label>
+                <input type="time" name="horaFin" id="hora" class="form-control" [(ngModel)]="cita.horaFin"
                   aria-describedby="helpId">
               </div>
 

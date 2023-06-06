@@ -41,7 +41,6 @@
             <td>
               <button type="button" routerLink="/servicios/actualizar-servicios/{{servicio.idServicio}}"
                 class="btn btn-outline-success btn-sm">Editar</button>&nbsp;
-              <!-- <button type="button" class="btn btn-outline-warning btn-sm">Poner a la venta</button>&nbsp; -->
               <button type="button" class="btn btn-outline-danger btn-sm"
                 (click)="abrirModal(contenido, servicio)">Eliminar</button>
             </td>
@@ -86,7 +85,7 @@
           <div class="card-body">
             <h5 class="card-title">{{servicio.nombre}}</h5>
             <p class="card-text">{{abreviarTexto(servicio.descripcion,100)}}</p>
-            <p class="card-text mb-2">{{servicio.duracion.slice(1,5)}}</p>
+            <p class="card-text mb-2"><small class="text-muted">{{ servicio.duracion.slice(0, 5) }} horas</small></p>
             <h6 class="card-subtitle mb-2 text-muted">{{servicio.precio}} €</h6>
           </div>
         </div>
@@ -105,7 +104,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{servicioSeleccionado.nombre}}</h5>
                   <p class="card-text">{{servicioSeleccionado.descripcion}}</p>
-                  <p class="card-text">{{ servicioSeleccionado.duracion.slice(0, 5) }}</p>
+                  <p class="card-text"><small class="text-muted">{{ servicioSeleccionado.duracion.slice(0, 5) }}
+                      horas</small></p>
                   <p class="card-text"><small class="text-muted">{{servicioSeleccionado.precio}} €</small></p>
                 </div>
               </div>

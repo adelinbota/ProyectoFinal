@@ -19,7 +19,6 @@ export class CalendarioComponent implements OnInit {
 
   public citas: Cita[] = [];
 
-
   public usuarios: any[];
   public servicios: any[];
   idUsuario: number | null;
@@ -77,7 +76,8 @@ export class CalendarioComponent implements OnInit {
           return {
             idServicio: servicio.idServicio,
             nombre: servicio.nombre,
-            duracion: servicio.duracion
+            duracion: servicio.duracion,
+            idTipoServicio: servicio.idTipoServicio
           };
         });
       },
@@ -186,7 +186,7 @@ export class CalendarioComponent implements OnInit {
         cita.fechaCita === this.formatear(semana) &&
         hora >= cita.horaCita && hora < cita.horaFin
     );
-  
+
     if (cita && this.usuarios) {
       if (cita.nombreUsuario !== null) {
         const usuario = this.usuarios.find(
@@ -198,10 +198,10 @@ export class CalendarioComponent implements OnInit {
       }
       return cita.comentarios || '';
     }
-  
+
     return '';
   }
-  
+
   // PROGRAMACIÓN MODAL
   fechaHoy = new Date();
   anio = this.fechaHoy.getFullYear().toString()
@@ -225,8 +225,8 @@ export class CalendarioComponent implements OnInit {
     this.cita.idServicio = this.valorServicio
     console.log(this.cita);
     this.funciones.agregarCita(this.cita).subscribe();
-    this.router.navigate(['/citas']);
     this.modal.dismissAll();
+    window.location.reload();
   }
 
   formatear(fechaSeleccionada: string): string {

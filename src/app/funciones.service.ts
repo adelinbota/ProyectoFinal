@@ -27,6 +27,12 @@ export class FuncionesService {
   getCitas() {
     return this.http.get<Cita[]>(`${this.baseUrl}/citas`);
   }
+  getCitasPelo() {
+    return this.http.get<Cita[]>(`${this.baseUrl}/citas/pelo`);
+  }
+  getCitasUnas() {
+    return this.http.get<Cita[]>(`${this.baseUrl}/citas/unas`);
+  }
   obtenerTiposServicio() {
     return this.http.get<any[]>(`${this.baseUrl}/servicios/obtenerTiposServicio`);
   }
