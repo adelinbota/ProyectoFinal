@@ -8,8 +8,9 @@ describe('ActualizarCitasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActualizarCitasComponent ]
-    })
+    declarations: [ActualizarCitasComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ActualizarCitasComponent);

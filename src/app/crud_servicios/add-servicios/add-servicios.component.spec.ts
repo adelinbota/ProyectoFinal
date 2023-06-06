@@ -8,8 +8,9 @@ describe('AddServiciosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddServiciosComponent ]
-    })
+    declarations: [AddServiciosComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AddServiciosComponent);

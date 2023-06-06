@@ -8,8 +8,9 @@ describe('VerProductosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VerProductosComponent]
-    })
+    declarations: [VerProductosComponent],
+    teardown: { destroyAfterEach: false }
+})
       .compileComponents();
 
     fixture = TestBed.createComponent(VerProductosComponent);

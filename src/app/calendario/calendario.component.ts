@@ -19,11 +19,21 @@ export class CalendarioComponent implements OnInit {
 
   public citas: Cita[] = [];
 
+
+  public usuarios: any[];
+  public servicios: any[];
+  idUsuario: number | null;
+  fechaSeleccionada: string;
+  horaSeleccionada: string;
+  horaFin: string;
+  duracionServicio: string
+  comentarios: string;
+  idServicio: number;
   diaActual: Date;
   semanaActual: Date;
   tiposServicio: any
   tiposServicioConMayuscula: any
-  horas: string[] = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+  horas: string[] = ['09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00', '18:00:00', '19:00:00', '20:00:00'];
 
   semanas: string[];
 
@@ -67,7 +77,8 @@ export class CalendarioComponent implements OnInit {
         this.servicios = servicios.map(servicio => {
           return {
             idServicio: servicio.idServicio,
-            nombre: servicio.nombre
+            nombre: servicio.nombre,
+            duracion: servicio.duracion
           };
         });
       },
@@ -143,20 +154,13 @@ export class CalendarioComponent implements OnInit {
     this.modal.open(contenido, { centered: true })
   }
 
-  public usuarios: any[];
-  public servicios: any[];
-  idUsuario: number | null;
-  fechaSeleccionada: string;
-  horaSeleccionada: string;
-  comentarios: string;
-  idServicio: number;
-
-  cita = new Cita(1, "", "", "", 1, 1)
+  cita = new Cita(1, "", "", "", "", 1, 1)
 
   addDatos() {
     const fechaMysql = this.formatear(this.fechaSeleccionada);
     this.cita.fechaCita = fechaMysql
     this.cita.horaCita = this.horaSeleccionada
+    this.cita.horaFin = this.horaFin
     this.cita.comentarios = this.comentarios
     this.cita.idUsuario = this.idUsuario
     this.cita.idServicio = this.idServicio
@@ -169,7 +173,7 @@ export class CalendarioComponent implements OnInit {
   formatear(fechaSeleccionada: string): string {
     const [dia, mes] = fechaSeleccionada.split('/');
     const anio = this.fechaHoy.getFullYear();
-    
+
     return `${anio}-${mes}-${dia}`;
   }
 

@@ -50,7 +50,7 @@ export class AddCitaComponent implements OnInit {
   idServicio: number;
   tiposServicioConMayuscula: any
 
-  cita = new Cita(1, "", "", "", 1, 1)
+  cita = new Cita(1, "", "", "", "", 1, 1)
 
   addDatos() {
     this.cita.comentarios = this.comentarios;
