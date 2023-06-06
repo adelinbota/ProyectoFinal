@@ -47,7 +47,7 @@ export class ActualizarCitasComponent implements OnInit {
       });
   }
 
-  cita = new Cita(1, "", "", "", 1, 1);
+  cita = new Cita(1, "", "", "", "", 1, 1);
 
   getCurrentDate(): string {
     const today = new Date();
