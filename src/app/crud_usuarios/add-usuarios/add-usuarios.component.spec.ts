@@ -8,8 +8,9 @@ describe('AddUsuariosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddUsuariosComponent ]
-    })
+    declarations: [AddUsuariosComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AddUsuariosComponent);

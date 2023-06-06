@@ -8,8 +8,9 @@ describe('CalendarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarioComponent ]
-    })
+    declarations: [CalendarioComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(CalendarioComponent);

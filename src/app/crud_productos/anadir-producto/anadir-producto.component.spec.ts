@@ -8,8 +8,9 @@ describe('AnadirProductoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnadirProductoComponent ]
-    })
+    declarations: [AnadirProductoComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AnadirProductoComponent);
