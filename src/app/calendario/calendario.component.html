@@ -24,7 +24,14 @@
       <ng-container *ngFor="let hora of horas">
         <tr>
           <td>{{ hora.slice(0,5) }}</td>
-          <td [ngClass]="{ 'ocupado': estaOcupada(semana, hora) }" (click)="abrirModal(contenido, semana, hora)" *ngFor="let semana of semanas"></td>
+          <td 
+          (click)="abrirModal(contenido, semana, hora)" 
+          *ngFor="let semana of semanas"
+          [ngClass]="{ 'cita-programada': citaProgramada(semana, hora) }">
+          <span *ngIf="citaProgramada(semana, hora)">
+            {{ obtenerNombreUsuario(semana, hora) }}
+          </span>
+          </td>
         </tr>
       </ng-container>
       <ng-template #contenido let-modal>

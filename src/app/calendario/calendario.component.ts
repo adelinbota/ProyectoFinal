@@ -33,7 +33,7 @@ export class CalendarioComponent implements OnInit {
   semanaActual: Date;
   tiposServicio: any
   tiposServicioConMayuscula: any
-  horas: string[] = ['09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00', '18:00:00', '19:00:00', '20:00:00'];
+  horas: string[] = ['09:00:00', '09:30:00', '10:00:00', '10:30:00', '11:00:00', '11:30:00', '12:00:00', '12:30:00', '13:00:00', '13:30:00', '14:00:00', '14:30:00', '15:00:00', '15:30:00', '16:00:00', '16:30:00', '17:00:00', '17:30:00', '18:00:00', '18:30:00', '19:00:00', '19:30:00', '20:00:00'];
 
   semanas: string[];
 
@@ -90,26 +90,6 @@ export class CalendarioComponent implements OnInit {
     return str.replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  estaOcupada(fecha: string, hora: string): boolean {
-
-    const indiceHoraInicio = this.horaInicio(hora);
-    const indiceHoraFin = this.horaInicio(this.horaFin);
-  
-    for (let i = indiceHoraInicio; i <= indiceHoraFin; i++) {
-      console.log(i)
-      if (this.citas.some(cita => cita.fechaCita == fecha && cita.horaCita == this.horas[i])) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  horaInicio(hora: string): number{
-    let hola = this.horas.indexOf(hora);
-    console.log(hola)
-    return hola
-  }
-
   anterior() {
     this.semanaActual.setDate(this.semanaActual.getDate() - 7);
     this.semanas = this.generarSemanas();
@@ -157,7 +137,7 @@ export class CalendarioComponent implements OnInit {
     return fechaAnterior < fechaHoy;
   }
 
-  getDuracionServicio(){
+  getDuracionServicio() {
     if (this.valorServicio) {
       this.horaFin = this.calcularFechaFinal()
       console.log(this.servicios)
@@ -166,7 +146,7 @@ export class CalendarioComponent implements OnInit {
       this.duracionServicio = servicioSeleccionado.duracion
     }
   }
-  
+
   calcularFechaFinal(): string {
     if (this.valorServicio) {
       const servicioSeleccionado = this.servicios.find(servicio => servicio.idServicio == this.valorServicio);
@@ -175,21 +155,53 @@ export class CalendarioComponent implements OnInit {
         const fechaInicio = new Date(this.formatear(this.fechaSeleccionada));
         fechaInicio.setHours(parseInt(this.horaSeleccionada.slice(0, 2)));
         fechaInicio.setMinutes(parseInt(this.horaSeleccionada.slice(3, 5)));
-  
+
         const duracionHoras = parseInt(duracion.slice(0, 2));
         const duracionMinutos = parseInt(duracion.slice(3, 5));
-  
+
         const fechaFinal = new Date(fechaInicio.getTime() + duracionHoras * 60 * 60 * 1000 + duracionMinutos * 60 * 1000);
         const hora = fechaFinal.getHours().toString().padStart(2, '0');
         const minutos = fechaFinal.getMinutes().toString().padStart(2, '0');
-  
+
         return `${hora}:${minutos}`;
       }
+    }
+
+    return '';
+  }
+
+  citaProgramada(semana: string, hora: string): boolean {
+    const cita = this.citas.find(
+      (cita) =>
+        cita.fechaCita === this.formatear(semana) &&
+        hora >= cita.horaCita && hora < cita.horaFin
+    );
+
+    return !!cita;
+  }
+
+  obtenerNombreUsuario(semana: string, hora: string): string {
+    const cita = this.citas.find(
+      (cita) =>
+        cita.fechaCita === this.formatear(semana) &&
+        hora >= cita.horaCita && hora < cita.horaFin
+    );
+  
+    if (cita && this.usuarios) {
+      if (cita.nombreUsuario !== null) {
+        const usuario = this.usuarios.find(
+          (usuario) => usuario.idUsuario === cita.idUsuario
+        );
+        if (usuario) {
+          return usuario.nombre;
+        }
+      }
+      return cita.comentarios || '';
     }
   
     return '';
   }
-
+  
   // PROGRAMACIÓN MODAL
   fechaHoy = new Date();
   anio = this.fechaHoy.getFullYear().toString()

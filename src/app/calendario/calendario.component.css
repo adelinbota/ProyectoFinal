@@ -36,8 +36,14 @@
   }
 
   td {
-      text-align: center;
+    max-width: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
   }
+  
 
   .disabled {
       pointer-events: none;
@@ -45,9 +51,9 @@
       color: #bfbfbf;
   }
 
-  .ocupado {
-    background-color: red;
+  .cita-programada {
+    background-color: rgb(185, 185, 185);
     color: white;
-    font-weight: bold;
   }
+  
   
