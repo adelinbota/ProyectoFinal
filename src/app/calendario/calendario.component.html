@@ -38,7 +38,8 @@
                 <div class="col-12">
                   <div class="row">
                     <div class="text-center">
-                      <h4>{{fechaSeleccionada}}/{{anio}}</h4><h4>{{horaSeleccionada.slice(0,5)}}</h4>
+                      <h4>{{fechaSeleccionada}}/{{anio}}</h4><h4>{{horaSeleccionada.slice(0,5)}} - {{horaFin}}</h4>
+                      <h5 *ngIf="duracionServicio">Duración: {{duracionServicio.slice(0,5)}}</h5>
                     </div>
                     <div class="col-6 mt-3">
                       <label for="password" class="form-label">Usuario:</label>
@@ -51,9 +52,9 @@
                     </div>
                     <div class="col-6 mt-3">
                       <label for="select" class="form-label">Tipo servicio:</label>
-                      <select class="form-select" aria-label="Default select example" name="selectServicios"
-                        [(ngModel)]="idServicio">
-                        <option *ngFor="let servicio of servicios" value="{{servicio.idServicio}}">{{servicio.nombre}}: {{servicio.duracion.slice(0,5)}}
+                      <select class="form-select" aria-label="Default select example" name="selectServicios" (change)="getDuracionServicio()"
+                        [(ngModel)]="valorServicio">
+                        <option *ngFor="let servicio of servicios" value="{{servicio.idServicio}}">{{servicio.nombre}}
                         </option>
                       </select>
                     </div>

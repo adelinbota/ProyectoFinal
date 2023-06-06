@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let cita of citas | async">
-            <td scope="row">{{cita.fechaCita.split('-')[2]}}/{{cita.fechaCita.split('-')[1]}} {{cita.horaCita.slice(0,5)}}</td>
+            <td scope="row">{{cita.fechaCita.split('-')[2]}}/{{cita.fechaCita.split('-')[1]}} {{cita.horaCita.slice(0,5)}} - {{cita.horaFin.slice(0,5)}}</td>
             <td>{{cita.comentarios}}</td>
             <td>{{cita.nombreUsuario}}</td>
             <td>{{cita.nombreServicio}}</td>

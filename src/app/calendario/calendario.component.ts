@@ -28,7 +28,7 @@ export class CalendarioComponent implements OnInit {
   horaFin: string;
   duracionServicio: string
   comentarios: string;
-  idServicio: number;
+  valorServicio: number;
   diaActual: Date;
   semanaActual: Date;
   tiposServicio: any
@@ -41,7 +41,6 @@ export class CalendarioComponent implements OnInit {
     this.funciones.getCitas().subscribe(
       citas => {
         this.citas = citas;
-        console.log(citas);
       },
       error => {
         console.error(error);
@@ -143,6 +142,39 @@ export class CalendarioComponent implements OnInit {
     return fechaAnterior < fechaHoy;
   }
 
+  getDuracionServicio(){
+    if (this.valorServicio) {
+      this.horaFin = this.calcularFechaFinal()
+      console.log(this.servicios)
+      const servicioSeleccionado = this.servicios.find(servicio => servicio.idServicio == this.valorServicio)
+      console.log(this.valorServicio)
+      this.duracionServicio = servicioSeleccionado.duracion
+    }
+  }
+  
+  calcularFechaFinal(): string {
+    if (this.valorServicio) {
+      const servicioSeleccionado = this.servicios.find(servicio => servicio.idServicio == this.valorServicio);
+      if (servicioSeleccionado) {
+        const duracion = servicioSeleccionado.duracion;
+        const fechaInicio = new Date(this.formatear(this.fechaSeleccionada));
+        fechaInicio.setHours(parseInt(this.horaSeleccionada.slice(0, 2)));
+        fechaInicio.setMinutes(parseInt(this.horaSeleccionada.slice(3, 5)));
+  
+        const duracionHoras = parseInt(duracion.slice(0, 2));
+        const duracionMinutos = parseInt(duracion.slice(3, 5));
+  
+        const fechaFinal = new Date(fechaInicio.getTime() + duracionHoras * 60 * 60 * 1000 + duracionMinutos * 60 * 1000);
+        const hora = fechaFinal.getHours().toString().padStart(2, '0');
+        const minutos = fechaFinal.getMinutes().toString().padStart(2, '0');
+  
+        return `${hora}:${minutos}`;
+      }
+    }
+  
+    return '';
+  }
+
   // PROGRAMACIÓN MODAL
   fechaHoy = new Date();
   anio = this.fechaHoy.getFullYear().toString()
@@ -163,7 +195,7 @@ export class CalendarioComponent implements OnInit {
     this.cita.horaFin = this.horaFin
     this.cita.comentarios = this.comentarios
     this.cita.idUsuario = this.idUsuario
-    this.cita.idServicio = this.idServicio
+    this.cita.idServicio = this.valorServicio
     console.log(this.cita);
     this.funciones.agregarCita(this.cita).subscribe();
     this.router.navigate(['/citas']);
