@@ -91,8 +91,23 @@ export class CalendarioComponent implements OnInit {
   }
 
   estaOcupada(fecha: string, hora: string): boolean {
-    const hola = this.citas.some(cita => cita.fechaCita === fecha && cita.horaCita === hora);
-    return hola;
+
+    const indiceHoraInicio = this.horaInicio(hora);
+    const indiceHoraFin = this.horaInicio(this.horaFin);
+  
+    for (let i = indiceHoraInicio; i <= indiceHoraFin; i++) {
+      console.log(i)
+      if (this.citas.some(cita => cita.fechaCita == fecha && cita.horaCita == this.horas[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  horaInicio(hora: string): number{
+    let hola = this.horas.indexOf(hora);
+    console.log(hola)
+    return hola
   }
 
   anterior() {

@@ -22,6 +22,9 @@ export class ProductoService {
   getProductos() {
     return this.http.get<Producto[]>(`${this.baseUrl}/productos`);
   }
+  getProductosActivos() {
+    return this.http.get<Producto[]>(`${this.baseUrl}/productos/activos`)
+  }
   anadirProducto(producto: Producto){
     return this.http.post(`${this.baseUrl}/productos`, producto);
   }

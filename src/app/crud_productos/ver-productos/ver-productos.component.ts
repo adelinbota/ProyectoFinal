@@ -15,9 +15,14 @@ export class VerProductosComponent {
   contenido: any
   productoSeleccionado: Producto
   public productos: Observable<Producto[]> = this.obtenerProductos();
+  public productosActivos: Observable<Producto[]> = this.obtenerProductosActivos();
 
   obtenerProductos(): Observable<Producto[]> {
     return this.productoServicio.getProductos();
+  }
+  
+  obtenerProductosActivos(): Observable<Producto[]> {
+    return this.productoServicio.getProductosActivos();
   }
 
   constructor(private productoServicio: ProductoService, private modal: NgbModal) { }

@@ -86,7 +86,7 @@
   <div class="container col-12" *ngIf="!logueado">
     <h1 class="text-center mt-5">Productos</h1>
     <div class="row mt-5">
-      <div type="button" class="col-md-3" *ngFor="let producto of productos | async">
+      <div type="button" class="col-md-3" *ngFor="let producto of productosActivos | async">
         <div class="card mb-5" (click)="abrirModal(contenido, producto)">
           <img class="card-img-top" [src]="producto.rutaImagenProducto" alt="">
           <div class="card-body">
