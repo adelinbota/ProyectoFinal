@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="col-12 text-center mt-5">Horario</h1>
     <div class="service-selector">
-      <select id="service" class="form-select col-1">
+      <select id="service" class="form-select col-1" [(ngModel)]="tipoSeleccionado" (change)="mostrarTipo(tipoSeleccionado)">
         <option *ngFor="let tiposServicio of tiposServicioConMayuscula" value="{{tiposServicio.idTipoServicio}}">
           {{tiposServicio.nombre}}</option>
       </select>
