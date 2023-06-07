@@ -21,7 +21,7 @@ export class CalendarioComponent implements OnInit {
   public citasUnas: Cita[] = [];
   public usuarios: any[];
   public servicios: any[];
-  tipoSeleccionado: number =1;
+  tipoSeleccionado: number = 1;
   citaSeleccionada: Cita;
   idUsuario: number | null;
   fechaSeleccionada: string;
@@ -192,7 +192,7 @@ export class CalendarioComponent implements OnInit {
           hora >= cita.horaCita && hora < cita.horaFin
       );
       return !!cita;
-    }else{
+    } else {
       const cita = this.citasUnas.find(
         (cita) =>
           cita.fechaCita === this.formatear(semana) &&
@@ -209,7 +209,7 @@ export class CalendarioComponent implements OnInit {
           cita.fechaCita === this.formatear(semana) &&
           hora >= cita.horaCita && hora < cita.horaFin
       );
-  
+
       if (cita && this.usuarios) {
         if (cita.nombreUsuario !== null) {
           const usuario = this.usuarios.find(
@@ -221,13 +221,13 @@ export class CalendarioComponent implements OnInit {
         }
         return cita.comentarios || '';
       }
-    }else{
+    } else {
       const cita = this.citasUnas.find(
         (cita) =>
           cita.fechaCita === this.formatear(semana) &&
           hora >= cita.horaCita && hora < cita.horaFin
       );
-  
+
       if (cita && this.usuarios) {
         if (cita.nombreUsuario !== null) {
           const usuario = this.usuarios.find(
@@ -253,7 +253,7 @@ export class CalendarioComponent implements OnInit {
 
   abrirModal(contenido1: any, contenido2: any, fecha: string, hora: string) {
     console.log(contenido1, contenido2, fecha, hora)
-    this.citaSeleccionada = this.obtenerCita(fecha,hora)
+    this.citaSeleccionada = this.obtenerCita(fecha, hora)
     if (this.tipoSeleccionado == 1) {
       const cita = this.citasPelo.find(
         (cita) =>
@@ -269,7 +269,7 @@ export class CalendarioComponent implements OnInit {
         this.horaSeleccionada = hora;
         this.modal.open(contenido1, { centered: true })
       }
-    }else{
+    } else {
       const cita = this.citasUnas.find(
         (cita) =>
           cita.fechaCita === this.formatear(fecha) &&
@@ -299,16 +299,15 @@ export class CalendarioComponent implements OnInit {
     this.cita.idServicio = this.valorServicio
     this.funciones.agregarCita(this.cita).subscribe();
     this.modal.dismissAll();
-    window.location.reload();
   }
 
-  actualizar(){
+  actualizar() {
     this.funciones.actualizarCita(this.citaSeleccionada).subscribe();
     this.modal.dismissAll();
     this.router.navigate(['/calendario']);
   }
 
-  eliminar(cita: Cita){
+  eliminar(cita: Cita) {
     this.funciones.eliminarCita(cita).subscribe();
     this.modal.dismissAll();
     window.location.reload();
@@ -322,16 +321,16 @@ export class CalendarioComponent implements OnInit {
           hora >= cita.horaCita &&
           hora < cita.horaFin
       );
-    
+
       return cita || new Cita(0, "", "", "", "", 0, 0);
-    }else{
+    } else {
       const cita = this.citasUnas.find(
         (cita) =>
           cita.fechaCita === this.formatear(fecha) &&
           hora >= cita.horaCita &&
           hora < cita.horaFin
       );
-    
+
       return cita || new Cita(0, "", "", "", "", 0, 0);
     }
   }

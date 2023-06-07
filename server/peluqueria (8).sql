@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2023 a las 17:57:27
+-- Tiempo de generación: 07-06-2023 a las 17:58:58
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -31,6 +31,7 @@ CREATE TABLE `citas` (
   `idCita` int(11) NOT NULL,
   `fechaCita` date NOT NULL,
   `horaCita` time NOT NULL,
+  `horaFin` time NOT NULL,
   `comentarios` varchar(255) DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `idServicio` int(11) NOT NULL
@@ -40,8 +41,15 @@ CREATE TABLE `citas` (
 -- Volcado de datos para la tabla `citas`
 --
 
-INSERT INTO `citas` (`idCita`, `fechaCita`, `horaCita`, `comentarios`, `idUsuario`, `idServicio`) VALUES
-(26, '2023-06-04', '15:00:00', 'Cristina 633055899 30799 24 de ani asa frumoasa', NULL, 2);
+INSERT INTO `citas` (`idCita`, `fechaCita`, `horaCita`, `horaFin`, `comentarios`, `idUsuario`, `idServicio`) VALUES
+(42, '2023-06-09', '09:00:00', '13:30:00', NULL, 10, 3),
+(44, '2023-06-07', '12:30:00', '15:00:00', 'Salvador', NULL, 3),
+(45, '2023-06-08', '10:00:00', '13:00:00', 'Cristiano Ronaldo dos Santos Aveiro\n', 31, 4),
+(46, '2023-06-07', '09:00:00', '10:00:00', NULL, 32, 2),
+(47, '2023-06-07', '09:00:00', '11:00:00', NULL, 32, 4),
+(48, '2023-06-07', '11:00:00', '13:00:00', NULL, 10, 4),
+(49, '2023-06-07', '13:30:00', '15:30:00', NULL, 1, 4),
+(50, '2023-06-07', '17:00:00', '19:00:00', NULL, 31, 4);
 
 -- --------------------------------------------------------
 
@@ -70,6 +78,25 @@ INSERT INTO `contacto` (`idContacto`, `nombre`, `correo`, `mensaje`, `valoracion
 (4, 'Mario', NULL, NULL, 2, 'Cam napotNaspa', 0),
 (5, 'Paquita', NULL, NULL, 5, 'Eres la más guapa, y su chica ni te digo y el novio ya...', 1),
 (6, 'Adelin', NULL, NULL, 5, 'Porque le tengo que hacer la pelota, que si no no me da pa la boda...', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `operario`
+--
+
+CREATE TABLE `operario` (
+  `idOperario` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `operario`
+--
+
+INSERT INTO `operario` (`idOperario`, `nombre`) VALUES
+(1, 'Maria'),
+(2, 'Anca');
 
 -- --------------------------------------------------------
 
@@ -120,9 +147,10 @@ CREATE TABLE `servicios` (
 --
 
 INSERT INTO `servicios` (`idServicio`, `nombre`, `descripcion`, `precio`, `duracion`, `idTipoServicio`) VALUES
-(1, 'Corte de pelo hombre', 'Corte fácil hombre', 11.5, '00:25:00', 1),
-(2, 'Corte de pelo mujer', 'Corte nivel medio mujer', 20.8, '00:45:00', 1),
-(3, 'Teñido de pelo', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '01:30:00', 1);
+(1, 'Corte de pelo hombre', 'Corte fácil hombre', 11.5, '00:30:00', 1),
+(2, 'Corte de pelo mujer', 'Corte nivel medio mujer', 20.8, '01:00:00', 1),
+(3, 'Teñido de pelo', 'Elige el color de tu nuevo look, más personal que nunca.\nEl precio puede variar según el tipo de color y la longitud del pelo.', 35, '02:30:00', 1),
+(4, 'Manicura simple', 'Limpieza y corte perfecto de tus uñas (manos o pies)', 30, '02:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -231,6 +259,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`idContacto`);
 
 --
+-- Indices de la tabla `operario`
+--
+ALTER TABLE `operario`
+  ADD PRIMARY KEY (`idOperario`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -277,13 +311,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
   MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT de la tabla `operario`
+--
+ALTER TABLE `operario`
+  MODIFY `idOperario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

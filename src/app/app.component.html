@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="">A&A</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="">A&A {{usuarioLogueado}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -9,7 +10,8 @@
         <a routerLink="" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item dropdown">
-        <a routerLink="/servicios" class="nav-link" id="navbar-dropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+        <a routerLink="/servicios" class="nav-link" id="navbar-dropdown1" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Servicios</a>
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Corte</a>
           <a class="dropdown-item" href="#">Lavado</a>
@@ -17,7 +19,8 @@
         </div> -->
       </li>
       <li class="nav-item dropdown">
-        <a routerLink="/productos" class="nav-link" id="navbar-dropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
+        <a routerLink="/productos" class="nav-link" id="navbar-dropdown2" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Productos</a>
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Cabello</a>
           <a class="dropdown-item" href="#">Facial</a>
@@ -39,16 +42,20 @@
     </ul>
   </div>
   <div class="btn-group dropstart">
-    <li class="dropdown-toggle" style="border: 0px;" type="button" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/login">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    <li class="dropdown-toggle" style="border: 0px;" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+      routerLink="login">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle"
+        viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path fill-rule="evenodd"
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
       </svg>&nbsp;&nbsp;&nbsp;
     </li>
-    <ul class="dropdown-menu" *ngIf="!logueado">
-      <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#" (click)="cerrarSesion()">Cerrar sesión</a></li>
     </ul>
   </div>
+
 </nav>
 
 <router-outlet></router-outlet>

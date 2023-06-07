@@ -419,10 +419,11 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
 
             $pdo = conectar();
 
-            $stmt = $pdo->prepare("INSERT INTO citas(fechaCita, horaCita, comentarios, idUsuario, idServicio) 
-                                                    VALUES (:fechaCita, :horaCita, :comentarios, :idUsuario, :idServicio)");
+            $stmt = $pdo->prepare("INSERT INTO citas(fechaCita, horaCita, horaFin, comentarios, idUsuario, idServicio) 
+                                                    VALUES (:fechaCita, :horaCita, :horaFin, :comentarios, :idUsuario, :idServicio)");
             $stmt->bindParam(':fechaCita', $datos->fechaCita);
             $stmt->bindParam(':horaCita', $datos->horaCita);
+            $stmt->bindParam(':horaFin', $datos->horaFin);
             $stmt->bindParam(':comentarios', $datos->comentarios);
             $stmt->bindParam(':idUsuario', $datos->idUsuario);
             $stmt->bindParam(':idServicio', $datos->idServicio);
@@ -459,11 +460,12 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
 
               $id = intval($recurso[1]);
 
-              $stmt = $pdo->prepare("UPDATE citas SET fechaCita = :fechaCita, horaCita = :horaCita, comentarios = :comentarios, idUsuario = :idUsuario, idServicio = :idServicio
+              $stmt = $pdo->prepare("UPDATE citas SET fechaCita = :fechaCita, horaCita = :horaCita, horaFin = :horaFin, comentarios = :comentarios, idUsuario = :idUsuario, idServicio = :idServicio
                                                         WHERE idCita = $id");
 
               $stmt->bindParam(':fechaCita', $datos->fechaCita);
               $stmt->bindParam(':horaCita', $datos->horaCita);
+              $stmt->bindParam(':horaFin', $datos->horaFin);
               $stmt->bindParam(':comentarios', $datos->comentarios);
               $stmt->bindParam(':idUsuario', $datos->idUsuario);
               $stmt->bindParam(':idServicio', $datos->idServicio);
@@ -506,6 +508,30 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
               $pdo = conectar();
 
               $stmt = $pdo->prepare("SELECT * FROM tipo_servicio");
+              $stmt->execute();
+
+              $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+              header('Content-Type: application/json; charset=UTF-8');
+              echo json_encode($result);
+              break;
+            case 'pelo':
+              $pdo = conectar();
+
+              $stmt = $pdo->prepare("SELECT citas.*, servicios.* FROM citas, servicios 
+                                      WHERE citas.idServicio = servicios.idServicio
+                                      AND servicios.idTipoServicio = 1");
+              $stmt->execute();
+
+              $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+              header('Content-Type: application/json; charset=UTF-8');
+              echo json_encode($result);
+              break;
+            case 'unas':
+              $pdo = conectar();
+
+              $stmt = $pdo->prepare("SELECT citas.*, servicios.* FROM citas, servicios 
+                                      WHERE citas.idServicio = servicios.idServicio
+                                      AND servicios.idTipoServicio = 2");
               $stmt->execute();
 
               $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -622,17 +648,17 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
               header('Content-Type: application/json; charset=UTF-8');
               echo json_encode($result);
               break;
-              case 'activos':
+            case 'activos':
 
-                $pdo = conectar();
-  
-                $stmt = $pdo->prepare("SELECT * FROM contacto WHERE activo = 1");
-                $stmt->execute();
-  
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                header('Content-Type: application/json; charset=UTF-8');
-                echo json_encode($result);
-                break;
+              $pdo = conectar();
+
+              $stmt = $pdo->prepare("SELECT * FROM contacto WHERE activo = 1");
+              $stmt->execute();
+
+              $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+              header('Content-Type: application/json; charset=UTF-8');
+              echo json_encode($result);
+              break;
             default:
               header("HTTP/1.1 400 Bad Request");
               exit();

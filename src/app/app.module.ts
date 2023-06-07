@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CookieService } from 'ngx-cookie-service';
-import { CalendarModule } from 'angular-calendar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +27,7 @@ import { NewCitaComponent } from './citas/new-cita/new-cita.component';
 import { AddCitaComponent } from './citas/add-cita/add-cita.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-citas.component';
+import { FuncionesService } from './funciones.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-ci
     AddCitaComponent,
     CalendarioComponent,
     ActualizarCitasComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +63,7 @@ import { ActualizarCitasComponent } from './citas/actualizar-citas/actualizar-ci
     BrowserAnimationsModule,
     NgbModule,
   ],
-  providers: [CookieService],
+  providers: [FuncionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

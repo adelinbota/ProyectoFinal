@@ -12,6 +12,15 @@ import { Contacto } from './contacto/contacto';
   providedIn: 'root'
 })
 export class FuncionesService {
+  setUsuarioSesion(usuario: any) {
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+  }
+  
+  getUsuarioSesion() {
+    const usuarioString = localStorage.getItem('usuario');
+    return usuarioString !== null ? JSON.parse(usuarioString) : null;
+  }
+  
   agregarCita(cita: Cita) {
     return this.http.post<Cita[]>(`${this.baseUrl}/citas`, cita)
   }
