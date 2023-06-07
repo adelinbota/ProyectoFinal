@@ -25,7 +25,7 @@
         <tr>
           <td>{{ hora.slice(0,5) }}</td>
           <td 
-          (click)="abrirModal(contenido, semana, hora)" 
+          (click)="abrirModal(contenido1, contenido2, semana, hora)" 
           *ngFor="let semana of semanas"
           [ngClass]="{ 'cita-programada': citaProgramada(semana, hora) }">
           <span *ngIf="citaProgramada(semana, hora)">
@@ -34,7 +34,7 @@
           </td>
         </tr>
       </ng-container>
-      <ng-template #contenido let-modal>
+      <ng-template #contenido1 let-modal>
         <div class="card">
           <div class="card-header">
             Añade una cita
@@ -46,7 +46,6 @@
                   <div class="row">
                     <div class="text-center">
                       <h4>{{fechaSeleccionada}}/{{anio}}</h4><h4>{{horaSeleccionada.slice(0,5)}} - {{horaFin}}</h4>
-                      <h5 *ngIf="duracionServicio">Duración: {{duracionServicio.slice(0,5)}}</h5>
                     </div>
                     <div class="col-6 mt-3">
                       <label for="password" class="form-label">Usuario:</label>
@@ -81,6 +80,76 @@
                     <button type="button" (click)="modal.dismiss()" class="btn btn-outline-primary mt-4 col-3">Atrás</button>
                     <div class="col-6"></div>
                     <button type="submit" class="btn btn-outline-success mt-4 col-3">Agregar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #contenido2 let-modal>
+        <div class="card">
+          <div class="card-header">
+            Edite una cita
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <form (ngSubmit)="actualizar()">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-4 mt-3">
+                      <label for="cita" class="form-label">Fecha cita:</label>
+                      <input type="date" [min]="getCurrentDate()" name="fechaCita" id="cita" class="form-control"
+                        [(ngModel)]="citaSeleccionada.fechaCita" aria-describedby="helpId">
+                    </div>
+
+                    <div class="col-4 mt-3">
+                      <label for="hora" class="form-label">Hora entrada:</label>
+                      <input type="time" name="horaCita" id="hora" class="form-control" [(ngModel)]="citaSeleccionada.horaCita"
+                        aria-describedby="helpId">
+                    </div>
+
+                    <div class="col-4 mt-3">
+                      <label for="horaFin" class="form-label">Hora salida:</label>
+                      <input type="time" name="horaFin" id="horaFin" class="form-control" [(ngModel)]="citaSeleccionada.horaFin"
+                        aria-describedby="helpId">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col mt-3">
+                      <label for="select" class="form-label">Tipo servicio:</label>
+                      <select class="form-select" aria-label="Default select example" name="selectServicio"
+                        [(ngModel)]="citaSeleccionada.idServicio">
+                        <option *ngFor="let servicio of servicios" value="{{servicio.idServicio}}">{{servicio.nombre}}
+                        </option>
+                      </select>
+                    </div>
+                </div>
+              </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-8 mt-3">
+                      <label for="comentarios" class="form-label">Otros datos:</label>
+                      <textarea type="text" name="comentarios" id="comentarios" class="form-control"
+                        [(ngModel)]="citaSeleccionada.comentarios" aria-describedby="helpId"></textarea>
+                    </div>
+                    <div class="col mt-3">
+                      <label for="password" class="form-label">Usuario:</label>
+                      <select class="form-select" aria-label="Default select example" name="selectUsuario"
+                        [(ngModel)]="citaSeleccionada.idUsuario">
+                        <!-- <option value="">-- Seleccione un usuario --</option> -->
+                        <option *ngFor="let usuario of usuarios" value="{{usuario.idUsuario}}">{{usuario.nombre}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <button type="button" (click)="modal.dismiss()" class="btn btn-outline-primary mt-4 col-3">Atrás</button>
+                    <div class="col-1"></div>
+                    <button type="button" (click)="eliminar(citaSeleccionada)" class="btn btn-outline-danger mt-4 col-4">Eliminar</button>
+                    <div class="col-1"></div>
+                    <button type="submit" class="btn btn-outline-success mt-4 col-3">Editar</button>
                   </div>
                 </div>
               </form>

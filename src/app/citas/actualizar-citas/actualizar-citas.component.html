@@ -1,7 +1,7 @@
 <div class="container col-6">
   <div class="card mt-5">
     <div class="card-header">
-      Añade una cita
+      Edite una cita
     </div>
     <div class="card-body">
       <div class="mb-3">
@@ -14,13 +14,13 @@
                   [(ngModel)]="cita.fechaCita" aria-describedby="helpId">
               </div>
 
-              <div class="col-3 mt-3">
+              <div class="col-2 mt-3">
                 <label for="hora" class="form-label">Hora entrada:</label>
                 <input type="time" name="horaCita" id="hora" class="form-control" [(ngModel)]="cita.horaCita"
                   aria-describedby="helpId">
               </div>
 
-              <div class="col-3 mt-3">
+              <div class="col-2 mt-3">
                 <label for="hora" class="form-label">Hora salida:</label>
                 <input type="time" name="horaFin" id="hora" class="form-control" [(ngModel)]="cita.horaFin"
                   aria-describedby="helpId">

@@ -21,6 +21,7 @@ export class CalendarioComponent implements OnInit {
 
   public usuarios: any[];
   public servicios: any[];
+  citaSeleccionada: Cita;
   idUsuario: number | null;
   fechaSeleccionada: string;
   horaSeleccionada: string;
@@ -205,12 +206,26 @@ export class CalendarioComponent implements OnInit {
   // PROGRAMACIÓN MODAL
   fechaHoy = new Date();
   anio = this.fechaHoy.getFullYear().toString()
-  contenido: any
+  contenido1: any
+  contenido2: any
 
-  abrirModal(contenido: any, fecha: string, hora: string) {
-    this.fechaSeleccionada = fecha;
-    this.horaSeleccionada = hora;
-    this.modal.open(contenido, { centered: true })
+  abrirModal(contenido1: any, contenido2: any, fecha: string, hora: string) {
+    console.log(contenido1, contenido2, fecha, hora)
+    this.citaSeleccionada = this.obtenerCita(fecha,hora)
+    const cita = this.citas.find(
+      (cita) =>
+        cita.fechaCita === this.formatear(fecha) &&
+        hora >= cita.horaCita && hora < cita.horaFin
+    );
+    if (cita) {
+      this.fechaSeleccionada = fecha;
+      this.horaSeleccionada = hora;
+      this.modal.open(contenido2, { centered: true })
+    } else {
+      this.fechaSeleccionada = fecha;
+      this.horaSeleccionada = hora;
+      this.modal.open(contenido1, { centered: true })
+    }
   }
 
   cita = new Cita(1, "", "", "", "", 1, 1)
@@ -223,10 +238,32 @@ export class CalendarioComponent implements OnInit {
     this.cita.comentarios = this.comentarios
     this.cita.idUsuario = this.idUsuario
     this.cita.idServicio = this.valorServicio
-    console.log(this.cita);
     this.funciones.agregarCita(this.cita).subscribe();
     this.modal.dismissAll();
     window.location.reload();
+  }
+
+  actualizar(){
+    this.funciones.actualizarCita(this.citaSeleccionada).subscribe();
+    this.modal.dismissAll();
+    window.location.reload();
+  }
+
+  eliminar(cita: Cita){
+    this.funciones.eliminarCita(cita).subscribe();
+    this.modal.dismissAll();
+    window.location.reload();
+  }
+
+  obtenerCita(fecha: string, hora: string): Cita {
+    const cita = this.citas.find(
+      (cita) =>
+        cita.fechaCita === this.formatear(fecha) &&
+        hora >= cita.horaCita &&
+        hora < cita.horaFin
+    );
+  
+    return cita || new Cita(0, "", "", "", "", 0, 0);
   }
 
   formatear(fechaSeleccionada: string): string {

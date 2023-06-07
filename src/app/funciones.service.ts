@@ -15,6 +15,12 @@ export class FuncionesService {
   agregarCita(cita: Cita) {
     return this.http.post<Cita[]>(`${this.baseUrl}/citas`, cita)
   }
+  actualizarCita(cita: Cita) {
+    return this.http.put(`${this.baseUrl}/citas/${cita.idCita}`, cita);
+  }
+  eliminarCita(cita: Cita) {
+    return this.http.delete<Cita[]>(`${this.baseUrl}/citas/${cita.idCita}`)
+  }
   getContactosActivos() {
     return this.http.get<Contacto[]>(`${this.baseUrl}/contactos/activos`)
   }
