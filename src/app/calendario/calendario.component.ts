@@ -19,7 +19,6 @@ export class CalendarioComponent implements OnInit {
 
   public citasPelo: Cita[] = [];
   public citasUnas: Cita[] = [];
-
   public usuarios: any[];
   public servicios: any[];
   tipoSeleccionado: number =1;
@@ -306,7 +305,7 @@ export class CalendarioComponent implements OnInit {
   actualizar(){
     this.funciones.actualizarCita(this.citaSeleccionada).subscribe();
     this.modal.dismissAll();
-    window.location.reload();
+    this.router.navigate(['/calendario']);
   }
 
   eliminar(cita: Cita){
