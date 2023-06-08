@@ -16,10 +16,9 @@ export class FuncionesService {
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
   
-  getUsuarioSesion() {
-    const usuarioString = localStorage.getItem('usuario');
-    return usuarioString !== null ? JSON.parse(usuarioString) : null;
-  }
+  getUsuarioSesion(): any {
+    return localStorage.getItem('usuario');
+  }  
   
   agregarCita(cita: Cita) {
     return this.http.post<Cita[]>(`${this.baseUrl}/citas`, cita)

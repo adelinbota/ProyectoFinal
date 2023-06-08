@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
       next: (resultado) => {
         console.log(resultado)
         if (resultado) {
-          this.funciones.setUsuarioSesion(resultado.usuario)
+          this.funciones.setUsuarioSesion(resultado)
           this.funciones.setToken(resultado.token);
-          this.userService.setUsuarioLogueado(resultado.usuario);
+          this.userService.setUsuarioLogueado(resultado);
           this.route.navigate(['/']);
         } else {
           const errorBox = document.getElementById('error-box');
