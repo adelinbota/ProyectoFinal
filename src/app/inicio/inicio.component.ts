@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contacto } from '../contacto/contacto';
 import { FuncionesService } from '../funciones.service';
 import { Observable } from 'rxjs';
@@ -8,8 +8,13 @@ import { Observable } from 'rxjs';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent {
-  logueado = false
+export class InicioComponent implements OnInit {
+  usuarioLogueado: any;
+
+  ngOnInit(): void {
+    const userSesion = this.funciones.getUsuarioSesion();
+    this.usuarioLogueado = JSON.parse(userSesion)
+  }
 
   constructor(private funciones:FuncionesService){}
 

@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'peluqueria';
-  logueado = true
   usuarioLogueado: any;
 
   constructor(private funciones: FuncionesService, private route: Router) {
@@ -18,7 +17,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const userSesion = this.funciones.getUsuarioSesion();
     this.usuarioLogueado = JSON.parse(userSesion)
-    console.log(userSesion)
   }
 
   cerrarSesion(): void {

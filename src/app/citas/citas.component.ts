@@ -4,18 +4,29 @@ import { Cita } from './cita';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, combineLatest, map } from 'rxjs';
 import { CitasService } from './citas.service';
+import { Usuario } from '../crud_usuarios/usuario';
 
 @Component({
   selector: 'app-citas',
   templateUrl: './citas.component.html',
   styleUrls: ['./citas.component.css']
 })
-export class CitasComponent {
+export class CitasComponent implements OnInit{
 
+  citasUsuario: Cita[]
+  usuarioLogueado: Usuario;
   citaSeleccionada: Cita
   contenido: any
   public citas: Observable<Cita[]>;
-  logueado = true;
+
+  ngOnInit(): void {
+    const userSesion = this.funciones.getUsuarioSesion();
+    this.usuarioLogueado = JSON.parse(userSesion);
+    this.funciones.getCitasUsuario(this.usuarioLogueado.idUsuario).subscribe(
+      citas => {
+        this.citasUsuario = citas;
+      });
+  }
 
   constructor(private funciones: FuncionesService, private citasFunciones: CitasService, private modal: NgbModal) {
     this.citas = combineLatest([
@@ -49,5 +60,15 @@ export class CitasComponent {
     this.modal.dismissAll();
   }
 
+  formatear(fecha: string): string {
+    const fechaObj = new Date(fecha);
+    const dia = fechaObj.getDate();
+    const mes = fechaObj.getMonth();
+    const meses = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    return `${dia} de ${meses[mes]}`;
+  }
 
 }

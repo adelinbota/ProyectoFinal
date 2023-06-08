@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 import { Observable, map } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FuncionesService } from 'src/app/funciones.service';
 
 @Component({
   selector: 'app-ver-productos',
   templateUrl: './ver-productos.component.html',
   styleUrls: ['./ver-productos.component.css']
 })
-export class VerProductosComponent {
+export class VerProductosComponent implements OnInit{
 
-  logueado = false;
+  ngOnInit(): void {
+    const userSesion = this.funciones.getUsuarioSesion();
+    this.usuarioLogueado = JSON.parse(userSesion)
+  }
+
+  usuarioLogueado: any
   contenido: any
   productoSeleccionado: Producto
   public productos: Observable<Producto[]> = this.obtenerProductos();
@@ -25,7 +31,7 @@ export class VerProductosComponent {
     return this.productoServicio.getProductosActivos();
   }
 
-  constructor(private productoServicio: ProductoService, private modal: NgbModal) { }
+  constructor(private productoServicio: ProductoService, private modal: NgbModal, private funciones: FuncionesService) { }
 
   eliminarProducto(producto: Producto): void {
     this.productoServicio.borrarProducto(producto).subscribe();

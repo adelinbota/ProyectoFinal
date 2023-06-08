@@ -1,5 +1,5 @@
 <body>
-  <div class="container mt-5 mb-5">
+  <div class="container mt-5 mb-5" *ngIf="usuarioLogueado">
       <h1>Reserva tu cita</h1>
       <form (ngSubmit)="reservar()">
         <div class="form-group">
@@ -36,5 +36,10 @@
           <button type="submit" class="btn" style="width: 55%;">Reservar cita</button>
         </div>
       </form>
+    </div>
+    <div class="container mt-5 mb-5" *ngIf="!usuarioLogueado">
+      <h1>Reserva tu cita</h1>
+      <p class="mt-5">Tienes que iniciar sesión para concertar una cita</p>
+      <button type="button" routerLink="/login" class="btn btn-outline-primary inicio mt-5 mb-5">Iniciar sesión</button>
     </div>
 </body>

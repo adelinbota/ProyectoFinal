@@ -1,8 +1,8 @@
 <body>
-  <div class="container">
+  <div class="container" *ngIf="!usuarioLogueado || usuarioLogueado && usuarioLogueado.idTipoUsuario !== 1">
     <div class="row">
       <h1 class="text-center mb-5 mt-5">Contacto</h1>
-      <div class="col-12" *ngIf="variable">
+      <div class="col-12">
         <form (ngSubmit)="addContacto()">
           <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -77,8 +77,9 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 1">
     <div class="row">
+      <h1 class="text-center mb-5 mt-5">Reseñas</h1>
       <div class="col-md-4" *ngFor="let contacto of contactos | async">
         <div class="card mb-3 custom-card">
           <div class="card-body">

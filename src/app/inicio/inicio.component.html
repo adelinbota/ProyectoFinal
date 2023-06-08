@@ -3,7 +3,7 @@
     <h1 class="text-center mt-5">A&A Beauty Salon</h1>
   </header>
 
-  <section class="section section-usuarios" *ngIf="logueado">
+  <section class="section section-usuarios mt-5" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 1">
     <div class="container">
       <div class="row">
         <div class="col-md-6">

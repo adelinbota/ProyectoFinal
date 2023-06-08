@@ -1,20 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contacto } from './contacto';
 import { ContactoService } from './contacto.service';
 import { Observable, map } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FuncionesService } from '../funciones.service';
 
 @Component({
   selector: 'app-contacto',
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
-export class ContactoComponent {
+export class ContactoComponent implements OnInit{
 
-  constructor(private contactoServicio: ContactoService, private modal: NgbModal) { }
+  constructor(private contactoServicio: ContactoService, private modal: NgbModal, private funciones: FuncionesService) { }
+  ngOnInit(): void {
+    const userSesion = this.funciones.getUsuarioSesion();
+    this.usuarioLogueado = JSON.parse(userSesion)
+  }
 
   public contactos: Observable<Contacto[]> = this.contactoServicio.getContactos();
 
+  usuarioLogueado: any
   contactoSeleccionado:Contacto
   contenido:any
   variable = false;

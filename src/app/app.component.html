@@ -9,9 +9,6 @@
       <li class="nav-item">
         <a routerLink="" class="nav-link">Inicio</a>
       </li>
-      <div *ngIf="usuarioLogueado">
-        {{usuarioLogueado.idTipoUsuario}}
-      </div>
       <li class="nav-item dropdown">
         <a routerLink="/servicios" class="nav-link" id="navbar-dropdown1" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Servicios</a>
@@ -33,14 +30,14 @@
       <li class="nav-item">
         <a routerLink="/citas" class="nav-link">Citas</a>
       </li>
-      <li class="nav-item" *ngIf="logueado">
+      <li class="nav-item" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 1">
         <a routerLink="/usuarios" class="nav-link">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/calendario" class="nav-link" *ngIf="logueado">Calendario</a>
+        <a routerLink="/calendario" class="nav-link" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 1">Calendario</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/contacto" class="nav-link" *ngIf="logueado">Contacto</a>
+        <a routerLink="/contacto" class="nav-link">Contacto</a>
       </li>
     </ul>
   </div>

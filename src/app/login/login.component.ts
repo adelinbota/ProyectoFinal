@@ -24,11 +24,9 @@ export class LoginComponent implements OnInit {
     const user = { username: this.username, password: this.password };
     this.funciones.comprobar(user).subscribe({
       next: (resultado) => {
-        console.log(resultado)
         if (resultado) {
           this.funciones.setUsuarioSesion(resultado)
           this.funciones.setToken(resultado.token);
-          //this.route.navigate(['/']);
           window.location.href = '/';
         } else {
           const errorBox = document.getElementById('error-box');

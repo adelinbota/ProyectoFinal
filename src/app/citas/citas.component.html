@@ -1,10 +1,10 @@
 <body>
-  <div class="container col-12 mt-5" *ngIf="logueado">
+  <div class="container col-12 mt-5" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 1">
     <h1 class="col-12 text-center mt-5">Citas</h1>
     <div class="col-12">
       <div class="row">
         <div class="col-6">
-            <a routerLink="/citas/add-citas" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
+          <a routerLink="/citas/add-citas" class="btn btn-outline-primary mt-5 mb-3 col-4">Nueva cita</a>
         </div>
       </div>
     </div>
@@ -21,14 +21,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let cita of citas | async">
-            <td scope="row"><b>{{cita.fechaCita.split('-')[2]}}/{{cita.fechaCita.split('-')[1]}}</b> {{cita.horaCita.slice(0,5)}} - {{cita.horaFin.slice(0,5)}}</td>
+            <td scope="row"><b>{{cita.fechaCita.split('-')[2]}}/{{cita.fechaCita.split('-')[1]}}</b>
+              {{cita.horaCita.slice(0,5)}} - {{cita.horaFin.slice(0,5)}}</td>
             <td>{{cita.comentarios}}</td>
             <td>{{cita.nombreUsuario}}</td>
             <td>{{cita.nombreServicio}}</td>
             <td>
-                <button type="button" routerLink="/citas/actualizar-citas/{{cita.idCita}}" class="btn btn-outline-success btn-sm">Editar</button>
-                <button type="button" class="btn btn-outline-danger btn-sm" (click)="abrirModal(contenido, cita)">Eliminar</button>
-            </td> 
+              <button type="button" routerLink="/citas/actualizar-citas/{{cita.idCita}}"
+                class="btn btn-outline-success btn-sm">Editar</button>
+              <button type="button" class="btn btn-outline-danger btn-sm"
+                (click)="abrirModal(contenido, cita)">Eliminar</button>
+            </td>
           </tr>
         </tbody>
         <ng-template #contenido let-modal let-cita="citaSeleccionada">
@@ -45,62 +48,41 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <p class="card-title">{{ citaSeleccionada.nombreUsuario}}</p>
-                    <p class="card-text">{{citaSeleccionada.fechaCita.split('-')[2]}}/{{citaSeleccionada.fechaCita.split('-')[1]}} {{citaSeleccionada.horaCita.slice(0,5)}}</p>
+                    <p class="card-text">
+                      {{citaSeleccionada.fechaCita.split('-')[2]}}/{{citaSeleccionada.fechaCita.split('-')[1]}}
+                      {{citaSeleccionada.horaCita.slice(0,5)}}</p>
                     <p class="card-text">{{citaSeleccionada.nombreServicio}}</p>
                     <p class="card-text"><small class="text-muted">{{citaSeleccionada.comentarios}}</small></p>
                   </div>
-                </div>                      
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-            <button type="button" class="btn btn-danger" (click)="eliminarCita(citaSeleccionada); modal.close()">Eliminar</button>
+            <button type="button" class="btn btn-danger"
+              (click)="eliminarCita(citaSeleccionada); modal.close()">Eliminar</button>
           </div>
         </ng-template>
       </table>
     </div>
   </div>
-  <div class="container col-5 mt-5 mb-5" *ngIf="!logueado">
+  <div class="container col-5 mt-5 mb-5" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 2">
     <h1 class="text-center">Mis Citas</h1>
-    <div class="card text-center">
+    <div class="card text-center" *ngFor="let cita of citasUsuario">
       <div class="card-header">
         <h2 class="mb-0">Cita Reservada</h2>
-        <p class="mb-0">28 de mayo, 10:00 AM</p>
+        <p class="mb-0">{{formatear(cita.fechaCita)}} {{cita.horaCita.slice(0,5)}}</p>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Belleza Total</h3>
-        <p class="card-text">Servicio: Corte de pelo</p>
+        <h3 class="card-title">{{cita.idUsuario}}</h3>
+        <p class="card-text">{{cita.idServicio}}</p>
         <p class="card-text">Peluquera: Maria Costin</p>
         <p class="card-text">DirecciÃ³n: Calle Barcelona, 53</p>
         <button class="btn btn-primary mt-3">Ver detalles</button>
         <button class="btn btn-success mt-3" routerLink="new" style="margin-left: 1rem;">Nueva cita</button>
-        <!-- <ng-template #contenido let-modal let-cita="citaSeleccionado">
-          <div class="modal-header">
-            <h4 class="modal-title text-center">Información cita</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="card mb-3 card-margen logueado">
-              <div class="row g-0">
-                <div class="col-md-12">
-                  <div class="card-body">
-                    <h5 class="card-title">{{citaSeleccionada.fechaCita}}</h5>
-                    <p class="card-text">{{citaSeleccionada.comentarios}}</p>
-                  </div>
-                </div>                      
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-            <button type="button" class="btn btn-success" routerLink="../citas/new" (click)="modal.close()">Pedir cita</button>
-          </div>
-        </ng-template> -->
       </div>
     </div>
-    <app-footer></app-footer>
   </div>
+  <app-footer></app-footer>
 </body>
