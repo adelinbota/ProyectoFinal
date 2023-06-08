@@ -43,8 +43,7 @@
     color: #000000;
     font-size: 16px;
   }
-  
-  .dropdown-item:hover {
-    color: #cc0000;
+
+  i {
+    font-size: 30px;
   }
-  
