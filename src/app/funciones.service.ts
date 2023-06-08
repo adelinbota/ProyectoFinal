@@ -15,11 +15,13 @@ export class FuncionesService {
   setUsuarioSesion(usuario: any) {
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
-  
+
   getUsuarioSesion(): any {
-    return localStorage.getItem('usuario');
+    const hola = localStorage.getItem('usuario');
+    console.log(hola)
+    return hola
   }  
-  
+
   agregarCita(cita: Cita) {
     return this.http.post<Cita[]>(`${this.baseUrl}/citas`, cita)
   }

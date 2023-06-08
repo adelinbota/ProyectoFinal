@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionesService } from '../funciones.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +9,7 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private funciones: FuncionesService, private route: Router, private http: HttpClient, private userService: UserService) { }
+  constructor(private funciones: FuncionesService, private route: Router) { }
 
   ngOnInit(): void {
     this.usuarioLogueado = this.funciones.getUsuarioSesion();
@@ -30,8 +28,8 @@ export class LoginComponent implements OnInit {
         if (resultado) {
           this.funciones.setUsuarioSesion(resultado)
           this.funciones.setToken(resultado.token);
-          this.userService.setUsuarioLogueado(resultado);
-          this.route.navigate(['/']);
+          //this.route.navigate(['/']);
+          window.location.href = '/';
         } else {
           const errorBox = document.getElementById('error-box');
           if (errorBox) { // Verificar que el elemento exista
