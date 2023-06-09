@@ -21,6 +21,7 @@ export class CalendarioComponent implements OnInit {
   public citasUnas: Cita[] = [];
   public usuarios: any[];
   public servicios: any[];
+  usuarioLogueado: any;
   tipoSeleccionado: number = 1;
   citaSeleccionada: Cita;
   idUsuario: number | null;
@@ -39,6 +40,8 @@ export class CalendarioComponent implements OnInit {
   semanas: string[];
 
   ngOnInit(): void {
+    const userSesion = this.funciones.getUsuarioSesion();
+    this.usuarioLogueado = JSON.parse(userSesion);
     this.funciones.getCitasPelo().subscribe({
       next: (citas: Cita[]) => {
         this.citasPelo = citas;

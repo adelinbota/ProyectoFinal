@@ -436,7 +436,7 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
               default:
                 $pdo = conectar();
 
-                $stmt = $pdo->prepare("SELECT * FROM citas");
+                $stmt = $pdo->prepare("SELECT * FROM citas ORDER BY fechaCita, horaCita, horaFin");
                 $stmt->execute();
 
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -550,7 +550,7 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
             case 'GET':
               $pdo = conectar();
               $id = intval($recurso[2]);
-              $stmt = $pdo->prepare("SELECT * FROM citas WHERE idUsuario = $id");
+              $stmt = $pdo->prepare("SELECT * FROM citas WHERE idUsuario = $id ORDER BY fechaCita, horaCita");
               $stmt->execute();
 
               $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

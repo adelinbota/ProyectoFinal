@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit {
         if (resultado) {
           this.funciones.setUsuarioSesion(resultado)
           this.funciones.setToken(resultado.token);
-          window.location.href = '/';
+          if (resultado.idTipoUsuario == 1) {
+            window.location.href = '/calendario';
+          }else{
+            window.location.href = '/citas';
+          }
         } else {
           const errorBox = document.getElementById('error-box');
           if (errorBox) { // Verificar que el elemento exista

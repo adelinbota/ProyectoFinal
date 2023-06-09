@@ -1,6 +1,6 @@
 <body>
   <div class="container">
-    <h1 class="col-12 text-center mt-5">Horario</h1>
+    <h1 class="col-12 text-center mt-5">{{usuarioLogueado.nombre}} {{usuarioLogueado.apellidos}}</h1>
     <div class="service-selector">
       <select id="service" class="form-select col-1" [(ngModel)]="tipoSeleccionado"
         (change)="mostrarTipo(tipoSeleccionado)">

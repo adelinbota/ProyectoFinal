@@ -51,7 +51,7 @@
       </svg>&nbsp;&nbsp;&nbsp;
     </li>
   </div>
-
+    <p class="nombre" *ngIf="usuarioLogueado">{{usuarioLogueado.nombre}}</p>
   <div class="btn-group dropstart" *ngIf="usuarioLogueado">
     <li class="dropdown-toggle" style="border: 0px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle"
