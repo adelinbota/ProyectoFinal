@@ -37,9 +37,14 @@
         </div>
       </form>
     </div>
-    <div class="container mt-5 mb-5" *ngIf="!usuarioLogueado">
+    <div class="container mt-5 mb-5 text-center" *ngIf="!usuarioLogueado">
       <h1>Reserva tu cita</h1>
       <p class="mt-5">Tienes que iniciar sesión para concertar una cita</p>
-      <button type="button" routerLink="/login" class="btn btn-outline-primary inicio mt-5 mb-5">Iniciar sesión</button>
+      <button type="button" routerLink="/login" class="btn btn-outline-primary inicio mb-5">Iniciar sesión</button>
+      <p>Si quieres realizar una cita sin iniciar sesión, puedes ponerte en contacto con la peluquería</p>
+      <p>Teléfono: 617 97 62 89</p>
+      <p class="mt-5">O manda un mensaje:</p>
+      <button type="button" routerLink="/contacto" class="btn btn-outline-primary inicio mb-5">Mensaje</button>
     </div>
+    <app-footer></app-footer>
 </body>

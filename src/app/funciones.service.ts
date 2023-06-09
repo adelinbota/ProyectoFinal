@@ -49,7 +49,7 @@ export class FuncionesService {
     return this.http.get<Cita[]>(`${this.baseUrl}/citas/unas`);
   }
   getCitasUsuario(idTipoUsuario: number) {
-    return this.http.get<Cita[]>(`${this.baseUrl}/citas/${idTipoUsuario}`);
+    return this.http.get<Cita[]>(`${this.baseUrl}/citas/usuario/${idTipoUsuario}`);
   }
   obtenerTiposServicio() {
     return this.http.get<any[]>(`${this.baseUrl}/servicios/obtenerTiposServicio`);

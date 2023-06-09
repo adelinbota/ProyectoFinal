@@ -19,8 +19,10 @@ export class ActualizarCitasComponent implements OnInit {
   ngOnInit(): void {
     let idCita = this.route.snapshot.paramMap.get('idCita');
     this.citasServicio.getCita(idCita).subscribe(
-      (cita: Cita) => this.cita = cita
-    );
+      (cita: Cita) => {
+        this.cita = cita
+        console.log(cita)
+      });
     this.citasServicio.getUsuarios().subscribe(
       usuarios => {
         this.usuarios = usuarios.map(usuario => {

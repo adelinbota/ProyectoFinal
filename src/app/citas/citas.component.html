@@ -69,6 +69,9 @@
   </div>
   <div class="container col-5 mt-5 mb-5" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 2">
     <h1 class="text-center">Mis Citas</h1>
+    <div class="text-center">
+      <button class="btn btn-success mt-3" routerLink="new">Nueva cita</button>
+    </div>
     <div class="card text-center" *ngFor="let cita of citasUsuario">
       <div class="card-header">
         <h2 class="mb-0">Cita Reservada</h2>
@@ -80,9 +83,30 @@
         <p class="card-text">Peluquera: Maria Costin</p>
         <p class="card-text">Dirección: Calle Barcelona, 53</p>
         <button class="btn btn-primary mt-3">Ver detalles</button>
-        <button class="btn btn-success mt-3" routerLink="new" style="margin-left: 1rem;">Nueva cita</button>
       </div>
     </div>
   </div>
+  <div class="container col-12 mt-5" *ngIf="!usuarioLogueado">
+    <div class="text-center">
+      <h1 class="display-4">Accede para obtener una cita</h1>
+      <p class="lead">Para disfrutar de nuestros servicios, primero debes iniciar sesión.</p>
+      <p class="lead">Haz clic <a routerLink="/login">aquí</a> para iniciar sesión.</p>
+    </div>
+    <hr class="my-5">
+    <div class="text-center mt-5">
+      <h1 class="display-4">Servicios</h1>
+      <p class="lead">Explora nuestra selección de servicios disponibles.</p>
+      <p class="lead">Haz clic <a routerLink="/servicios">aquí</a> para ver nuestros servicios.</p>
+    </div>
+    <hr class="my-5">
+    <div class="text-center mt-5">
+      <h1 class="display-4">Contactos</h1>
+      <p class="lead">Si deseas contactar con nuestra empresa o realizar una valoración, estaremos encantados de recibir
+        tus comentarios.</p>
+      <p class="lead">Haz clic <a routerLink="/contacto">aquí</a> para acceder a nuestra página de contactos.</p>
+    </div>
+
+  </div>
+
   <app-footer></app-footer>
 </body>

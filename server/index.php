@@ -544,6 +544,31 @@ if (isset($_GET['recurso']) && !empty($_GET['recurso'])) {
               break;
           }
         }
+      }else if (!isset($recurso[3])) {
+        if (is_numeric($recurso[2])) {
+          switch ($_SERVER['REQUEST_METHOD']) {
+            case 'GET':
+              $pdo = conectar();
+              $id = intval($recurso[2]);
+              $stmt = $pdo->prepare("SELECT * FROM citas WHERE idUsuario = $id");
+              $stmt->execute();
+
+              $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+              if ($result) {
+                echo json_encode($result);
+              } else {
+                header("HTTP/1.1 404 Not found");
+                exit();
+              }
+
+              break;
+            default:
+              header("HTTP/1.1 405 Method not allowed");
+              exit();
+              break;
+          }
+        }
       }
       break;
     case 'contactos':

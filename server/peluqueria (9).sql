@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 17:58:58
+-- Tiempo de generación: 09-06-2023 a las 10:24:23
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -43,13 +43,12 @@ CREATE TABLE `citas` (
 
 INSERT INTO `citas` (`idCita`, `fechaCita`, `horaCita`, `horaFin`, `comentarios`, `idUsuario`, `idServicio`) VALUES
 (42, '2023-06-09', '09:00:00', '13:30:00', NULL, 10, 3),
-(44, '2023-06-07', '12:30:00', '15:00:00', 'Salvador', NULL, 3),
-(45, '2023-06-08', '10:00:00', '13:00:00', 'Cristiano Ronaldo dos Santos Aveiro\n', 31, 4),
-(46, '2023-06-07', '09:00:00', '10:00:00', NULL, 32, 2),
-(47, '2023-06-07', '09:00:00', '11:00:00', NULL, 32, 4),
-(48, '2023-06-07', '11:00:00', '13:00:00', NULL, 10, 4),
-(49, '2023-06-07', '13:30:00', '15:30:00', NULL, 1, 4),
-(50, '2023-06-07', '17:00:00', '19:00:00', NULL, 31, 4);
+(44, '2023-06-12', '12:30:00', '15:00:00', 'Salvador', NULL, 3),
+(45, '2023-06-13', '10:00:00', '13:00:00', 'Cristiano Ronaldo dos Santos Aveiro\n', 32, 4),
+(46, '2023-06-09', '13:30:00', '14:00:00', NULL, 32, 1),
+(47, '2023-06-09', '09:00:00', '11:00:00', NULL, 32, 4),
+(48, '2023-06-10', '11:00:00', '13:00:00', NULL, 10, 4),
+(49, '2023-06-10', '13:30:00', '15:30:00', NULL, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -108,7 +107,7 @@ CREATE TABLE `productos` (
   `idProducto` int(11) NOT NULL,
   `nombreProducto` varchar(40) NOT NULL,
   `descripcionProducto` varchar(500) DEFAULT NULL,
-  `precioProducto` float NOT NULL,
+  `precioProducto` float DEFAULT NULL,
   `rutaImagenProducto` varchar(100) NOT NULL,
   `activo` tinyint(1) NOT NULL,
   `idTipoProducto` int(11) NOT NULL

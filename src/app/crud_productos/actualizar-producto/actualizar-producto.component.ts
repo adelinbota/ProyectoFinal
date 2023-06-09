@@ -22,6 +22,7 @@ export class ActualizarProductoComponent implements OnInit {
     this.productoService.getProducto(idProducto).subscribe(
       (producto: Producto) => {
         this.producto = producto;
+        console.log(producto)
       }
     );
 

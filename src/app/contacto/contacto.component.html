@@ -22,7 +22,7 @@
               [(ngModel)]="mensaje"></textarea>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 2">
             <label>Valoración</label>
             <div class="valoracion">
               <button type="button" class="btn btn-valoracion" [ngClass]="{'active': valoracion >= 1}"
@@ -49,7 +49,7 @@
           </div>
 
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="usuarioLogueado && usuarioLogueado.idTipoUsuario == 2">
             <label for="resena">Reseña</label>
             <textarea class="form-control" name="resena" id="resena" rows="3" placeholder="Escribe tu reseña"
               [(ngModel)]="resena"></textarea>
